@@ -2,7 +2,7 @@ Ext.define('AM.controller.Customers', {
     extend: 'Ext.app.Controller',
     
     stores: [
-        'Customers', 'Menus'
+        'Customers', 'Menus', 'Cities'
     ],
  
     views: [
@@ -13,12 +13,13 @@ Ext.define('AM.controller.Customers', {
     ],
     
     models: [
-        'User', 'MenuItem', 'Customer'
+        'User', 'MenuItem', 'Customer', 'City'
     ],
     
     refs: [
            {ref: 'menuItemData', selector: 'menu dataview'},
-           {ref: 'customerGrid', selector: 'customergrid'},
+           {ref: 'customerGrid', selector: 'customergrid'}
+//           {ref: 'customerEdit', selector: 'customeredit'}
     ],
     
     init: function() {
@@ -32,9 +33,6 @@ Ext.define('AM.controller.Customers', {
             'customeredit button[action=save]': {
                 click: this.updateCustomer
             },
-            /*'menu dataview': {
-                selectionchange: this.loadCustomer
-            },*/
             'menu button[action=add]': {
                 click: this.addFeed
             },
@@ -45,25 +43,30 @@ Ext.define('AM.controller.Customers', {
     },
     
     /*onLaunch: function() {
-        var menuview = this.getMenuItemData(),
-            store = this.getMenusStore();
-            
-        menuview.bindStore(store);
-        menuview.getSelectionModel().select(store.getAt(0));
+        var editor = this.getCustomerEdit(),
+            store = this.getCitiesStore();
+        editor.bindStore(store);
+//        menuview.getSelectionModel().select(store.getAt(0));
     },*/
  
     addCustomer: function(grid) {
-    	console.log('add customer');
-    	var view = Ext.widget('customeredit');
+    	var view = Ext.widget('customeredit').show();
     	view.setTitle('录入客户信息');
-    	blankRecord = this.getCustomerModel().create({});
-    	view.down('form').loadRecord(blankRecord);
     },
     
     editCustomer: function(grid, record) {
-    	var view = Ext.widget('customeredit');
+//    	var view = Ext.widget('customeredit');
+//    	var store = this.getCitiesStore();
+    	var view = Ext.create('AM.view.customer.Edit');
+//    	var view = new AM.view.customer.Edit(store);
     	view.setTitle('编辑客户信息');
-        view.down('form').loadRecord(record);
+//    	view.bindStore(store);
+//    	view.getDistrictsStore().load({params: {cityId: record.get('city.id')}});
+//    	cityCombo.setValue(record.get('city.id'));
+    	view.down('form').loadRecord(record);
+    	var cityCombo = view.down('form combobox[name=city.id]');
+    	cityCombo.fireEvent('select', cityCombo);
+        view.show();
     },
     
     updateCustomer: function(button) {
@@ -71,16 +74,15 @@ Ext.define('AM.controller.Customers', {
             form   = win.down('form'),
             record = form.getRecord(),
             values = form.getValues();
-        record.set(values);
      
-        /*if (record) {
+        if (record) {
         	// 修改
         	record.set(values);
         } else {
         	// 新增
             store = this.getCustomersStore(),
-            console.log(form.down('textfield[name=name]').getValue());
-            customer  = this.getFeedModel().create({
+//            console.log(form.down('textfield[name=name]').getValue());
+            record = this.getCustomerModel().create({
                 name: form.down('textfield[name=name]').getValue(),
                 cellphone: form.down('textfield[name=cellphone]').getValue(),
 //                city.id: form.down('textfield[name=name]').getValue(),
@@ -88,9 +90,10 @@ Ext.define('AM.controller.Customers', {
                 streetAddress: form.down('textfield[name=streetAddress]').getValue(),
                 barcode: form.down('textfield[name=barcode]').getValue()
             });
-        }*/
+            this.getCustomersStore().add(record);
+        }
         win.close();
-        
+//        console.log(record);
         this.getCustomersStore().sync();
     },
     

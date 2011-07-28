@@ -46,12 +46,20 @@ Prototype Style Sheet (empty commented stylesheet)
 
 /** =Toobars
 -----------------------------------------------------------------------------*/
-.add16 {
-    background-image: url( ../icons/fam/add16.gif ) !important;
+.add {
+    background-image: url( ../images/add16.gif ) !important;
 }
 
-.delete16 {
-    background-image: url( ../icons/fam/delete.gif ) !important;
+.delete {
+    background-image: url( ../images/delete.gif ) !important;
+}
+
+.print {
+    background-image: url( ../images/printer.png ) !important;
+}
+
+.details {
+	backgroud-image: url( ../images/details.gif ) !important;
 }
 
 /* =Links

@@ -1,7 +1,7 @@
 Ext.define('AM.store.Customers', {
     extend: 'Ext.data.Store',
     model: 'AM.model.Customer',
-    autoLoad: false,
+    autoLoad: true,
     remoteSort: true,
     pageSize: 2,
     
@@ -9,7 +9,8 @@ Ext.define('AM.store.Customers', {
         type: 'ajax',
         api: {
             read: 'customer_list.do',
-            update: 'customer_save.do'
+            update: 'customer_save.do',
+            create: 'customer_save.do'
         },
         reader: {
             type: 'json',

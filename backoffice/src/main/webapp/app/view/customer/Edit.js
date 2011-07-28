@@ -1,27 +1,61 @@
 Ext.define('AM.view.customer.Edit', {
     extend: 'Ext.window.Window',
     alias : 'widget.customeredit',
+    
+    requires: ['AM.store.Cities'],
  
 //    title : '编辑客户信息',
     layout: 'fit',
-    autoShow: true,
+    autoShow: false,
     width: 400,
     height: 300,
     closeAction: 'hide',
     url: 'customer_save.do',
     
     config: {
-    	title: '客户信息'
+    	title: '客户信息',
+    	districtsStore: []
     },
+    
+    citiesStore: Ext.create('Ext.data.Store', {
+        fields: ['id', 'name'],
+        autoLoad: true,
+        proxy: {
+            type: 'ajax',
+            url: 'customer_cities.do',
+            reader: {
+                type: 'json'
+            }
+        }
+    }),
+    
+    districtsStore: Ext.create('Ext.data.Store', {
+        fields: ['id', 'name'],
+        autoLoad: false,
+        proxy: {
+            type: 'ajax',
+            url: 'customer_districts.do',
+            reader: {
+                type: 'json'
+            }
+        }
+    }),
     
     /*constructor: function(config) {
         this.initConfig(config);
  
         return this;
     },*/
+    /*constructor: function(store) {
+        if (store)
+        	this.store = store;
+ 
+        return this;
+    },*/
  
     initComponent: function() {
-        this.items = [
+    	Ext.apply(this, {
+    		items: [
             {
                 xtype: 'form',
                 items: [
@@ -42,16 +76,8 @@ Ext.define('AM.view.customer.Edit', {
                         fieldLabel: '手机号码',
                         allowBlank: false
                     },
-                    {
-                        xtype: 'textfield',
-                        name : 'cityId',
-                        fieldLabel: '市',
-                    },
-                    {
-                        xtype: 'textfield',
-                        name : 'districtId',
-                        fieldLabel: '区'
-                    },
+                    this.createCityCombo(),
+                    this.createDistrictCombo(),
                     {
                         xtype: 'textfield',
                         name : 'streetAddress',
@@ -66,7 +92,7 @@ Ext.define('AM.view.customer.Edit', {
                     }
                 ]
             }
-        ];
+        ]});
  
         this.buttons = [
             {
@@ -81,5 +107,47 @@ Ext.define('AM.view.customer.Edit', {
         ];
  
         this.callParent(arguments);
+    },
+    
+    createCityCombo: function() {
+    	this.cities = Ext.create('Ext.form.ComboBox', {
+    		name : 'city.id',
+            fieldLabel: '市',
+            emptyText: '请选择',
+    		store: this.citiesStore,
+            queryMode: 'local',
+            displayField: 'name',
+            valueField: 'id',
+            listeners:{
+            	scope: this,
+                'select': this.showDistrict
+            }
+    	});
+    	
+    	return this.cities;
+    },
+    
+    createDistrictCombo: function() {
+    	this.districts = Ext.create('Ext.form.ComboBox', {
+    		name : 'district.id',
+            fieldLabel: '区',
+            emptyText: '请选择',
+    		store: this.districtsStore,
+            queryMode: 'local',
+            displayField: 'name',
+            valueField: 'id',
+    	});
+    	
+    	return this.districts;
+    },
+    
+    showDistrict: function(combo) {
+    	console.log(combo);
+    	console.log(combo.getValue() + '-' + combo.getRawValue());
+//    	console.log('new Value: ' + newValue + ', oldValue: ' + oldValue);
+//    	if (oldValue) {
+    		this.districtsStore.removeAll();
+    		this.districtsStore.load({params: {cityId: combo.getValue()}});
+//    	}
     }
 });

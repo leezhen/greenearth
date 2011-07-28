@@ -47,22 +47,19 @@ Ext.define('AM.controller.Home', {
         	menu = selected[0];
         
         if (menu) {
-        	
+	        var viewCode = menu.get('code');
+	        tab = mainView.down('[viewCode=' + viewCode + ']');
+	        if (!tab) {
+	        	tab = this.getCustomerTab();
+	        	tab.viewCode = viewCode;
+	        	tab.enable();
+	        	mainView.add(tab);
+	        }
+	        
+	        mainView.setActiveTab(tab);            
+	        
+	        return tab;
         }
-            
-        tab = this.getCustomerTab();
-        tab.enable();
-
-//        tab.setTitle(title);
-//        tab.article = article;
-//        tab.articleId = articleId;
-//        tab.update(article.data);
-
-//        if (preventAdd !== true) {
-            mainView.add(tab);
-            mainView.setActiveTab(tab);            
-//        }
-        
-        return tab;
+        return null;
     }
 });

@@ -77,10 +77,10 @@ p {
                 {text: '区', dataIndex: 'district.name'},
                 {text: '地址', dataIndex: 'streetAddress'},
                 {text: '条码', dataIndex: 'barcode'},
-                {text: '创建时间', dataIndex: 'createdAt'},
+/*                 {text: '创建时间', dataIndex: 'createdAt'},
                 {text: '创建者', dataIndex: 'createdBy'},
                 {text: '修改时间', dataIndex: 'modifiedAt'},
-                {text: '修改者', dataIndex: 'modifiedBy'},
+                {text: '修改者', dataIndex: 'modifiedBy'}, */
                 {
                     xtype: 'actioncolumn',
                     width: 50,

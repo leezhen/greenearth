@@ -4,11 +4,11 @@ Ext.define('AM.store.Menus', {
     model: 'AM.model.MenuItem',
 
     data: [
-        {name: '客户信息查询',   	url: 'http://feeds.feedburner.com/extblog'},
-        {name: '录入分拣结果', 	url: 'http://sencha.com/forum/external.php?type=RSS2'},
-        {name: '查看库存',       	url: 'http://feeds.feedburner.com/ajaxian'},
-        {name: '销售',       	url: 'http://feeds.feedburner.com/ajaxian'},
-        {name: '查看销售记录',       url: 'http://feeds.feedburner.com/ajaxian'},
-        {name: '积分规则设定',       url: 'http://feeds.feedburner.com/ajaxian'}
+        {name: '客户信息查询',   	code: 'customer'},
+        {name: '录入分拣结果', 	code: 'sorting'},
+        {name: '查看库存',       	code: 'stock'},
+        {name: '销售',       	code: 'sales'},
+        {name: '查看销售记录',    code: 'salesRecord'},
+        {name: '积分规则设定',    code: 'scoreRule'}
     ]
 });

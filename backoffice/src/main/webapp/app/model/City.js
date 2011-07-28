@@ -1,4 +1,4 @@
-Ext.define('AM.model.MenuItem', {
+Ext.define('AM.model.City', {
     extend: 'Ext.data.Model',
     
     proxy: {
@@ -6,7 +6,7 @@ Ext.define('AM.model.MenuItem', {
     },
     
     fields: [
-        {name: 'code',  type: 'string'},
+        {name: 'id',  type: 'int'},
         {name: 'name', type: 'string'}
     ]
 });
