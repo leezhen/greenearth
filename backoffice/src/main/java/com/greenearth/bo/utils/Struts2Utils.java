@@ -205,4 +205,23 @@ public class Struts2Utils {
 		return response;
 	}
 
+	/**
+	 * 如果JSON字符串为Null或"null"字符串, 返回Null.
+	 * 如果JSON字符串为"[]", 返回空集合.
+	 * 
+		 * 如需读取集合如List/Map, 且不是List<String>这种简单类型时使用如下语句,使用後面的函數.
+	 */
+	public static <T> T fromJson(String jsonString, Class<T> clazz) {
+		if (StringUtils.isEmpty(jsonString)) {
+			return null;
+		}
+
+		try {
+			return mapper.readValue(jsonString, clazz);
+		} catch (IOException e) {
+//			logger.warn("parse json string error:" + jsonString, e);
+			e.printStackTrace();
+			return null;
+		}
+	}
 }

@@ -34,5 +34,15 @@ public class DistrictManager {
 	public List<District> getDistrictsByCity(Integer cityId) {
 		return districtDao.getDistrictsByCity(cityId);
 	}
+
+	@Transactional(readOnly = true)
+	public City getCity(Integer id) {
+		return cityDao.getCity(id);
+	}
+
+	@Transactional(readOnly = true)
+	public District getDistrict(Integer id) {
+		return districtDao.getDistrict(id);
+	}
 	
 }

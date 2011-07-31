@@ -16,4 +16,9 @@ public class CityDaoImpl extends HibernateDao<City, Integer> implements CityDao 
 		return super.getAll();
 	}
 
+	@Override
+	public City getCity(Integer id) {
+		return get(id);
+	}
+
 }

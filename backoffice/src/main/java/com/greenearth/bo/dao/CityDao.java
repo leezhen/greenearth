@@ -6,4 +6,5 @@ import com.greenearth.bo.domain.City;
 
 public interface CityDao {
 	List<City> getCities();
+	City getCity(Integer id);
 }

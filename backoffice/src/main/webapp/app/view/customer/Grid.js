@@ -37,7 +37,7 @@ Ext.define('AM.view.customer.Grid', {
 	            {
 	                xtype: 'actioncolumn',
 	                items: [{
-	                    icon: 'images/details.gif',  // Use a URL in the icon config
+	                    icon: 'images/details.gif',
 	                    tooltip: '查看积分详情',
 	                    handler: function(grid, rowIndex, colIndex) {
 	                        var rec = store.getAt(rowIndex);

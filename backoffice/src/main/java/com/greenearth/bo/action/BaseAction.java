@@ -1,5 +1,8 @@
 package com.greenearth.bo.action;
 
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,7 +11,7 @@ import org.apache.struts2.interceptor.ServletResponseAware;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.greenearth.bo.mapper.JsonMapper;
+import com.google.common.io.CharStreams;
 import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
@@ -38,5 +41,15 @@ public class BaseAction extends ActionSupport implements ServletRequestAware,
 	public void setLimit(int limit) {
 		this.limit = limit;
 	}
-
+	
+	/*protected String getJson() {
+		String str = null;
+		try {
+			str = CharStreams.toString(new InputStreamReader(request.getInputStream(), "UTF-8"));
+		} catch (IOException e) {
+			logger.warn("Error occured converting InputStream to String: ", e);
+		}
+		
+		return str;
+	}*/
 }

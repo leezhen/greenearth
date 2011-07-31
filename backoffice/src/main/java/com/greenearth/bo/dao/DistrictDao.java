@@ -7,4 +7,5 @@ import com.greenearth.bo.domain.District;
 public interface DistrictDao {
 	List<District> getDistricts();
 	List<District> getDistrictsByCity(Integer cityId);
+	District getDistrict(Integer id);
 }

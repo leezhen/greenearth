@@ -6,7 +6,7 @@ Ext.define('AM.view.customer.Edit', {
  
 //    title : '编辑客户信息',
     layout: 'fit',
-    autoShow: false,
+    autoShow: true,
     width: 400,
     height: 300,
     closeAction: 'hide',
@@ -58,6 +58,7 @@ Ext.define('AM.view.customer.Edit', {
     		items: [
             {
                 xtype: 'form',
+                url: 'customer_save.do',
                 items: [
 					{
                         xtype: 'hiddenfield',
@@ -111,7 +112,8 @@ Ext.define('AM.view.customer.Edit', {
     
     createCityCombo: function() {
     	this.cities = Ext.create('Ext.form.ComboBox', {
-    		name : 'city.id',
+    		id: 'city.id',
+    		name : 'cityId',
             fieldLabel: '市',
             emptyText: '请选择',
     		store: this.citiesStore,
@@ -129,7 +131,8 @@ Ext.define('AM.view.customer.Edit', {
     
     createDistrictCombo: function() {
     	this.districts = Ext.create('Ext.form.ComboBox', {
-    		name : 'district.id',
+    		id: 'district.id',
+    		name : 'districtId',
             fieldLabel: '区',
             emptyText: '请选择',
     		store: this.districtsStore,
@@ -142,8 +145,8 @@ Ext.define('AM.view.customer.Edit', {
     },
     
     showDistrict: function(combo) {
-    	console.log(combo);
-    	console.log(combo.getValue() + '-' + combo.getRawValue());
+//    	console.log(combo);
+//    	console.log(combo.getValue() + '-' + combo.getRawValue());
 //    	console.log('new Value: ' + newValue + ', oldValue: ' + oldValue);
 //    	if (oldValue) {
     		this.districtsStore.removeAll();

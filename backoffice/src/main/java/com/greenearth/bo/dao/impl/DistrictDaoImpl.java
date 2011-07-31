@@ -22,4 +22,9 @@ public class DistrictDaoImpl extends HibernateDao<District, Integer> implements
 		return super.findBy("city.id", cityId);
 	}
 
+	@Override
+	public District getDistrict(Integer id) {
+		return get(id);
+	}
+
 }

@@ -1,5 +1,6 @@
 package com.greenearth.bo.action;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,30 +19,22 @@ import com.greenearth.bo.utils.Struts2Utils;
 @Component
 @Scope("prototype")
 public class CustomerAction extends BaseAction {
-	private Customer customer;
 	private Long id;
 	private String name;
 	private String cellphone;
 	private String streetAddress;
 	private String barcode;
 	private Integer cityId;
+	private Integer districtId;
 	
 	@Autowired
 	private CustomerManager customerManager;
 	
 	@Autowired
 	private DistrictManager districtManager;
-
-	public Customer getCustomer() {
-		return customer;
-	}
 	
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
 	}
 
 	public void setName(String name) {
@@ -62,6 +55,10 @@ public class CustomerAction extends BaseAction {
 	
 	public void setCityId(Integer cityId) {
 		this.cityId = cityId;
+	}
+
+	public void setDistrictId(Integer districtId) {
+		this.districtId = districtId;
 	}
 
 	@Override
@@ -87,26 +84,19 @@ public class CustomerAction extends BaseAction {
 		Customer c = null;
 		if (isNew) {
 			c = new Customer();
-			c.setName(name);
-			c.setCellphone(cellphone);
-			c.setStreetAddress(streetAddress);
-			c.setBarcode(barcode);
+			c.setCreatedAt(new Date());
+			c.setCreatedBy("admin");
 		} else {
 			c = customerManager.getCustomer(id);
-			c.setName(name);
-			c.setCellphone(cellphone);
-			c.setStreetAddress(streetAddress);
-			c.setBarcode(barcode);
+			c.setModifiedAt(new Date());
+			c.setModifiedBy("admin");
 		}
-		
-		// FIXME
-		District d = new District();
-		d.setId(1);
-		City city = new City();
-		city.setId(1);
-		c.setDistrict(d);
-		c.setCity(city);
-		
+		c.setName(name);
+		c.setCellphone(cellphone);
+		c.setStreetAddress(streetAddress);
+		c.setBarcode(barcode);
+		c.setCity(districtManager.getCity(cityId));
+		c.setDistrict(districtManager.getDistrict(districtId));
 		customerManager.saveCustomer(c);
 		Struts2Utils.renderJson("{success: true, msg: '" + (isNew ? "添加" : "修改") + "成功'}");
 	}

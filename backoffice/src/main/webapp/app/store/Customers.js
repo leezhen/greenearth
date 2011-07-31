@@ -7,11 +7,12 @@ Ext.define('AM.store.Customers', {
     
     proxy: {
         type: 'ajax',
-        api: {
+        /*api: {
             read: 'customer_list.do',
             update: 'customer_save.do',
             create: 'customer_save.do'
-        },
+        },*/
+        url: 'customer_list.do', 
         reader: {
             type: 'json',
             root: 'result',
