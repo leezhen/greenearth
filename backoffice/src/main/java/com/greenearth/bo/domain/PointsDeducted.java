@@ -46,7 +46,7 @@ public class PointsDeducted {
 	public Integer getPoints() {
 		return points;
 	}
-	public void setScore(Integer points) {
+	public void setPoints(Integer points) {
 		this.points = points;
 	}
 	public Date getCreatedAt() {
