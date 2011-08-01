@@ -13,5 +13,13 @@
         <mapping class="com.greenearth.bo.domain.City"/>
         <mapping class="com.greenearth.bo.domain.District"/>
         <mapping class="com.greenearth.bo.domain.Customer"/>
+        <mapping class="com.greenearth.bo.domain.DeductionReason"/>
+        <mapping class="com.greenearth.bo.domain.PointsType"/>
+        <mapping class="com.greenearth.bo.domain.RecycleStation"/>
+        <mapping class="com.greenearth.bo.domain.InventoryType"/>
+        <mapping class="com.greenearth.bo.domain.PointsEarned"/>
+        <mapping class="com.greenearth.bo.domain.PointsDeducted"/>
+        <mapping class="com.greenearth.bo.domain.InventoryLog"/>
+        <mapping class="com.greenearth.bo.domain.Inventory"/>
     </session-factory>
 </hibernate-configuration>
