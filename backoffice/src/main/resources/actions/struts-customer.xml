@@ -3,10 +3,10 @@
         "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 
-	<package name="customer" extends="default" namespace="/">
+	<package name="dictionary" extends="default" namespace="/">
 	
-        <action name="customer_*" method="{1}" class="customerAction">
-            <result>/WEB-INF/jsp/customer.jsp</result>
+        <action name="dict_*" method="{1}" class="dictionaryAction">
+            <!-- <result>/WEB-INF/jsp/customer.jsp</result> -->
         </action>
 	</package>
 </struts>

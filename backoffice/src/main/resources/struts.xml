@@ -25,4 +25,5 @@
     </package>
     
     <include file="actions/struts-customer.xml" />
+    <include file="actions/struts-dict.xml" />
 </struts>

@@ -5,21 +5,20 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.greenearth.bo.dao.PointsDeductedDao;
+import com.greenearth.bo.dao.hibernate.HibernateDao;
 import com.greenearth.bo.domain.PointsDeducted;
 
 @Repository
-public class PointsDeductedDaoImpl implements PointsDeductedDao {
+public class PointsDeductedDaoImpl extends HibernateDao<PointsDeducted, Integer> implements PointsDeductedDao {
 
 	@Override
 	public List<PointsDeducted> getPointsDeducted() {
-		// TODO Auto-generated method stub
-		return null;
+		return getAll();
 	}
 
 	@Override
 	public void savePointsDeducted(PointsDeducted points) {
-		// TODO Auto-generated method stub
-
+		save(points);
 	}
 
 }

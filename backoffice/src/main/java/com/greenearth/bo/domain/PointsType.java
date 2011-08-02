@@ -1,5 +1,6 @@
 package com.greenearth.bo.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,6 +26,8 @@ public class PointsType {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	@Column(name = "description")
 	public String getDesc() {
 		return desc;
 	}

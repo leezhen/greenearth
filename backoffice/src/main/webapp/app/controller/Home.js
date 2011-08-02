@@ -6,7 +6,7 @@ Ext.define('AM.controller.Home', {
     ],
  
     views: [
-        'Home', 'customer.Grid'
+        'Home', 'customer.Grid', 'sorting.Sorting'
     ],
     
     models: [
@@ -23,6 +23,13 @@ Ext.define('AM.controller.Home', {
                closable: true,
                forceCreate: true,
                selector: 'customergrid'
+           },
+           {
+               ref: 'sortingTab',
+               xtype: 'sorting',
+               closable: true,
+               forceCreate: true,
+               selector: 'sorting'
            }
     ],
  
@@ -50,7 +57,17 @@ Ext.define('AM.controller.Home', {
 	        var viewCode = menu.get('code');
 	        tab = mainView.down('[viewCode=' + viewCode + ']');
 	        if (!tab) {
-	        	tab = this.getCustomerTab();
+	        	switch (viewCode) {
+	        	case 'customer':
+	        		tab = this.getCustomerTab();
+	        		break;
+	        	case 'sorting':
+	        		tab = this.getSortingTab();
+	        		break;
+	        	default:
+	        		break;
+	        	}
+	        	
 	        	tab.viewCode = viewCode;
 	        	tab.enable();
 	        	mainView.add(tab);

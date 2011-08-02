@@ -6,7 +6,8 @@ Ext.application({
     controllers: [
         'Home',
         'Customers',
-        'Users'
+        'Users',
+        'Sorting'
     ],
            
     autoCreateViewport: true
