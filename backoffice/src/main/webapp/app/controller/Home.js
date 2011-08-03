@@ -6,7 +6,7 @@ Ext.define('AM.controller.Home', {
     ],
  
     views: [
-        'Home', 'customer.Grid', 'sorting.Sorting'
+        'Home', 'customer.Grid', 'sorting.Sorting','stock.List'
     ],
     
     models: [
@@ -30,6 +30,13 @@ Ext.define('AM.controller.Home', {
                closable: true,
                forceCreate: true,
                selector: 'sorting'
+           },
+           {
+        	   ref: 'stockTab',
+        	   xtype: 'stocklist',
+        	   closable: true,
+        	   foreceCreate: true,
+        	   selector: 'stocklist'
            }
     ],
  
@@ -63,6 +70,10 @@ Ext.define('AM.controller.Home', {
 	        		break;
 	        	case 'sorting':
 	        		tab = this.getSortingTab();
+	        		break;
+	        	case 'stock':
+	        		tab = this.getStockTab();
+	        		console.log(tab);
 	        		break;
 	        	default:
 	        		break;
