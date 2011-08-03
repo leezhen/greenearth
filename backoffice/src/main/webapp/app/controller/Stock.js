@@ -14,7 +14,7 @@ Ext.define('AM.controller.Stock', {
     ],
     
     init: function() {
-        this.control({
-        });
+        this.control(
+        );
     }
 });
