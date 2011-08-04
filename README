@@ -1,4 +1,4 @@
-git checkout master
+$ git checkout master
 $ git remote add leezhen git://github.com/leezhen/greenearth.git
 $ git fetch leezhen 
 $ git merge leezhen/master
