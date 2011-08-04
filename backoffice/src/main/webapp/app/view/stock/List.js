@@ -1,4 +1,4 @@
-Ext.define('AM.view.stock.Grid', {
+Ext.define('AM.view.stock.List', {
 	extend: 'Ext.grid.Panel',
 	alias: 'widget.stocklist',
 

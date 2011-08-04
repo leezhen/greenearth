@@ -35,7 +35,7 @@ Ext.define('AM.controller.Home', {
         	   ref: 'stockTab',
         	   xtype: 'stocklist',
         	   closable: true,
-        	   foreceCreate: true,
+        	   forceCreate: true,
         	   selector: 'stocklist'
            }
     ],
@@ -73,7 +73,6 @@ Ext.define('AM.controller.Home', {
 	        		break;
 	        	case 'stock':
 	        		tab = this.getStockTab();
-	        		console.log(tab);
 	        		break;
 	        	default:
 	        		break;
