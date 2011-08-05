@@ -26,11 +26,19 @@ Ext.define('AM.view.stock.List', {
 
 			columns: [
 			    {text: 'id' ,dataIndex: 'id' ,flex :1 },
-				{text: '类型',  dataIndex:'name', flex: 1},
-	            {text: '库存数量', dataIndex: 'quantity', flex: 1}
-	            ]
+				{text: '类型',  dataIndex:'type.name', flex: 1},
+	            {text: '库存数量', dataIndex: 'weight', flex: 1}
+	            ],
+		    
+		    dockedItems: [{
+                xtype: 'pagingtoolbar',
+                store: 'Stock',   // same store GridPanel is using
+                dock: 'bottom',
+                displayInfo: true
+            }]
 		});
 
 		this.callParent(arguments);
+		this.store.load();
 	}
 });

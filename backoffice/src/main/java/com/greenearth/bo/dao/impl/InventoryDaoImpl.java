@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import com.greenearth.bo.dao.InventoryDao;
+import com.greenearth.bo.dao.Page;
 import com.greenearth.bo.dao.hibernate.HibernateDao;
 import com.greenearth.bo.domain.Inventory;
 
@@ -19,6 +20,11 @@ public class InventoryDaoImpl extends HibernateDao<Inventory, Integer> implement
 	@Override
 	public void saveInventory(Inventory inventory) {
 		save(inventory);
+	}
+
+	@Override
+	public Page<Inventory> getInventories(Page<Inventory> p) {
+		return findPage(p,"from Inventory");
 	}
 
 }

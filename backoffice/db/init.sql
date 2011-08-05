@@ -18,3 +18,13 @@ insert into inventory_type(id, name) values(1, '厨余');
 insert into inventory_type(id, name) values(2, '塑料瓶');
 insert into inventory_type(id, name) values(3, '玻璃制品');
 insert into inventory_type(id, name) values(4, '铁制品');
+
+insert into recycle_station(id,name,address) values(1,'成都','成都');
+insert into recycle_station(id,name,address) values(2,'北京','北京');
+
+insert into inventory(id,name,weight,recycle_station_id,inventory_type_id) values(1,'',10,1,1);
+insert into inventory(id,name,weight,recycle_station_id,inventory_type_id) values(2,'',10,2,3);
+insert into inventory(id,name,weight,recycle_station_id,inventory_type_id) values(3,'',20,2,4);
+insert into inventory(id,name,weight,recycle_station_id,inventory_type_id) values(4,'',10,1,2);
+insert into inventory(id,name,weight,recycle_station_id,inventory_type_id) values(5,'',50,2,1);
+insert into inventory(id,name,weight,recycle_station_id,inventory_type_id) values(6,'',70,1,2);
