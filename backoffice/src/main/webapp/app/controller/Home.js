@@ -43,7 +43,7 @@ Ext.define('AM.controller.Home', {
     init: function() {
         this.control({
             'menu dataview': {
-                selectionchange: this.switchView
+                itemclick: this.switchView
             }
         });
     },
@@ -56,37 +56,33 @@ Ext.define('AM.controller.Home', {
 //        menuview.getSelectionModel().select(store.getAt(0));
     },
     
-    switchView: function(selModel, selected) {
-        var mainView = this.getMainView(),
-        	menu = selected[0];
-        
-        if (menu) {
-	        var viewCode = menu.get('code');
-	        tab = mainView.down('[viewCode=' + viewCode + ']');
-	        if (!tab) {
-	        	switch (viewCode) {
-	        	case 'customer':
-	        		tab = this.getCustomerTab();
-	        		break;
-	        	case 'sorting':
-	        		tab = this.getSortingTab();
-	        		break;
-	        	case 'stock':
-	        		tab = this.getStockTab();
-	        		break;
-	        	default:
-	        		break;
-	        	}
-	        	
-	        	tab.viewCode = viewCode;
-	        	tab.enable();
-	        	mainView.add(tab);
-	        }
-	        
-	        mainView.setActiveTab(tab);            
-	        
-	        return tab;
+    switchView: function(view, record, item, index) {
+    	var mainView = this.getMainView();
+        var viewCode = record.get('code');
+        tab = mainView.down('[viewCode=' + viewCode + ']');
+        console.log('viewCode: ' + viewCode);
+        console.log('tab: ' + tab);
+        if (!tab) {
+        	switch (viewCode) {
+        	case 'customer':
+        		tab = this.getCustomerTab();
+        		break;
+        	case 'sorting':
+        		tab = this.getSortingTab();
+        		break;
+        	case 'stock':
+        		tab = this.getStockTab();
+        		break;
+        	default:
+        		break;
+        	}
+        	
+        	tab.viewCode = viewCode;
+        	tab.enable();
+        	mainView.add(tab);
         }
-        return null;
+        mainView.setActiveTab(tab);     
+        
+        return tab;
     }
 });

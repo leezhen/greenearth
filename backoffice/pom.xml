@@ -31,7 +31,7 @@
                             </resourcesAsCSV>
                         </baseResource>
                     </webAppConfig>
-                    <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <scanIntervalSeconds>0</scanIntervalSeconds>
                     <scanTargetPatterns>
                         <scanTargetPattern>
                             <directory>src/main/webapp/WEB-INF</directory>
@@ -95,6 +95,19 @@
 	                    <encoding>UTF-8</encoding>
 	                </configuration>
 	            </plugin>
+				<plugin>
+				  <groupId>org.zeroturnaround</groupId>
+				  <artifactId>jrebel-maven-plugin</artifactId>
+				  <executions>
+				    <execution>
+				      <id>generate-rebel-xml</id>
+				      <phase>process-resources</phase>
+				      <goals>
+				        <goal>generate</goal>
+				      </goals>
+				    </execution>
+				  </executions>
+				</plugin>
         </plugins>    
   </build>
   
