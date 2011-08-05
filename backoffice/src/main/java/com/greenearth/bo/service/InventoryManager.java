@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.greenearth.bo.dao.InventoryDao;
 import com.greenearth.bo.dao.InventoryLogDao;
+import com.greenearth.bo.dao.Page;
+import com.greenearth.bo.domain.Customer;
 import com.greenearth.bo.domain.Inventory;
 import com.greenearth.bo.domain.InventoryLog;
 
@@ -23,6 +25,11 @@ public class InventoryManager {
 	@Transactional(readOnly = true)
 	public List<Inventory> getInventories() {
 		return inventoryDao.getInventories();
+	}
+	
+	@Transactional(readOnly = true)
+	public Page<Inventory> getInventories(Page<Inventory> p) {
+		return inventoryDao.getInventories(p);
 	}
 
 	public void saveInventory(Inventory inventory) {
