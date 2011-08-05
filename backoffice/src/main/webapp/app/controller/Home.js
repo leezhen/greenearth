@@ -60,8 +60,6 @@ Ext.define('AM.controller.Home', {
     	var mainView = this.getMainView();
         var viewCode = record.get('code');
         tab = mainView.down('[viewCode=' + viewCode + ']');
-        console.log('viewCode: ' + viewCode);
-        console.log('tab: ' + tab);
         if (!tab) {
         	switch (viewCode) {
         	case 'customer':
