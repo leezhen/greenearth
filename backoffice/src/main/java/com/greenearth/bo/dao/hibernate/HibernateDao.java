@@ -181,7 +181,7 @@ public class HibernateDao<T, ID extends Serializable> extends SimpleHibernateDao
 	 * 设置分页参数到Query对象,辅助函数.
 	 */
 	protected Query setPageParameterToQuery(final Query q, final PageRequest pageRequest) {
-		q.setFirstResult(pageRequest.getOffset());
+		q.setFirstResult(pageRequest.getPageNo());
 		q.setMaxResults(pageRequest.getPageSize());
 		return q;
 	}
