@@ -29,8 +29,7 @@ public class InventoryAction extends BaseAction {
 	public void query()
 	{
 		Page<Inventory> p = new Page<Inventory>();
-		p.setPageNo(start);
-		p.setPageSize(limit);
+		p.setStartAndLimit(start, limit);
 		p = inventoryManager.getInventories(p);
 		Struts2Utils.renderJson(p);
 	}
