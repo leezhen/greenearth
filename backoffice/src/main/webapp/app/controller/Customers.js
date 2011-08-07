@@ -9,7 +9,8 @@ Ext.define('AM.controller.Customers', {
         'user.List',
         'user.Edit',
         'customer.Grid',
-        'customer.Edit'
+        'customer.Edit',
+        'point.Point'
     ],
     
     models: [
@@ -18,7 +19,15 @@ Ext.define('AM.controller.Customers', {
     
     refs: [
            {ref: 'menuItemData', selector: 'menu dataview'},
-           {ref: 'customerGrid', selector: 'customergrid'}
+           {ref: 'customerGrid', selector: 'customergrid'},
+           {ref: 'mainView', selector: 'mainview'},
+           {
+        	   ref: 'pointTab',
+        	   xtype: 'pointView',
+        	   closable: true,
+        	   forceCreate: true,
+        	   selector: 'pointView'
+           }
 //           {ref: 'customerEdit', selector: 'customeredit'}
     ],
     
@@ -38,6 +47,9 @@ Ext.define('AM.controller.Customers', {
             },
             'menu button[action=remove]': {
                 click: this.removeFeed
+            },
+            'customergrid':{
+            	viewPoints: this.viewPoints
             }
         });
     },
@@ -108,5 +120,17 @@ Ext.define('AM.controller.Customers', {
     loadCustomers: function(selModel, selected) {
 		var store = this.getCustomersStore();
 		store.load();
+    },
+    
+    viewPoints: function(grid,rec){
+    	var mainView = this.getMainView();
+    	tab = mainView.down('[viewCode=point]');
+    	if (!tab) {
+    		tab = this.getPointTab();
+    		tab.viewCode = 'point';
+        	tab.enable();
+        	mainView.add(tab);
+    	}
+    	mainView.setActiveTab(tab);
     }
 });

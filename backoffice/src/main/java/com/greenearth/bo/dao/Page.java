@@ -164,4 +164,15 @@ public class Page<T> extends PageRequest implements Iterable<T> {
 		}
 		return result;
 	}
+	
+	/**
+	 * 设置当页的起始点
+	 * @param start
+	 */
+	public void setStartAndLimit(int start , int limit)
+	{
+		this.setPageSize(limit);
+		int pageNo = start/getPageSize() + 1 ;
+		this.setPageNo(pageNo);
+	}
 }

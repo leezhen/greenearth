@@ -68,8 +68,7 @@ public class CustomerAction extends BaseAction {
 
 	public void list() {
 		Page<Customer> p = new Page<Customer>();
-		p.setPageNo(start);
-		p.setPageSize(limit);
+		p.setStartAndLimit(start, limit);
 		p = customerManager.getCustomers(p);
 		Struts2Utils.renderJson(p);
 	}

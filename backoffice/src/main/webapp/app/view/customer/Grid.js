@@ -3,7 +3,7 @@ Ext.define('AM.view.customer.Grid', {
 	alias: 'widget.customergrid',
 
 //	cls: 'feed-grid',
-	disabled: true,    
+	disabled: false,    
     border: false,
     title: '客户信息',
     
@@ -23,7 +23,6 @@ Ext.define('AM.view.customer.Grid', {
 					previewExpanded: true
 				}]
 			},*/
-
 			columns: [
 				{text: '姓名',  dataIndex:'name', flex: 1},
 	            {text: '手机号码', dataIndex: 'cellphone', flex: 1},
@@ -40,8 +39,8 @@ Ext.define('AM.view.customer.Grid', {
 	                    icon: 'images/details.gif',
 	                    tooltip: '查看积分详情',
 	                    handler: function(grid, rowIndex, colIndex) {
-	                        var rec = store.getAt(rowIndex);
-	                        
+	                        var rec = grid.getStore().getAt(rowIndex);
+	                        var result = Ext.widget('customergrid').fireEvent('viewPoints', this, rec);
 	                    }
 	                }]
 	            }],
@@ -64,7 +63,7 @@ Ext.define('AM.view.customer.Grid', {
 				}]
 			}]
 		});
-
+		this.addEvents('viewPoints');
 		this.callParent(arguments);
-	}
+	},
 });
