@@ -7,7 +7,8 @@ Ext.define('AM.view.customer.Grid', {
     border: false,
     title: '客户信息',
     
-    requires: ['Ext.toolbar.Toolbar'],
+    requires: ['Ext.toolbar.Toolbar',
+               'Ext.ux.grid.FilterRow'],
     
     initComponent: function() {
 		Ext.apply(this, {
@@ -26,8 +27,8 @@ Ext.define('AM.view.customer.Grid', {
 			columns: [
 				{text: '姓名',  dataIndex:'name', flex: 1},
 	            {text: '手机号码', dataIndex: 'cellphone', flex: 1},
-	            {text: '地址', dataIndex: 'streetAddress', flex: 1},
-	            {text: '当前积分', dataIndex: 'scores', flex: 1},
+	            {text: '地址', dataIndex: 'streetAddress', flex: 2, nofilter: {}},
+	            {text: '当前积分', dataIndex: 'scores', flex: 0.5, nofilter: {}},
 	            /*{text: '积分详情', flex: 1,
 	            	renderer: function(value, metaData, record) {
 	                    return Ext.String.format('<a href="#">查看详情</a>');
@@ -42,7 +43,8 @@ Ext.define('AM.view.customer.Grid', {
 	                        var rec = grid.getStore().getAt(rowIndex);
 	                        var result = Ext.widget('customergrid').fireEvent('viewPoints', this, rec);
 	                    }
-	                }]
+	                }],
+	                nofilter: {}
 	            }],
             dockedItems: [{
                 xtype: 'pagingtoolbar',
@@ -61,7 +63,9 @@ Ext.define('AM.view.customer.Grid', {
 					action: 'printBarcode',
 					iconCls: 'print'
 				}]
-			}]
+			}],
+			plugins: [ Ext.create('Ext.ux.grid.FilterRow') ]
+//			plugins: [{ptype: 'gridfilterrow'}]
 		});
 		this.addEvents('viewPoints');
 		this.callParent(arguments);

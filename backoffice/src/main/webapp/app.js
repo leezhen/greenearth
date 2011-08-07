@@ -14,3 +14,9 @@ Ext.application({
            
     autoCreateViewport: true
 });
+
+Ext.Loader.setPath('Ext.ux', './ext/ux');
+Ext.require([
+    'Ext.ux.grid.FilterRow',
+    'Ext.ux.form.field.ClearButton'
+]);
