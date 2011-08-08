@@ -6,7 +6,7 @@ Ext.define('AM.controller.Home', {
     ],
  
     views: [
-        'Home', 'customer.Grid', 'sorting.Sorting','stock.List'
+        'Home', 'customer.Grid', 'sorting.Sorting','stock.List','station.List'
     ],
     
     models: [
@@ -37,6 +37,34 @@ Ext.define('AM.controller.Home', {
         	   closable: true,
         	   forceCreate: true,
         	   selector: 'stocklist'
+           },
+           {
+        	   ref: 'stationTab',
+        	   xtype: 'stationlist',
+        	   closable: true,
+        	   forceCreate: true,
+        	   selector: 'stationlist'
+           },
+           {
+        	   ref: 'pointRuleTab',
+        	   xtype: 'pointRuleList',
+        	   closable: true,
+        	   forceCreate: true,
+        	   selector: 'pointRuleList'
+           },
+           {
+        	   ref: 'saleTab',
+        	   xtype: 'saleOp',
+        	   closable: true,
+        	   forceCreate: true,
+        	   selector: 'saleOp'
+           },
+           {
+        	   ref: 'saleRecordTab',
+        	   xtype: 'saleRecord',
+        	   closable: true,
+        	   forceCreate: true,
+        	   selector: 'saleRecord'
            }
     ],
  
@@ -70,6 +98,18 @@ Ext.define('AM.controller.Home', {
         		break;
         	case 'stock':
         		tab = this.getStockTab();
+        		break;
+        	case 'station':
+        		tab = this.getStationTab();
+        		break;
+        	case 'pointRule':
+        		tab = this.getPointRuleTab();
+        		break; 
+        	case 'sales':
+        		tab = this.getSaleTab();
+        		break;
+        	case 'salesRecord':
+        		tab = this.getSaleRecordTab();
         		break;
         	default:
         		break;
