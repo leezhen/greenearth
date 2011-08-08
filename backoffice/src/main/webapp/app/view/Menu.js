@@ -11,7 +11,7 @@ Ext.define('AM.view.Menu', {
     collapsible: true,
     animCollapse: true,
 	layout: 'fit',
-    //layout: 'accordion',
+//    layout: 'accordion',
 		
 	initComponent: function() {
 		Ext.apply(this, {

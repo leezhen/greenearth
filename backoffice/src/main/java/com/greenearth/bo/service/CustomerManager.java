@@ -20,8 +20,8 @@ public class CustomerManager {
 	}
 
 	@Transactional(readOnly = true)
-	public Page<Customer> getCustomers(Page<Customer> p) {
-		return customerDao.getCustomers(p);
+	public Page<Customer> getCustomers(Page<Customer> p, Customer c) {
+		return customerDao.getCustomers(p, c);
 	}
 
 	public void saveCustomer(Customer c) {

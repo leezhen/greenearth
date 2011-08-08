@@ -3,6 +3,7 @@ package com.greenearth.bo.action;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -69,7 +70,10 @@ public class CustomerAction extends BaseAction {
 	public void list() {
 		Page<Customer> p = new Page<Customer>();
 		p.setStartAndLimit(start, limit);
-		p = customerManager.getCustomers(p);
+		Customer c = new Customer();
+		c.setName(name);
+		c.setCellphone(cellphone);
+		p = customerManager.getCustomers(p, c);
 		Struts2Utils.renderJson(p);
 	}
 	
@@ -94,8 +98,12 @@ public class CustomerAction extends BaseAction {
 		c.setCellphone(cellphone);
 		c.setStreetAddress(streetAddress);
 		c.setBarcode(barcode);
-		c.setCity(districtManager.getCity(cityId));
-		c.setDistrict(districtManager.getDistrict(districtId));
+		City city = new City();
+		city.setId(cityId);
+		c.setCity(city);
+		District district = new District();
+		district.setId(districtId);
+		c.setDistrict(district);
 		customerManager.saveCustomer(c);
 		Struts2Utils.renderJson("{success: true, msg: '" + (isNew ? "添加" : "修改") + "成功'}");
 	}

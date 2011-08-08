@@ -125,11 +125,12 @@ Ext.define('Ext.ux.grid.FilterRow', {
 	},
 	
 	storeSearch: function() {
-		if(!this.grid.store.proxy.extraParams) {
+//		if(!this.grid.store.proxy.extraParams) {
 			this.grid.store.proxy.extraParams = {};
-		}
+//		}
 		for (k in this.getSearchValues()) {
-			this.grid.store.proxy.extraParams[k] = this.getSearchValues()[k];
+			if (!Ext.isEmpty(this.getSearchValues()[k]))
+				this.grid.store.proxy.extraParams[k] = this.getSearchValues()[k];
 		}
 		this.grid.store.currentPage = 1;
 		this.grid.store.load();

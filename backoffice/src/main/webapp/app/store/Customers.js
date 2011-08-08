@@ -12,6 +12,12 @@ Ext.define('AM.store.Customers', {
             update: 'customer_save.do',
             create: 'customer_save.do'
         },*/
+        actionMethods: {
+//            create: 'POST',
+//            destroy: 'DELETE',
+            read: 'POST',
+//            update: 'POST'
+        },
         url: 'customer_list.do', 
         reader: {
             type: 'json',

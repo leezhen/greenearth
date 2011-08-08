@@ -1,5 +1,7 @@
 package com.greenearth.bo.dao.impl;
 
+import org.hibernate.criterion.Example;
+import org.hibernate.criterion.MatchMode;
 import org.springframework.stereotype.Repository;
 
 import com.greenearth.bo.dao.CustomerDao;
@@ -16,8 +18,11 @@ public class CustomerDaoImpl extends HibernateDao<Customer, Long> implements Cus
 	}
 
 	@Override
-	public Page<Customer> getCustomers(Page<Customer> p) {
-		return super.findPage(p, "from Customer");
+	public Page<Customer> getCustomers(Page<Customer> p, Customer c) {
+		Example example = Example.create(c)
+				.excludeZeroes()           //exclude zero valued properties
+			    .enableLike(MatchMode.ANYWHERE);             //use like for string comparisons
+		return super.findPage(p, example);
 	}
 
 	@Override
