@@ -9,7 +9,11 @@ Ext.application({
         'Users',
         'Sorting',
         'Stock',
-        'Point'
+        'Point',
+        'Station',
+        'PointRule',
+        'Sale',
+        'SaleRecord'
     ],
            
     autoCreateViewport: true
