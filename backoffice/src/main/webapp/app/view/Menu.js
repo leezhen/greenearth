@@ -1,45 +1,72 @@
 Ext.define('AM.view.Menu', {
 	extend: 'Ext.panel.Panel',
 	alias: 'widget.menu',
-
-    //requires: ['Ext.toolbar.Toolbar'],
-
 	title: '',
-	xtype: 'menu',
 	margins: '0 0 5 5',
 	split: true,
     collapsible: true,
     animCollapse: true,
-	layout: 'fit',
-//    layout: 'accordion',
-		
+    layout: 'accordion',
+
 	initComponent: function() {
 		Ext.apply(this, {
-			items: [{
-				xtype: 'dataview',
-				trackOver: true,
-				store: this.store,
-				cls: 'feed-list',
-				itemSelector: '.feed-list-item',
-				overItemCls: 'feed-list-item-hover',
-				tpl: '<tpl for="."><div class="feed-list-item">{name}</div></tpl>',
-				listeners: {
-				    selectionchange: this.onSelectionChange,
-				    scope: this
-				}
-			}/*, {
-	            contentEl: 'west',
-	            title: 'Navigation',
-	            iconCls: 'nav' // see the HEAD section for style used
-	        }, {
-	            title: 'Settings',
+			items: [Ext.create('Ext.panel.Panel', {
+	            bodyPadding: 5,  // Don't want content to crunch against the borders
+	            title: '客户信息管理',
+	            layout: 'fit',
+	            split: true,
+	            collapsible: true,
+	            animCollapse: true,
+	            iconCls: 'nav',
+	            
+	            items: [Ext.create('Ext.DataView', {
+	                store: this.store,
+	                tpl: new Ext.XTemplate(
+	            		'<tpl for=".">',
+	        		        '<div style="thumb-wrap" class="menu-list-item">',
+	        		          '<a href="#">',
+	        		          	'<img src="{icon}" />',
+	        		          	'<br/><span>{caption}</span>',
+	        		          '</a>',
+	        		        '</div>',
+	        		    '</tpl>'
+	        		),
+//	                itemSelector: 'div.thumb-wrap',
+	        		cls: 'menu-list',
+					overItemCls: 'feed-list-item-hover',
+	                itemSelector: 'a',
+	                emptyText: 'No images available',
+	                autoScroll: true
+	            })]
+	        }), {
+	            title: '收运管理',
 	            html: '<p>Some settings in here.</p>',
-	            iconCls: 'settings'
+	            iconCls: 'nav'
 	        }, {
-	            title: 'Information',
+	            title: '分拣管理',
 	            html: '<p>Some info in here.</p>',
-	            iconCls: 'info'
-	        }*/],
+	            iconCls: 'nav'
+	        }, {
+	            title: '积分管理',
+	            html: '<p>Some info in here.</p>',
+	            iconCls: 'nav'
+	        }, {
+	            title: '出库销售管理',
+	            html: '<p>Some info in here.</p>',
+	            iconCls: 'nav'
+	        }, {
+	            title: '合作商管理',
+	            html: '<p>Some info in here.</p>',
+	            iconCls: 'nav'
+	        }, {
+	            title: '用户管理',
+	            html: '<p>Some info in here.</p>',
+	            iconCls: 'nav'
+	        }, {
+	            title: '系统设置',
+	            html: '<p>Some info in here.</p>',
+	            iconCls: 'settings'
+	        }],
 
 			dockedItems: [{
 				xtype: 'toolbar',
@@ -55,16 +82,5 @@ Ext.define('AM.view.Menu', {
 		});
 
 		this.callParent(arguments);
-	},
-	
-	onSelectionChange: function(selmodel, selection) {
-        var selected = selection[0],
-            button = this.down('button[action=remove]');
-        if (selected) {
-            button.enable();
-        }
-        else {
-            button.disable();
-        }
 	}
 });
