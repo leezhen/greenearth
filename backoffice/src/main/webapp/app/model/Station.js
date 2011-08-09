@@ -1,4 +1,4 @@
 Ext.define('AM.model.Station', {
     extend: 'Ext.data.Model',
-    fields: ['id', 'name', 'address', 'city.id']
+    fields: ['id', 'name', 'address']
 });

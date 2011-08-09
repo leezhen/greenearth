@@ -8,11 +8,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class RecycleStation {
+public class Partner {
+	
 	private Integer id;
+	private City city;
 	private String name;
 	private String address;
-	private City city;
+	private String telephone;
+	private String fax;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,6 +25,16 @@ public class RecycleStation {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
+	@ManyToOne
+	@JoinColumn(name = "city_id")
+	public City getCity() {
+		return city;
+	}
+	public void setCity(City city) {
+		this.city = city;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -34,29 +47,16 @@ public class RecycleStation {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
-	@ManyToOne
-	@JoinColumn(name = "city_id")
-	public City getCity() {
-		return city;
+	public String getTelephone() {
+		return telephone;
 	}
-	public void setCity(City city) {
-		this.city = city;
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
 	}
-	
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("RecycleStation [id=");
-		builder.append(id);
-		builder.append(", name=");
-		builder.append(name);
-		builder.append(", address=");
-		builder.append(address);
-		builder.append(", city=");
-		builder.append(city);
-		builder.append("]");
-		return builder.toString();
+	public String getFax() {
+		return fax;
 	}
-	
+	public void setFax(String fax) {
+		this.fax = fax;
+	}
 }

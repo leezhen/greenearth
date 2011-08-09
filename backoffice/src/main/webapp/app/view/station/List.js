@@ -25,7 +25,7 @@ Ext.define('AM.view.station.List', {
 			},*/
 			columns: [
 				{text: '编号',  dataIndex:'id', flex: 1},
-	            {text: '所在城市', dataIndex: 'city.id', flex: 1},
+	            {text: '所在城市', dataIndex: 'address', flex: 1},
 	            {text: '分拣站名称', dataIndex: 'name', flex: 1}
 	            ],
             dockedItems: [{
@@ -44,5 +44,6 @@ Ext.define('AM.view.station.List', {
 			}]
 		});
 		this.callParent(arguments);
+		this.store.load();
 	},
 });

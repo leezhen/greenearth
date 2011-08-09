@@ -6,4 +6,5 @@ import com.greenearth.bo.domain.RecycleStation;
 
 public interface RecycleStationDao {
 	List<RecycleStation> getStations();
+	Page<RecycleStation> getStations(Page<RecycleStation> page);
 }
