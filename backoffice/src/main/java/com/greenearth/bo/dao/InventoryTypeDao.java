@@ -6,4 +6,5 @@ import com.greenearth.bo.domain.InventoryType;
 
 public interface InventoryTypeDao {
 	List<InventoryType> getInventoryTypes();
+	InventoryType get(Integer id);
 }

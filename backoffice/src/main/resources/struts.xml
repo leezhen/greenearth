@@ -28,4 +28,5 @@
     <include file="actions/struts-dict.xml" />
     <include file="actions/struts-inventory.xml" />
     <include file="actions/struts-recycleStation.xml" />
+    <include file="actions/struts-sellRecord.xml" />
 </struts>

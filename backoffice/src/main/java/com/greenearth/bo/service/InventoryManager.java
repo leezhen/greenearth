@@ -39,4 +39,8 @@ public class InventoryManager {
 	public void saveInventoryLog(InventoryLog log) {
 		inventoryLogDao.saveInventoryLog(log);
 	}
+	
+	public Inventory getInventory(Integer inventoryId) {
+		return inventoryDao.get(inventoryId);
+	}
 }

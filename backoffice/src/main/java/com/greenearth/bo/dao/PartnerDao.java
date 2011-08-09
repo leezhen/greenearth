@@ -7,4 +7,5 @@ import com.greenearth.bo.domain.Partner;
 public interface PartnerDao {
 	
 	List<Partner> getPartners();
+	Partner getPartner(Integer id);
 }

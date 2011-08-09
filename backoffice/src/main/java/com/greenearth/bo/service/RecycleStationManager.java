@@ -19,4 +19,9 @@ public class RecycleStationManager {
 	public Page<RecycleStation> getRecycleStations(Page<RecycleStation> p) {
 		return recycleStationDao.getStations(p);
 	}
+	
+	@Transactional(readOnly = true)
+	public RecycleStation getRecycleStation(Integer id) {
+		return recycleStationDao.get(id);
+	}
 }

@@ -17,4 +17,10 @@ public class PartnerDaoImpl extends HibernateDao<Partner,Integer> implements Par
 		return getAll();
 	}
 
+	@Override
+	public Partner getPartner(Integer id) {
+		// TODO Auto-generated method stub
+		return get(id);
+	}
+
 }

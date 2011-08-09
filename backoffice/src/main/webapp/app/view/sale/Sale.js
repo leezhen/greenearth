@@ -9,7 +9,7 @@ Ext.define('AM.view.sale.Sale', {
     title: '销售',
 
     // The form will submit an AJAX request to this URL when submitted
-    url: 'save-form.php',
+    url: 'sellRecord_save.do',
 
     // Fields will be arranged vertically, stretched to full width
     layout: 'anchor',
@@ -18,10 +18,34 @@ Ext.define('AM.view.sale.Sale', {
     
     inventoryTypes: Ext.create('Ext.data.Store', {
         fields: ['id', 'name'],
-        autoLoad: true,
+        autoLoad: false,
         proxy: {
             type: 'ajax',
             url: 'dict_inventoryTypes.do',
+            reader: {
+                type: 'json'
+            }
+        }
+    }),
+    
+    stations: Ext.create('Ext.data.Store', {
+        fields: ['id', 'name'],
+        autoLoad: false,
+        proxy: {
+            type: 'ajax',
+            url: 'dict_recycleStations.do',
+            reader: {
+                type: 'json'
+            }
+        }
+    }),
+    
+    partners: Ext.create('Ext.data.Store', {
+        fields: ['id', 'name'],
+        autoLoad: false,
+        proxy: {
+            type: 'ajax',
+            url: 'dict_partners.do',
             reader: {
                 type: 'json'
             }
@@ -41,13 +65,13 @@ Ext.define('AM.view.sale.Sale', {
             valueField: 'id'
         },{
             fieldLabel: '出库数量',
-            name: 'weight',
+            name: 'quantity',
             allowBlank: false
         }, {
             fieldLabel: '分拣站',
-            name: 'inventoryTypeId',
+            name: 'recycleStationId',
             xtype: 'combo',
-            store: this.inventoryTypes,
+            store: this.stations,
             allowBlank: false,
             emptyText: '请选择',
             queryMode: 'local',
@@ -55,25 +79,21 @@ Ext.define('AM.view.sale.Sale', {
             valueField: 'id'
         },{
             fieldLabel: '合作商',
-            name: 'inventoryTypeId',
+            name: 'partnerId',
             xtype: 'combo',
-            store: this.inventoryTypes,
+            store: this.partners,
             allowBlank: false,
             emptyText: '请选择',
             queryMode: 'local',
             displayField: 'name',
             valueField: 'id'
-        }, {
-            fieldLabel: '重量',
-            name: 'weight',
-            allowBlank: false
         },{
             fieldLabel: '单价',
             name: 'price',
             allowBlank: false
         },{
             fieldLabel: '总价',
-            name: 'total',
+            name: 'totalAmount',
             allowBlank: false
         }];
 
@@ -81,9 +101,9 @@ Ext.define('AM.view.sale.Sale', {
         this.buttons = [{
             text: '出库',
             formBind: true, //only enabled once the form is valid
-            disabled: true,
             handler: function() {
                 var form = this.up('form').getForm();
+                	form.url = 'sellRecord_save.do';
                 if (form.isValid()) {
                     form.submit({
                         success: function(form, action) {
@@ -98,5 +118,8 @@ Ext.define('AM.view.sale.Sale', {
         }];	
         
         this.callParent(arguments);
+        this.inventoryTypes.load();
+        this.partners.load();
+        this.stations.load();
     }
 });
