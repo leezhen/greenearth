@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.greenearth.bo.dao.Page;
 import com.greenearth.bo.dao.RecycleStationDao;
 import com.greenearth.bo.dao.hibernate.HibernateDao;
 import com.greenearth.bo.domain.RecycleStation;
@@ -14,6 +15,11 @@ public class RecycleStationDaoImpl extends HibernateDao<RecycleStation, Integer>
 	@Override
 	public List<RecycleStation> getStations() {
 		return getAll();
+	}
+
+	@Override
+	public Page<RecycleStation> getStations(Page<RecycleStation> page) {
+		return super.findPage(page, "from RecycleStation");
 	}
 
 }

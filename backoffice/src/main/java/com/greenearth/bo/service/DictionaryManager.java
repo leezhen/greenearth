@@ -8,10 +8,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.greenearth.bo.dao.DeductionReasonDao;
 import com.greenearth.bo.dao.InventoryTypeDao;
+import com.greenearth.bo.dao.PartnerDao;
 import com.greenearth.bo.dao.PointsTypeDao;
 import com.greenearth.bo.dao.RecycleStationDao;
 import com.greenearth.bo.domain.DeductionReason;
 import com.greenearth.bo.domain.InventoryType;
+import com.greenearth.bo.domain.Partner;
 import com.greenearth.bo.domain.PointsType;
 import com.greenearth.bo.domain.RecycleStation;
 
@@ -29,6 +31,12 @@ public class DictionaryManager {
 	
 	@Autowired
 	private InventoryTypeDao inventoryTypeDao;
+	
+	@Autowired
+	private RecycleStationDao recycleStationDao;
+	
+	@Autowired
+	private PartnerDao partnerDao;
 
 	@Transactional(readOnly = true)
 	public List<DeductionReason> getReasons() {
@@ -48,5 +56,15 @@ public class DictionaryManager {
 	@Transactional(readOnly = true)
 	public List<InventoryType> getInventoryTypes() {
 		return inventoryTypeDao.getInventoryTypes();
+	}
+	
+	@Transactional(readOnly = true)
+	public List<RecycleStation> getRecycleStations() {
+		return recycleStationDao.getStations();
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Partner> getPartners() {
+		return partnerDao.getPartners();
 	}
 }

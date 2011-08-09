@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.greenearth.bo.domain.InventoryType;
+import com.greenearth.bo.domain.Partner;
+import com.greenearth.bo.domain.RecycleStation;
 import com.greenearth.bo.service.DictionaryManager;
 import com.greenearth.bo.utils.Struts2Utils;
 
@@ -20,5 +22,15 @@ public class DictionaryAction extends BaseAction {
 	public void inventoryTypes() {
 		List<InventoryType> invTypes = dictManager.getInventoryTypes();
 		Struts2Utils.renderJson(invTypes);
+	}
+	
+	public void recycleStations() {
+		List<RecycleStation> stations = dictManager.getRecycleStations();
+		Struts2Utils.renderJson(stations);
+	}
+	
+	public void partners() {
+		List<Partner> partners = dictManager.getPartners();
+		Struts2Utils.renderJson(partners);
 	}
 }

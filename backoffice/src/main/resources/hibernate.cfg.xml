@@ -21,5 +21,9 @@
         <mapping class="com.greenearth.bo.domain.PointsDeducted"/>
         <mapping class="com.greenearth.bo.domain.InventoryLog"/>
         <mapping class="com.greenearth.bo.domain.Inventory"/>
+        <mapping class="com.greenearth.bo.domain.PointRule"/>
+        <mapping class="com.greenearth.bo.domain.DeductionRule"/>
+        <mapping class="com.greenearth.bo.domain.SellRecord"/>
+        <mapping class="com.greenearth.bo.domain.Partner"/>
     </session-factory>
 </hibernate-configuration>

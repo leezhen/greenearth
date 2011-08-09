@@ -26,5 +26,4 @@ public class InventoryDaoImpl extends HibernateDao<Inventory, Integer> implement
 	public Page<Inventory> getInventories(Page<Inventory> p) {
 		return findPage(p,"from Inventory");
 	}
-
 }

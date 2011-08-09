@@ -8,4 +8,5 @@ public interface InventoryDao {
 	List<Inventory> getInventories();
 	void saveInventory(Inventory inventory);
 	Page<Inventory> getInventories(Page<Inventory> p);
+	Inventory get(Integer id);
 }

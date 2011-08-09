@@ -28,3 +28,25 @@ insert into inventory(id,name,weight,recycle_station_id,inventory_type_id) value
 insert into inventory(id,name,weight,recycle_station_id,inventory_type_id) values(4,'',10,1,2);
 insert into inventory(id,name,weight,recycle_station_id,inventory_type_id) values(5,'',50,2,1);
 insert into inventory(id,name,weight,recycle_station_id,inventory_type_id) values(6,'',70,1,2);
+
+insert into points_type values(1,'something','可回收');
+insert into points_type values(2,'something','不可回收');
+insert into points_type values(3,'something','差不多可回收');
+insert into points_type values(4,'something','勉强可回收');
+
+insert into deduction_reason values(1,'something','dirty');
+insert into deduction_reason values(2,'something','有毒');
+
+insert into point_rule values(1,now(),now(),10,1,1,1);
+insert into point_rule values(2,now(),now(),5,1,2,2);
+insert into point_rule values(3,now(),now(),2,1,3,3);
+insert into point_rule values(4,now(),now(),1,1,4,4);
+
+insert into deduction_rule values(1,now(),now(),5,1);
+insert into deduction_rule values(2,now(),now(),10,2);
+
+insert into partner values(1,'','010-1102930','刘老板','131241706',1);
+insert into partner values(2,'','020-110293430','汪老板','13151241706',2);
+
+insert into sell_record values(1,now(),10,2,20,1,1,1);
+insert into sell_record values(2,now(),5,3,15,2,2,2);
