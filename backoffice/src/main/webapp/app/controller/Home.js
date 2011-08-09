@@ -16,7 +16,6 @@ Ext.define('AM.controller.Home', {
     refs: [
            {ref: 'mainView', selector: 'mainview'},
            {ref: 'menuItemData', selector: 'menu dataview'},
-//           {ref: 'customerGrid', selector: 'customergrid'},
            {
                ref: 'customerTab',
                xtype: 'customergrid',

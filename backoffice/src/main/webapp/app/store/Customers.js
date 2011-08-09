@@ -3,7 +3,7 @@ Ext.define('AM.store.Customers', {
     model: 'AM.model.Customer',
     autoLoad: true,
     remoteSort: true,
-    pageSize: 2,
+    pageSize: 20,
     
     proxy: {
         type: 'ajax',

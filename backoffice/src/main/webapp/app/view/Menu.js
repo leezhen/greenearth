@@ -23,7 +23,7 @@ Ext.define('AM.view.Menu', {
 	                store: this.store,
 	                tpl: new Ext.XTemplate(
 	            		'<tpl for=".">',
-	        		        '<div style="thumb-wrap" class="menu-list-item">',
+	        		        '<div class="menu-list-item">',
 	        		          '<a href="#">',
 	        		          	'<img src="{icon}" />',
 	        		          	'<br/><span>{caption}</span>',
@@ -31,10 +31,9 @@ Ext.define('AM.view.Menu', {
 	        		        '</div>',
 	        		    '</tpl>'
 	        		),
-//	                itemSelector: 'div.thumb-wrap',
+	                itemSelector: 'div.menu-list-item',
 	        		cls: 'menu-list',
 					overItemCls: 'feed-list-item-hover',
-	                itemSelector: 'a',
 	                emptyText: 'No images available',
 	                autoScroll: true
 	            })]

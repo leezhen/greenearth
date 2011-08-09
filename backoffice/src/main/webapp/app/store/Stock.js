@@ -4,7 +4,7 @@ Ext.define('AM.store.Stock', {
     
     autoLoad: false,
     remoteSort: true,
-    pageSize: 2,
+    pageSize: 20,
     
     proxy: {
         type: 'ajax',

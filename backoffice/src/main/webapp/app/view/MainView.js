@@ -12,10 +12,7 @@ Ext.define('AM.view.MainView', {
     cls: 'preview',
     
     initComponent: function() {
-        this.items = [/*{
-            xtype: 'customergrid',
-            title: '客户信息'
-        }*/ {
+        this.items = [{
             xtype: 'home',
             title: '欢迎'
         }];

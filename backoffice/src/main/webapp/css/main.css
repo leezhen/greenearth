@@ -6,7 +6,6 @@ Prototype Style Sheet (empty commented stylesheet)
 /* =General
 -----------------------------------------------------------------------------*/
 
-
 /* Remove padding and margin */
 /* * {
     margin: 0;
@@ -20,12 +19,10 @@ Prototype Style Sheet (empty commented stylesheet)
     clear:both;
 } */
 
-
 /* Remove border around linked images */
 /* img {
     border: 0;
 } */
-
 
 /* =Typography
 -----------------------------------------------------------------------------*/
@@ -34,28 +31,27 @@ Prototype Style Sheet (empty commented stylesheet)
   font: 62.5%/1.6 "Lucida Grande", "Lucida Sans", "Trebuchet MS", Tahoma, Verdana, sans-serif;
 } */
 
-
 /* =Headings
 -----------------------------------------------------------------------------*/
 #head {
 	margin-left: 5px;
 	font-weight: bold;
 	font-size: 2em;
-	color: #48546A; 
+	color: #48546A;
 }
 
 /** =Toobars
 -----------------------------------------------------------------------------*/
 .add {
-    background-image: url( ../images/add16.gif ) !important;
+	background-image: url( ../images/add16.gif ) !important;
 }
 
 .delete {
-    background-image: url( ../images/delete.gif ) !important;
+	background-image: url( ../images/delete.gif ) !important;
 }
 
 .print {
-    background-image: url( ../images/printer.png ) !important;
+	background-image: url( ../images/printer.png ) !important;
 }
 
 .details {
@@ -65,58 +61,34 @@ Prototype Style Sheet (empty commented stylesheet)
 /* =Links
 -----------------------------------------------------------------------------*/
 
-
-
-
 /* =Branding
 -----------------------------------------------------------------------------*/
-
-
-
 
 /* =Main Nav
 -----------------------------------------------------------------------------*/
 
-
-
-
 /* =Sub Nav
 -----------------------------------------------------------------------------*/
-
-
-
 
 /* =Main Content
 -----------------------------------------------------------------------------*/
 
-
-
-
 /* =Secondary Content
 -----------------------------------------------------------------------------*/
 
-
-
 /* =Footer
 -----------------------------------------------------------------------------*/
-
-
 
 /* =Forms
 -----------------------------------------------------------------------------*/
 
 /* Removes fieldset borders. even on Opea 7 */
 
-
 /* =Tables
 -----------------------------------------------------------------------------*/
 
-
-
 /* =Misc 1
 -----------------------------------------------------------------------------*/
-
-
 
 /* =Misc 2
 -----------------------------------------------------------------------------*/
@@ -124,61 +96,165 @@ Prototype Style Sheet (empty commented stylesheet)
 /* =Filter
 -----------------------------------------------------------------------------*/
 .xfilter-row {
-    position:absolute !important;   
+	position: absolute !important;
 }
 
 .xfilter-row input {
-    font-size: 11px !important;
-    background: #FFFFFF url(../images/filter-row-icon.png) no-repeat bottom left !important;
-    padding: 0 5px 0 16px !important;
+	font-size: 11px !important;
+	background: #FFFFFF url(../images/filter-row-icon.png) no-repeat bottom
+		left !important;
+	padding: 0 5px 0 16px !important;
 }
 
 /* =ClearButton
 -----------------------------------------------------------------------------*/
 .ext-ux-clearbutton {
-    width: 12px;
-    height: 12px;
-    background-image: url(../images/clear-text-icon.gif);
-    background-position: 0 0;
-    background-repeat: no-repeat;
-    -moz-user-focus: ignore; /* https://developer.mozilla.org/en/CSS/-moz-user-focus */
-    cursor: pointer;
-    position: absolute;
-    overflow:  hidden; /* IE 6 :-( */
-    margin-top: 4px;
-    background-color: white;
+	width: 12px;
+	height: 12px;
+	background-image: url(../images/clear-text-icon.gif);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	-moz-user-focus: ignore;
+	/* https://developer.mozilla.org/en/CSS/-moz-user-focus */
+	cursor: pointer;
+	position: absolute;
+	overflow: hidden; /* IE 6 :-( */
+	margin-top: 4px;
+	background-color: white;
 }
 
 .ext-ux-clearbutton-mouse-over-input {
-    background-position: 0 -12px;
+	background-position: 0 -12px;
 }
 
 .ext-ux-clearbutton-mouse-over-button {
-    background-position: 0 -24px;
+	background-position: 0 -24px;
 }
 
 .ext-ux-clearbutton-mouse-down {
-    background-position: 0 -36px;
+	background-position: 0 -36px;
 }
 
 .ext-ux-clearbutton-on {
-    opacity: 1;
-    visibility: visible;
-    transition: opacity .35s linear;
-    -webkit-transition: opacity .35s linear;
-    -moz-transition: opacity .35s linear;
-    -o-transition: opacity .35s linear;
-    -ms-transition: opacity .35s linear;
-    -khtml-transition: opacity .35s linear;
+	opacity: 1;
+	visibility: visible;
+	transition: opacity .35s linear;
+	-webkit-transition: opacity .35s linear;
+	-moz-transition: opacity .35s linear;
+	-o-transition: opacity .35s linear;
+	-ms-transition: opacity .35s linear;
+	-khtml-transition: opacity .35s linear;
 }
 
 .ext-ux-clearbutton-off {
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .35s linear, visibility .0s linear .35s;
-    -webkit-transition: opacity .35s linear, visibility .0s linear .35s;
-    -moz-transition: opacity .35s linear, visibility .0s linear .35s;
-    -o-transition: opacity .35s linear, visibility .0s linear .35s;
-    -ms-transition: opacity .35s linear, visibility .0s linear .35s;
-    -khtml-transition: opacity .35s linear, visibility .0s linear .35s;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity .35s linear, visibility .0s linear .35s;
+	-webkit-transition: opacity .35s linear, visibility .0s linear .35s;
+	-moz-transition: opacity .35s linear, visibility .0s linear .35s;
+	-o-transition: opacity .35s linear, visibility .0s linear .35s;
+	-ms-transition: opacity .35s linear, visibility .0s linear .35s;
+	-khtml-transition: opacity .35s linear, visibility .0s linear .35s;
+}
+
+p {
+	margin: 5px;
+}
+
+.settings {
+	background-image: url(../images/folder_wrench.png);
+}
+
+.nav {
+	background-image: url(../images/folder_go.png);
+}
+
+.info {
+	background-image: url(../images/information.png);
+}
+
+.menu-list {
+	padding: 0 3px 0 3px;
+}
+
+.menu-list-item {
+	margin-top: 3px;
+	padding-left: 50px;
+	font-size: 13px;
+	line-height: 20px;
+	cursor: pointer;
+	border: 1px solid #fff;
+}
+
+.menu-list .x-item-selected {
+	font-weight: bold;
+	color: #15428B;
+	background-color: #DFE8F6;
+	border: 1px dotted #A3BAE9;
+}
+
+.menu-list-item-hover {
+	background-color: #eee;
+}
+
+.feed-grid .x-grid-rowbody {
+	margin: 5px 20px 10px 25px !important;
+	color: #555;
+	font-size: 11px;
+}
+
+/* Preview classes */
+.preview .x-panel-body {
+	background: #fff;
+	color: #222;
+	font: normal 12px tahoma, verdana, arial, sans-serif;
+}
+
+.preview .x-panel-body p {
+	line-height: 18px;
+	margin: 8px 0;
+}
+
+.preview .x-panel-body ul {
+	margin-left: 18px;
+}
+
+.preview .x-panel-body ul li {
+	display: list-item;
+	list-style-image: none !important;
+	list-style-position: outside !important;
+	list-style-type: disc !important;
+	margin-left: 18px;
+}
+
+.preview .x-panel-body pre,#preview .x-panel-body code {
+	background: #f1f1f1;
+	display: block;
+}
+
+.preview .x-panel-body h4.post-author {
+	font-weight: normal;
+	color: #555;
+	font-size: 11px;
+}
+
+.preview .x-panel-body span.post-date {
+	font-weight: normal;
+	color: #555;
+	float: right;
+	font-size: 11px;
+}
+
+.preview .x-panel-body div.post-data {
+	background: #f1f2f4;
+	padding: 5px;
+	border-bottom: 1px solid #dadadb;
+}
+
+.preview .x-panel-body div.post-body {
+	padding: 10px;
+}
+
+.x-tab-bar-body {
+	border-width: 1px 1px 0 1px !important;
 }
