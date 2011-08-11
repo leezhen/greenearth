@@ -25,8 +25,12 @@ Ext.define('AM.view.pointRule.DeductionPointRule', {
 			},*/
 			columns: [
 				{text: '编号',  dataIndex:'id', flex: 1},
-	            {text: '原因', dataIndex: 'reason', flex: 1},
-	            {text: '扣分', dataIndex: 'points', flex: 1}
+	            {text: '原因', dataIndex: 'deductionReason.name', flex: 1},
+	            {text: '扣分', dataIndex: 'points', flex: 1},
+	            {text: '创建时间', dataIndex: 'createdAt', flex: 1},
+	            {text: '修改时间', dataIndex: 'modifiedAt', flex: 1},
+	            {text: '创建人', dataIndex: 'createdBy', flex: 1},
+	            {text: '修改人', dataIndex: 'modifiedBy', flex: 1}
 	            ],
             dockedItems: [{
                 xtype: 'pagingtoolbar',
@@ -44,5 +48,6 @@ Ext.define('AM.view.pointRule.DeductionPointRule', {
 			}]
 		});
 		this.callParent(arguments);
+		this.store.load();
 	},
 });

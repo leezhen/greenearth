@@ -17,7 +17,9 @@ public class PointRule {
 	private Integer quantity;
 	private Integer points;
 	private Date createdAt;
-	private Date modifiedBy;
+	private Date modifiedAt;
+	private String createdBy;
+	private String modifiedBy;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -64,11 +66,23 @@ public class PointRule {
 	public Date getCreatedAt() {
 		return createdAt;
 	}
-	public void setModifiedBy(Date modifiedBy) {
+	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
-	public Date getModifiedBy() {
+	public String getModifiedBy() {
 		return modifiedBy;
+	}
+	public void setModifiedAt(Date modifiedAt) {
+		this.modifiedAt = modifiedAt;
+	}
+	public Date getModifiedAt() {
+		return modifiedAt;
+	}
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+	public String getCreatedBy() {
+		return createdBy;
 	}
 	
 }

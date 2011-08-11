@@ -17,9 +17,14 @@ Ext.define('AM.view.pointRule.EarnPointRule', {
 		    },
 			columns: [
 				{text: '编号',  dataIndex:'id', flex: 1},
-	            {text: '类型', dataIndex: 'type', flex: 1},
-	            {text: '重量', dataIndex: 'weight', flex: 1},
-	            {text: '积分', dataIndex: 'points', flex: 1}
+	            {text: '积分类型', dataIndex: 'pointsType.name', flex: 1},
+	            {text: '垃圾类型', dataIndex: 'inventoryType.name', flex: 1},
+	            {text: '重量', dataIndex: 'quantity', flex: 1},
+	            {text: '积分', dataIndex: 'points', flex: 1},
+	            {text: '创建时间', dataIndex: 'createdAt', flex: 1},
+	            {text: '修改时间', dataIndex: 'modifiedAt', flex: 1},
+	            {text: '创建人', dataIndex: 'createdBy', flex: 1},
+	            {text: '修改人', dataIndex: 'modifiedBy', flex: 1}
 	            ],
             dockedItems: [{
                 xtype: 'pagingtoolbar',
@@ -37,5 +42,6 @@ Ext.define('AM.view.pointRule.EarnPointRule', {
 			}]
 		});
 		this.callParent(arguments);
+		this.store.load();
 	},
 });

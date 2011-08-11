@@ -1,9 +1,18 @@
 Ext.define('AM.store.PointRule', {
     extend: 'Ext.data.Store',
     model: 'AM.model.PointRule',
+    autoLoad: false,
+    remoteSort: true,
+    pageSize: 20,
     
-	data: [
-	  {id: 1 , type: '可回收', weight: 10, points:1},
-	  {id: 2 , type: '玻璃', weight: 10, points:2}
-	]
+    proxy: {
+        type: 'ajax',
+        url: 'pointRule_listPointRules.do', 
+        reader: {
+            type: 'json',
+            root: 'result',
+            totalProperty  : 'totalItems',
+            successProperty: 'success'
+        }
+    }
 });

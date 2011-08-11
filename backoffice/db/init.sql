@@ -37,13 +37,13 @@ insert into points_type values(4,'something','勉强可回收');
 insert into deduction_reason values(1,'something','dirty');
 insert into deduction_reason values(2,'something','有毒');
 
-insert into point_rule values(1,now(),now(),10,1,1,1);
-insert into point_rule values(2,now(),now(),5,1,2,2);
-insert into point_rule values(3,now(),now(),2,1,3,3);
-insert into point_rule values(4,now(),now(),1,1,4,4);
+insert into point_rule values(1,now(),'lizhen',now(),'lizhen',10,1,1,1);
+insert into point_rule values(2,now(),'lizhen',now(),'lizhen',5,1,2,2);
+insert into point_rule values(3,now(),'lizhen',now(),'lizhen',2,1,3,3);
+insert into point_rule values(4,now(),'lizhen',now(),'lizhen',1,1,4,4);
 
-insert into deduction_rule values(1,now(),now(),5,1);
-insert into deduction_rule values(2,now(),now(),10,2);
+insert into deduction_rule values(1,now(),'lizhen',now(),'lizhen',5,1);
+insert into deduction_rule values(2,now(),'lizhen',now(),'lizhen',10,2);
 
 insert into partner values(1,'','010-1102930','刘老板','131241706',1);
 insert into partner values(2,'','020-110293430','汪老板','13151241706',2);

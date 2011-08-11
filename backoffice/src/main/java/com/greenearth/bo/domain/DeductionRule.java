@@ -15,7 +15,9 @@ public class DeductionRule {
 	private DeductionReason deductionReason;
 	private Integer points;
 	private Date createdAt;
-	private Date modifiedBy;
+	private Date modifiedAt;
+	private String createdBy;
+	private String modifiedBy;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,10 +49,22 @@ public class DeductionRule {
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
-	public Date getModifiedBy() {
+	public Date getModifiedAt() {
+		return modifiedAt;
+	}
+	public void setModifiedAt(Date modifiedAt) {
+		this.modifiedAt = modifiedAt;
+	}
+	public String getCreatedBy() {
+		return createdBy;
+	}
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+	public String getModifiedBy() {
 		return modifiedBy;
 	}
-	public void setModifiedBy(Date modifiedBy) {
+	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
 }
