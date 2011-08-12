@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 public class DeductionRule {
 	private Integer id;
 	private DeductionReason deductionReason;
-	private Integer points;
+	private Float points;
 	private Date createdAt;
 	private Date modifiedAt;
 	private String createdBy;
@@ -37,10 +37,10 @@ public class DeductionRule {
 		this.deductionReason = deductionReason;
 	}
 	
-	public Integer getPoints() {
+	public Float getPoints() {
 		return points;
 	}
-	public void setPoints(Integer points) {
+	public void setPoints(Float points) {
 		this.points = points;
 	}
 	public Date getCreatedAt() {

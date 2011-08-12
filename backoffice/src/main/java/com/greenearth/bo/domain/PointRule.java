@@ -14,8 +14,8 @@ public class PointRule {
 	private Integer id;
 	private PointsType pointsType;
 	private InventoryType inventoryType;
-	private Integer quantity;
-	private Integer points;
+	private Float weight;
+	private Float points;
 	private Date createdAt;
 	private Date modifiedAt;
 	private String createdBy;
@@ -47,17 +47,16 @@ public class PointRule {
 	public void setInventoryType(InventoryType inventoryType) {
 		this.inventoryType = inventoryType;
 	}
-	
-	public Integer getQuantity() {
-		return quantity;
+	public Float getWeight() {
+		return weight;
 	}
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
+	public void setWeight(Float weight) {
+		this.weight = weight;
 	}
-	public Integer getPoints() {
+	public Float getPoints() {
 		return points;
 	}
-	public void setPoints(Integer points) {
+	public void setPoints(Float points) {
 		this.points = points;
 	}
 	public void setCreatedAt(Date createdAt) {

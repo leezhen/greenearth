@@ -29,6 +29,12 @@ insert into inventory(id,name,weight,recycle_station_id,inventory_type_id) value
 insert into inventory(id,name,weight,recycle_station_id,inventory_type_id) values(5,'',50,2,1);
 insert into inventory(id,name,weight,recycle_station_id,inventory_type_id) values(6,'',70,1,2);
 
+insert into inventory_log values(1,now(),4,1,1,2);
+insert into inventory_log values(2,now(),2,2,2,1);
+insert into inventory_log values(3,now(),1,3,1,3);
+insert into inventory_log values(4,now(),4,2,2,2);
+insert into inventory_log values(5,now(),5,1,1,1);
+
 insert into points_type values(1,'something','可回收');
 insert into points_type values(2,'something','不可回收');
 insert into points_type values(3,'something','差不多可回收');

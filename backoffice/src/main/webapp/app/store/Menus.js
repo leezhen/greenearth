@@ -14,6 +14,10 @@ Ext.define('AM.store.Menus', {
 		code: 'sorting'
 	}, {
 		icon : './images/kiva.png',
+		caption : '查看入库记录',
+		code: 'inventoryLog'
+	}, {
+		icon : './images/kiva.png',
 		caption : '查看库存',
 		code: 'stock'
 	}, {

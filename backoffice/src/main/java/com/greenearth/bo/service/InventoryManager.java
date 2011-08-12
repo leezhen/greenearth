@@ -31,6 +31,11 @@ public class InventoryManager {
 	public Page<Inventory> getInventories(Page<Inventory> p) {
 		return inventoryDao.getInventories(p);
 	}
+	
+	@Transactional(readOnly = true)
+	public Page<InventoryLog> getInventoryLogs(Page<InventoryLog> p) {
+		return inventoryLogDao.getInventoryLogs(p);
+	}
 
 	public void saveInventory(Inventory inventory) {
 		inventoryDao.saveInventory(inventory);
@@ -40,6 +45,7 @@ public class InventoryManager {
 		inventoryLogDao.saveInventoryLog(log);
 	}
 	
+	@Transactional(readOnly = true)
 	public Inventory getInventory(Integer inventoryId) {
 		return inventoryDao.get(inventoryId);
 	}
