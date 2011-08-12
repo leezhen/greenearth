@@ -1,17 +1,17 @@
-Ext.define('AM.view.pointRule.DeductionPointRule', {
+Ext.define('AM.view.inventory.List', {
 	extend: 'Ext.grid.Panel',
-	alias: 'widget.deductionPointRule',
+	alias: 'widget.inventoryLog',
 
 //	cls: 'feed-grid',
 	disabled: false,    
     border: false,
-    title: '扣分规则列表',
+    title: '入库记录',
     
     requires: ['Ext.toolbar.Toolbar'],
     
     initComponent: function() {
 		Ext.apply(this, {
-		    store: 'DeductionPointRule',
+		    store: 'InventoryLog',
 		    viewConfig: {
 		    	forceFit: true
 		    },
@@ -25,27 +25,18 @@ Ext.define('AM.view.pointRule.DeductionPointRule', {
 			},*/
 			columns: [
 				{text: '编号',  dataIndex:'id', flex: 1},
-	            {text: '原因', dataIndex: 'deductionReason.name', flex: 1},
-	            {text: '扣分', dataIndex: 'points', flex: 1},
+	            {text: '分拣站', dataIndex: 'station.name', flex: 1},
+	            {text: '顾客', dataIndex: 'customer.name', flex: 1},
+	            {text: '库存类型', dataIndex: 'type.name', flex: 1},
+	            {text: '重量', dataIndex: 'weight', flex: 1},
 	            {text: '创建时间', dataIndex: 'createdAt', flex: 1},
-	            {text: '修改时间', dataIndex: 'modifiedAt', flex: 1},
-	            {text: '创建人', dataIndex: 'createdBy', flex: 1},
-	            {text: '修改人', dataIndex: 'modifiedBy', flex: 1}
 	            ],
             dockedItems: [{
                 xtype: 'pagingtoolbar',
-                store: 'DeductionPointRule',   // same store GridPanel is using
+                store: 'InventoryLog',   // same store GridPanel is using
                 dock: 'bottom',
                 displayInfo: true
-            }, {
-				xtype: 'toolbar',
-				dock: 'top',
-				items: [{
-					text: '添加',
-					action: 'add',
-					iconCls: 'add'
-				}]
-			}]
+            }]
 		});
 		this.callParent(arguments);
 		this.store.load();

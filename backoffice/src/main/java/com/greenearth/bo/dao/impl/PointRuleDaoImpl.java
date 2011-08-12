@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.greenearth.bo.dao.Page;
 import com.greenearth.bo.dao.PointRuleDao;
 import com.greenearth.bo.dao.hibernate.HibernateDao;
 import com.greenearth.bo.domain.PointRule;
@@ -14,4 +15,12 @@ public class PointRuleDaoImpl extends HibernateDao<PointRule, Integer> implement
 	public List<PointRule> getPointRules() {
 		return this.getAll();
 	}
+
+	@Override
+	public Page<PointRule> getPointRules(Page<PointRule> p) {
+		// TODO Auto-generated method stub
+		return this.findPage(p, "from PointRule");
+	}
+	
+	
 }

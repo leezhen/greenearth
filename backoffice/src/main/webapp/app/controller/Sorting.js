@@ -10,6 +10,8 @@ Ext.define('AM.controller.Sorting', {
            {ref: 'earnedGrid', selector: 'sorting earnedgrid'}
     ],
     
+    requires: ['AM.store.ComboUtil'],
+    
     init: function() {
         this.control(/*{
         	'viewport > mainview customergrid': {

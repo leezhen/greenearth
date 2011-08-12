@@ -13,7 +13,8 @@ Ext.application({
         'Station',
         'PointRule',
         'Sale',
-        'SaleRecord'
+        'SaleRecord',
+        'InventoryLog'
     ],
            
     autoCreateViewport: true

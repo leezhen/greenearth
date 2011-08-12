@@ -17,16 +17,9 @@ Ext.define('AM.view.customer.Edit', {
     	districtsStore: []
     },
     
-    citiesStore: Ext.create('Ext.data.Store', {
-        fields: ['id', 'name'],
-        autoLoad: true,
-        proxy: {
-            type: 'ajax',
-            url: 'customer_cities.do',
-            reader: {
-                type: 'json'
-            }
-        }
+    citiesStore: Ext.create('AM.store.ComboUtil',{
+    	autoLoad: true,
+    	urls : 'customer_cities.do'
     }),
     
     districtsStore: Ext.create('Ext.data.Store', {

@@ -6,5 +6,6 @@ import com.greenearth.bo.domain.DeductionRule;
 
 public interface DeductionRuleDao {
 	
-	public List<DeductionRule> getPointRules();
+	public List<DeductionRule> getDeductionRules();
+	public Page<DeductionRule> getDeductionRules(Page<DeductionRule> p);
 }
