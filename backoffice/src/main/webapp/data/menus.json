@@ -1,0 +1,7 @@
+{
+    success: true,
+    groups: [
+        {icon: '', caption: '客户信息管理', menus: {icon: './images/kiva.png', caption: '客户信息查询', code: 'customer'}},
+        {icon: '', caption: '分拣管理', menus: {icon: './images/kiva.png', caption: '分拣入库', code: 'sorting'}}
+    ]
+}
