@@ -36,7 +36,7 @@ public class SellRecordAction extends BaseAction{
 	private Integer recycleStationId;
 	private Integer partnerId;
 	private Integer inventoryTypeId;
-	private Integer quantity;
+	private Float weight;
 	private Float price;
 	private Float totalAmount;
 	
@@ -61,7 +61,7 @@ public class SellRecordAction extends BaseAction{
 		sr.setPartner(partnerManager.getPartner(partnerId));
 		sr.setStation(recycleStationManger.getRecycleStation(recycleStationId));
 		sr.setPrice(price);
-		sr.setQuantity(quantity);
+		sr.setWeight(weight);
 		sr.setTotalAmount(totalAmount);
 		sellRecordManger.save(sr);
 		Struts2Utils.renderJson("{success: true, msg: '" + (isNew ? "添加" : "修改") + "成功'}");
@@ -106,13 +106,13 @@ public class SellRecordAction extends BaseAction{
 	public void setInventoryTypeId(Integer inventoryTypeId) {
 		this.inventoryTypeId = inventoryTypeId;
 	}
-
-	public Integer getQuantity() {
-		return quantity;
+	
+	public Float getWeight() {
+		return weight;
 	}
 
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
+	public void setWeight(Float weight) {
+		this.weight = weight;
 	}
 
 	public Float getPrice() {

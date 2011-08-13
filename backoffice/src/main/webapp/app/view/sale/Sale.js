@@ -2,7 +2,7 @@
 Ext.define('AM.view.sale.Sale', {
 	extend: 'Ext.form.Panel',
 	alias : 'widget.saleOp',
-
+	
 	bodyPadding: 5,
     width: 350,
     
@@ -10,46 +10,24 @@ Ext.define('AM.view.sale.Sale', {
 
     // The form will submit an AJAX request to this URL when submitted
     url: 'sellRecord_save.do',
+    
+    requires: ['AM.store.ComboUtil'],
 
     // Fields will be arranged vertically, stretched to full width
     layout: 'anchor',
     
     defaultType: 'textfield',
     
-    inventoryTypes: Ext.create('Ext.data.Store', {
-        fields: ['id', 'name'],
-        autoLoad: false,
-        proxy: {
-            type: 'ajax',
-            url: 'dict_inventoryTypes.do',
-            reader: {
-                type: 'json'
-            }
-        }
+    inventoryTypes: Ext.create('AM.store.ComboUtil',{
+    	urls : 'dict_inventoryTypes.do'
     }),
     
-    stations: Ext.create('Ext.data.Store', {
-        fields: ['id', 'name'],
-        autoLoad: false,
-        proxy: {
-            type: 'ajax',
-            url: 'dict_recycleStations.do',
-            reader: {
-                type: 'json'
-            }
-        }
+    stations: Ext.create('AM.store.ComboUtil',{
+    	urls : 'dict_recycleStations.do'
     }),
     
-    partners: Ext.create('Ext.data.Store', {
-        fields: ['id', 'name'],
-        autoLoad: false,
-        proxy: {
-            type: 'ajax',
-            url: 'dict_partners.do',
-            reader: {
-                type: 'json'
-            }
-        }
+    partners: Ext.create('AM.store.ComboUtil',{
+    	urls : 'dict_partners.do'
     }),
     
     initComponent: function() {

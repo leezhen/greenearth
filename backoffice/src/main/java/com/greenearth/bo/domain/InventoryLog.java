@@ -15,7 +15,6 @@ public class InventoryLog {
 	private Customer customer;
 	private InventoryType type;
 	private Float weight;
-	private Integer points;
 	private Date createdAt;
 	private RecycleStation station;
 	
@@ -51,12 +50,6 @@ public class InventoryLog {
 	public void setWeight(Float weight) {
 		this.weight = weight;
 	}
-	public Integer getPoints() {
-		return points;
-	}
-	public void setPoints(Integer points) {
-		this.points = points;
-	}
 	public Date getCreatedAt() {
 		return createdAt;
 	}
@@ -82,8 +75,6 @@ public class InventoryLog {
 		builder.append(type);
 		builder.append(", weight=");
 		builder.append(weight);
-		builder.append(", points=");
-		builder.append(points);
 		builder.append(", createdAt=");
 		builder.append(createdAt);
 		builder.append(", station=");

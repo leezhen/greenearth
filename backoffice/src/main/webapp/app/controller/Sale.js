@@ -4,6 +4,12 @@ Ext.define('AM.controller.Sale', {
     
     views: ['sale.Sale'],
     
+//    models: [
+//             'Station'
+//         ],
+//    
+//    stores: ['ComboStation'],
+    
     init: function() {
         this.control(/*{
         	'viewport > mainview customergrid': {

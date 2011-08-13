@@ -12,16 +12,8 @@ Ext.define('AM.view.sorting.AddSorting', {
     // Fields will be arranged vertically, stretched to full width
     layout: 'anchor',
     
-    inventoryTypes: Ext.create('Ext.data.Store', {
-        fields: ['id', 'name'],
-        autoLoad: true,
-        proxy: {
-            type: 'ajax',
-            url: 'dict_inventoryTypes.do',
-            reader: {
-                type: 'json'
-            }
-        }
+    inventoryTypes: Ext.create('AM.store.ComboUtil',{
+    	urls: 'dict_inventoryTypes.do'
     }),
     
     defaultType: 'textfield',
@@ -68,5 +60,6 @@ Ext.define('AM.view.sorting.AddSorting', {
         }];	
         
         this.callParent(arguments);
+        this.inventoryTypes.load();
     }
 });

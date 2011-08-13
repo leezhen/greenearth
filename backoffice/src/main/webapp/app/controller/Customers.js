@@ -17,6 +17,8 @@ Ext.define('AM.controller.Customers', {
         'User', 'MenuItem', 'Customer'
     ],
     
+    requires: ['AM.store.ComboUtil'],
+    
     refs: [
            {ref: 'menuItemData', selector: 'menu dataview'},
            {ref: 'customerGrid', selector: 'customergrid'},

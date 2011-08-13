@@ -32,7 +32,7 @@ Ext.define('AM.view.pointRule.EditEarnPointRule', {
                     },
                     {
                         xtype: 'textfield',
-                        name : 'weight',
+                        name : 'quantity',
                         fieldLabel: '重量',
                         allowBlank: false
                     },

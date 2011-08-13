@@ -58,13 +58,18 @@ Ext.define('AM.controller.Home', {
         	   closable: true,
         	   forceCreate: true,
         	   selector: 'saleOp'
-           },
-           {
+           }, {
         	   ref: 'saleRecordTab',
         	   xtype: 'saleRecord',
         	   closable: true,
         	   forceCreate: true,
         	   selector: 'saleRecord'
+           },{
+        	   ref: 'inventoryLogTab',
+        	   xtype: 'inventoryLog',
+        	   closable: true,
+        	   forceCreate: true,
+        	   selector: 'inventoryLog'
            }
     ],
  
@@ -157,6 +162,9 @@ Ext.define('AM.controller.Home', {
         		break;
         	case 'salesRecord':
         		tab = this.getSaleRecordTab();
+        		break;
+        	case 'inventoryLog':
+        		tab = this.getInventoryLogTab();
         		break;
         	default:
         		break;

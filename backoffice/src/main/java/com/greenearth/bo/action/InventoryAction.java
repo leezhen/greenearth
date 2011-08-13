@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import com.greenearth.bo.dao.Page;
 import com.greenearth.bo.domain.Customer;
 import com.greenearth.bo.domain.Inventory;
+import com.greenearth.bo.domain.InventoryLog;
 import com.greenearth.bo.service.DistrictManager;
 import com.greenearth.bo.service.InventoryManager;
 import com.greenearth.bo.utils.Struts2Utils;
@@ -43,6 +44,13 @@ public class InventoryAction extends BaseAction {
 		Page<Inventory> p = new Page<Inventory>();
 		p.setStartAndLimit(start, limit);
 		p = inventoryManager.getInventories(p);
+		Struts2Utils.renderJson(p);
+	}
+	
+	public void listInventoryLog() {
+		Page<InventoryLog> p = new Page<InventoryLog>();
+		p.setStartAndLimit(start, limit);
+		p = inventoryManager.getInventoryLogs(p);
 		Struts2Utils.renderJson(p);
 	}
 

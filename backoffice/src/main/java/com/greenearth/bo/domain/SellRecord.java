@@ -15,7 +15,7 @@ public class SellRecord {
 	private RecycleStation station;
 	private InventoryType inventoryType;
 	private Partner partner;
-	private Integer quantity;
+	private Float weight;
 	private Float price;
 	private Float totalAmount;
 	private Date createdAt;
@@ -55,12 +55,11 @@ public class SellRecord {
 	public void setPartner(Partner partner) {
 		this.partner = partner;
 	}
-	
-	public Integer getQuantity() {
-		return quantity;
+	public Float getWeight() {
+		return weight;
 	}
-	public void setQuantity(Integer quantity) {
-		this.quantity = quantity;
+	public void setWeight(Float weight) {
+		this.weight = weight;
 	}
 	public Float getPrice() {
 		return price;
