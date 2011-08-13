@@ -30,4 +30,5 @@
     <include file="actions/struts-recycleStation.xml" />
     <include file="actions/struts-sellRecord.xml" />
     <include file="actions/struts-pointRule.xml" />
+    <include file="actions/struts-system.xml" />
 </struts>

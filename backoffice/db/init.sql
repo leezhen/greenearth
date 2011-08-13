@@ -1,3 +1,15 @@
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(1, null, null, '客户信息管理', null, null);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(2, './images/kiva.png', 'customer', '客户信息查询', 'customerTab', 1);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(3, null, null, '收运管理', null, null);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(4, null, null, '分拣管理', null, null);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(5, './images/kiva.png', 'sorting', '分拣入库', 'sortingTab', 4);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(6, null, null, '积分管理', null, null);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(7, null, null, '出库销售管理', null, null);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(8, null, null, '合作商管理', null, null);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(9, null, null, '用户管理', null, null);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(10, null, null, '分拣管理', null, null);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(11, null, null, '系统设置', null, null);
+
 insert into city(id, name) values (1, '成都');
 insert into city(id, name) values (2, '北京');
 

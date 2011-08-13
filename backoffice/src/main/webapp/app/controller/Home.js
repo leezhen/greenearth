@@ -74,7 +74,6 @@ Ext.define('AM.controller.Home', {
     ],
  
     init: function() {
-    	console.log('init');
         this.control({
             'menu dataview': {
                 itemclick: this.switchView
@@ -94,15 +93,15 @@ Ext.define('AM.controller.Home', {
     	var menuPanel = this.getMenuPanel();
     	menuPanel.removeAll();
 		Ext.Ajax.request({
-		    url: 'data/menus.json',
+//		    url: 'data/menus.json',
+			url: 'menu_list.do',
 		    success: function(response){
-		        var json = Ext.decode(response.responseText);
-		        Ext.each(json.groups, function(group) {
-//		        	console.log(group);
+		        var rootMenus = Ext.decode(response.responseText);
+		        Ext.each(rootMenus, function(rootMenu) {
 		        	var menus = Ext.create('Ext.DataView', {
 		                store: Ext.create('Ext.data.Store', {
 		                	model: 'AM.model.MenuItem',
-		                	data :[group.menus]
+		                	data :[rootMenu.subMenus]
 		                }),
 		                tpl: new Ext.XTemplate(
 		            		'<tpl for=".">',
@@ -122,7 +121,7 @@ Ext.define('AM.controller.Home', {
 		            });
 		        	var g = Ext.create('Ext.panel.Panel', {
 		                bodyPadding: 5,  // Don't want content to crunch against the borders
-		                title: group.caption,
+		                title: rootMenu.caption,
 		                layout: 'fit',
 		                split: true,
 		                collapsible: true,
@@ -138,39 +137,11 @@ Ext.define('AM.controller.Home', {
     
     switchView: function(view, record, item, index) {
     	var mainView = this.getMainView();
-        var viewCode = record.get('code');
-        tab = mainView.down('[viewCode=' + viewCode + ']');
+    	var viewRef = record.get('viewRef');
+    	tab = mainView.down('[viewRef=' + viewRef + ']');
         if (!tab) {
-        	switch (viewCode) {
-        	case 'customer':
-        		tab = this.getCustomerTab();
-        		break;
-        	case 'sorting':
-        		tab = this.getSortingTab();
-        		break;
-        	case 'stock':
-        		tab = this.getStockTab();
-        		break;
-        	case 'station':
-        		tab = this.getStationTab();
-        		break;
-        	case 'pointRule':
-        		tab = this.getPointRuleTab();
-        		break; 
-        	case 'sales':
-        		tab = this.getSaleTab();
-        		break;
-        	case 'salesRecord':
-        		tab = this.getSaleRecordTab();
-        		break;
-        	case 'inventoryLog':
-        		tab = this.getInventoryLogTab();
-        		break;
-        	default:
-        		break;
-        	}
-        	
-        	tab.viewCode = viewCode;
+    		tab = eval('this.get' + Ext.String.capitalize(viewRef) + '()');
+        	tab.viewRef = viewRef;
         	tab.enable();
         	mainView.add(tab);
         }

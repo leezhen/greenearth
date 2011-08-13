@@ -9,5 +9,8 @@ Ext.define('AM.model.MenuItem', {
 	}, {
 		name : 'code',
 		type : 'string'
+	}, {
+		name : 'viewRef',
+		type : 'string'
 	} ]
 });
