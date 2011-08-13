@@ -25,5 +25,6 @@
         <mapping class="com.greenearth.bo.domain.DeductionRule"/>
         <mapping class="com.greenearth.bo.domain.SellRecord"/>
         <mapping class="com.greenearth.bo.domain.Partner"/>
+        <mapping class="com.greenearth.bo.domain.Menu"/>
     </session-factory>
 </hibernate-configuration>

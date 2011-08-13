@@ -14,7 +14,8 @@ Ext.define('AM.view.MainView', {
     initComponent: function() {
         this.items = [{
             xtype: 'home',
-            title: '欢迎'
+            title: '欢迎',
+            closable: true
         }];
         
         this.callParent(arguments);

@@ -67,9 +67,9 @@ Ext.define('AM.controller.Customers', {
     },
     
     editCustomer: function(grid, record) {
-    	var view = Ext.widget('customeredit');
+    	var view = Ext.widget('customeredit', {title: '编辑客户信息'});
 //    	var view = Ext.create('AM.view.customer.Edit');
-    	view.setTitle('编辑客户信息');
+//    	view.setTitle('编辑客户信息');
 //    	view.bindStore(store);
 //    	view.getDistrictsStore().load({params: {cityId: record.get('city.id')}});
 //    	cityCombo.setValue(record.get('city.id'));
