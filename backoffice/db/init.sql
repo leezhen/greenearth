@@ -1,3 +1,9 @@
+insert into role values (1, 'user', 'The default role given to all users.');
+insert into role values (2, 'admin', 'The administrator role only given to site admins');
+insert into role_permission values (2, 'customer:*');
+insert into user(id,username,email,password) values (1, 'admin', 'longzhi@gmail.com', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918');
+insert into user_role values (1, 2);
+
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(1, null, null, '客户信息管理', null, null);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(2, './images/kiva.png', 'customer', '客户信息查询', 'customerTab', 1);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(3, null, null, '收运管理', null, null);

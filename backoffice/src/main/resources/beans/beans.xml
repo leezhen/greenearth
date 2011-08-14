@@ -4,4 +4,5 @@
 
     <import resource="beans-base.xml"/>
     <import resource="beans-struts.xml"/>
+    <import resource="beans-security.xml"/>
 </beans>

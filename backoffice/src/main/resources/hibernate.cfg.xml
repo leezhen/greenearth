@@ -10,6 +10,7 @@
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password"></property>
         <property name="hibernate.query.substitutions">true 'Y', false 'N'</property>
+        <!-- <property name="hbm2ddl.auto">update</property> -->
         <mapping class="com.greenearth.bo.domain.City"/>
         <mapping class="com.greenearth.bo.domain.District"/>
         <mapping class="com.greenearth.bo.domain.Customer"/>
@@ -26,5 +27,7 @@
         <mapping class="com.greenearth.bo.domain.SellRecord"/>
         <mapping class="com.greenearth.bo.domain.Partner"/>
         <mapping class="com.greenearth.bo.domain.Menu"/>
+        <mapping class="com.greenearth.bo.domain.Role"/>
+        <mapping class="com.greenearth.bo.domain.User"/>
     </session-factory>
 </hibernate-configuration>

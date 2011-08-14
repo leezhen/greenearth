@@ -25,12 +25,7 @@
         <filter-name>openSessionInViewFilter</filter-name>
         <filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
     </filter>
-    
-    <!-- <filter>
-        <filter-name>sitemesh</filter-name>
-        <filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class>
-    </filter> -->
-    
+   
     <!-- Struts2 filter -->
     <filter>
         <filter-name>struts-cleanup</filter-name>
@@ -46,6 +41,12 @@
 		</init-param> 
     </filter> 
     
+    <!-- Shiro Filter is defined in the spring application context: -->
+    <filter>
+        <filter-name>shiroFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+    
     <filter-mapping>
         <filter-name>encodingFilter</filter-name>
         <url-pattern>*.do</url-pattern>
@@ -58,14 +59,14 @@
         <filter-name>struts-cleanup</filter-name>
         <url-pattern>*.do</url-pattern>
     </filter-mapping>    
-    <!-- <filter-mapping>
-        <filter-name>sitemesh</filter-name>
-        <url-pattern>*.do</url-pattern>
-    </filter-mapping> -->
     <filter-mapping>
         <filter-name>struts</filter-name>
         <url-pattern>*.do</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>shiroFilter</filter-name>
+        <url-pattern>/s/*</url-pattern>
+    </filter-mapping>    
 
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
