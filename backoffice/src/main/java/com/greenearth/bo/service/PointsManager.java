@@ -1,5 +1,6 @@
 package com.greenearth.bo.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.greenearth.bo.dao.PointsDeductedDao;
 import com.greenearth.bo.dao.PointsEarnedDao;
+import com.greenearth.bo.domain.Customer;
+import com.greenearth.bo.domain.InventoryType;
 import com.greenearth.bo.domain.PointsDeducted;
 import com.greenearth.bo.domain.PointsEarned;
 
@@ -36,5 +39,14 @@ public class PointsManager {
 
 	public void savePointsDeducted(PointsDeducted points) {
 		deductedDao.savePointsDeducted(points);
+	}
+	
+	public void earnPoints(Customer customer,Float points,InventoryType type) {
+		PointsEarned pointsEarned = new PointsEarned() ;
+		pointsEarned.setCreatedAt(new Date());
+		pointsEarned.setCustomer(customer);
+		pointsEarned.setInventoryType(type);
+		pointsEarned.setPoints(points);
+		savePointsEarned(pointsEarned);
 	}
 }

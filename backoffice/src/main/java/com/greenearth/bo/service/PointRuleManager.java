@@ -10,6 +10,7 @@ import com.greenearth.bo.dao.DeductionRuleDao;
 import com.greenearth.bo.dao.Page;
 import com.greenearth.bo.dao.PointRuleDao;
 import com.greenearth.bo.domain.DeductionRule;
+import com.greenearth.bo.domain.InventoryType;
 import com.greenearth.bo.domain.PointRule;
 
 @Service
@@ -29,5 +30,11 @@ public class PointRuleManager {
 	@Transactional(readOnly = true)
 	public Page<DeductionRule> getDeductionRules(Page<DeductionRule> p) {
 		return deductionRuleDao.getDeductionRules(p);
+	}
+	
+	public PointRule findPointRule(InventoryType type) {
+		PointRule pointRule = new PointRule();
+		pointRule.setInventoryType(type);
+		return pointRuleDao.getPointRule(pointRule);
 	}
 }

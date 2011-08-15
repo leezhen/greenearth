@@ -7,4 +7,5 @@ import com.greenearth.bo.domain.PointRule;
 public interface PointRuleDao {
 	public List<PointRule> getPointRules();
 	public Page<PointRule> getPointRules(Page<PointRule> p);
+	public PointRule getPointRule(PointRule queryEntity);
 }

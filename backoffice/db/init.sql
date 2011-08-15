@@ -13,8 +13,14 @@ insert into menu(id, icon, code, caption, view_ref, parent_id) values(6, null, n
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(7, null, null, '出库销售管理', null, null);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(8, null, null, '合作商管理', null, null);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(9, null, null, '用户管理', null, null);
-insert into menu(id, icon, code, caption, view_ref, parent_id) values(10, null, null, '分拣管理', null, null);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(10, null, null, '分拣站管理', null, null);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(11, null, null, '系统设置', null, null);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(12, './images/kiva.png', 'sales', '销售', 'saleTab', 7);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(13, './images/kiva.png', 'salesRecord', '销售记录', 'saleRecordTab', 7);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(14, './images/kiva.png', 'stock', '查看库存', 'stockTab', 4);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(15, './images/kiva.png', 'inventoryLog', '查看入库记录', 'inventoryLogTab', 4);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(16, './images/kiva.png', 'station', '查看分拣站', 'stationTab',10);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(17, './images/kiva.png', 'pointRule', '积分规则设定', 'pointRuleTab',6);
 
 insert into city(id, name) values (1, '成都');
 insert into city(id, name) values (2, '北京');

@@ -2,7 +2,7 @@ Ext.define('AM.view.customer.Edit', {
     extend: 'Ext.window.Window',
     alias : 'widget.customeredit',
     
-    requires: ['AM.store.Cities'],
+    requires: ['AM.store.Cities','AM.store.ComboUtil'],
  
 //    title : '编辑客户信息',
     layout: 'fit',
@@ -18,8 +18,19 @@ Ext.define('AM.view.customer.Edit', {
     },
     
     citiesStore: Ext.create('AM.store.ComboUtil',{
-    	autoLoad: true,
     	urls : 'customer_cities.do'
+    }),
+    
+    citiesStore:Ext.create('Ext.data.Store', {
+        fields: ['id', 'name'],
+        autoLoad: false,
+        proxy: {
+            type: 'ajax',
+            url: 'customer_cities.do',
+            reader: {
+                type: 'json'
+            }
+        }
     }),
     
     districtsStore: Ext.create('Ext.data.Store', {
@@ -99,7 +110,7 @@ Ext.define('AM.view.customer.Edit', {
                 handler: this.close
             }
         ];
- 
+        this.citiesStore.load();
         this.callParent(arguments);
     },
     

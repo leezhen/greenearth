@@ -14,7 +14,7 @@ public class PointsEarned {
 	private Long id;
 	private Customer customer;
 	private PointsType pointsType;
-	private Integer points;
+	private Float points;
 	private InventoryType inventoryType;
 	private Date createdAt;
 	
@@ -54,10 +54,10 @@ public class PointsEarned {
 		this.inventoryType = inventoryType;
 	}
 	
-	public Integer getPoints() {
+	public Float getPoints() {
 		return points;
 	}
-	public void setPoints(Integer points) {
+	public void setPoints(Float points) {
 		this.points = points;
 	}
 	public Date getCreatedAt() {

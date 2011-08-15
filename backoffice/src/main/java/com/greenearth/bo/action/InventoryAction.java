@@ -1,5 +1,8 @@
 package com.greenearth.bo.action;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -52,6 +55,10 @@ public class InventoryAction extends BaseAction {
 		p.setStartAndLimit(start, limit);
 		p = inventoryManager.getInventoryLogs(p);
 		Struts2Utils.renderJson(p);
+	}
+	
+	public void sortInbound() {
+		List<InventoryLog> inventoryList = new ArrayList<InventoryLog>();
 	}
 
 	public void setCustomerId(Integer customerId) {

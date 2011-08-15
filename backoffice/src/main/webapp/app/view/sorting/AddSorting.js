@@ -6,17 +6,18 @@ Ext.define('AM.view.sorting.AddSorting', {
 	bodyPadding: 5,
     width: 350,
 
-    // The form will submit an AJAX request to this URL when submitted
-    url: 'save-form.php',
-
     // Fields will be arranged vertically, stretched to full width
     layout: 'anchor',
     
+    requires: ['AM.store.ComboUtil'],
+    
     inventoryTypes: Ext.create('AM.store.ComboUtil',{
-    	urls: 'dict_inventoryTypes.do'
+    	urls: 'dict_inventoryTypes.do',
+    	autoLoad : true
     }),
     
     defaultType: 'textfield',
+    enableKeyEvents: true,
     
     initComponent: function() {
     	this.items = [{
@@ -43,23 +44,15 @@ Ext.define('AM.view.sorting.AddSorting', {
         this.buttons = [{
             text: '添加',
             formBind: true, //only enabled once the form is valid
-            disabled: true,
             handler: function() {
                 var form = this.up('form').getForm();
                 if (form.isValid()) {
-                    form.submit({
-                        success: function(form, action) {
-                           Ext.Msg.alert('Success', action.result.msg);
-                        },
-                        failure: function(form, action) {
-                            Ext.Msg.alert('Failed', action.result.msg);
-                        }
-                    });
+                	Ext.widget('addsorting').fireEvent('addSortRecord', this, form.getValues());
                 }
             }
         }];	
         
+        this.addEvents('addSortRecord');
         this.callParent(arguments);
-        this.inventoryTypes.load();
     }
 });
