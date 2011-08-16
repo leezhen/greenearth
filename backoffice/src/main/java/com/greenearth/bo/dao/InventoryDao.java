@@ -9,4 +9,6 @@ public interface InventoryDao {
 	void saveInventory(Inventory inventory);
 	Page<Inventory> getInventories(Page<Inventory> p);
 	Inventory get(Integer id);
+	List<Inventory> getInventories(Inventory queryEntiy);
 }
+ 

@@ -2,6 +2,7 @@ package com.greenearth.bo.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.criterion.Example;
 import org.springframework.stereotype.Repository;
 
 import com.greenearth.bo.dao.Page;
@@ -20,6 +21,12 @@ public class PointRuleDaoImpl extends HibernateDao<PointRule, Integer> implement
 	public Page<PointRule> getPointRules(Page<PointRule> p) {
 		// TODO Auto-generated method stub
 		return this.findPage(p, "from PointRule");
+	}
+
+	@Override
+	public PointRule getPointRule(PointRule queryEntity) {
+		Example example = Example.create(queryEntity);
+		return this.findUnique(example);
 	}
 	
 	
