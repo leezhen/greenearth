@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 @Entity
 public class InventoryLog {
@@ -17,6 +18,9 @@ public class InventoryLog {
 	private Float weight;
 	private Date createdAt;
 	private RecycleStation station;
+	private Long customerId;
+	private Integer stationId;
+	private Integer inventoryTypeId;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -64,6 +68,31 @@ public class InventoryLog {
 	public void setStation(RecycleStation station) {
 		this.station = station;
 	}
+	
+	@Transient
+	public Long getCustomerId() {
+		return customerId;
+	}
+	public void setCustomerId(Long customerId) {
+		this.customerId = customerId;
+	}
+	
+	@Transient
+	public Integer getStationId() {
+		return stationId;
+	}
+	public void setStationId(Integer stationId) {
+		this.stationId = stationId;
+	}
+	
+	@Transient
+	public Integer getInventoryTypeId() {
+		return inventoryTypeId;
+	}
+	public void setInventoryTypeId(Integer inventoryTypeId) {
+		this.inventoryTypeId = inventoryTypeId;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -82,5 +111,4 @@ public class InventoryLog {
 		builder.append("]");
 		return builder.toString();
 	}
-	
 }

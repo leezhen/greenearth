@@ -2,7 +2,7 @@ Ext.define('AM.controller.Sorting', {
     extend: 'Ext.app.Controller',
     title: '录入分拣结果',
     
-    views: ['sorting.Sorting','sorting.AddSorting'],
+    views: ['sorting.Sorting','sorting.AddSorting','sorting.EarnedGrid'],
     
     stores: ['Sortings'],
     
@@ -17,7 +17,10 @@ Ext.define('AM.controller.Sorting', {
     init: function() {
         this.control({
         	'addsorting': {
-        		addSortRecord: this.addSort
+        		addSortRecord: this.addPointRecord
+            },
+            'earnedgrid button[action=confirm]': {
+            	click: this.submitPoint
             }
         });
     },
@@ -28,12 +31,18 @@ Ext.define('AM.controller.Sorting', {
         grid.bindStore(store);*/
     },
     
-    addSort: function(form,value) {
+    addPointRecord: function(form,value) {
     	var instance = Ext.ModelManager.create({
     		customerId: value.customerId,
     		inventoryTypeId: value.inventoryTypeId,
-    		weight: value.weight
+    		weight: value.weight,
+    		stationId:1
     	}, 'AM.model.Sortings');
+    	instance.dirty = true;
     	this.getEarnedGrid().store.insert(0,instance);
+    },
+    
+    submitPoint : function() {
+    	this.getEarnedGrid().store.sync();
     }
 });

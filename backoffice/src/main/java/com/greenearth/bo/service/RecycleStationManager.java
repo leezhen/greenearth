@@ -22,6 +22,6 @@ public class RecycleStationManager {
 	
 	@Transactional(readOnly = true)
 	public RecycleStation getRecycleStation(Integer id) {
-		return recycleStationDao.get(id);
+		return recycleStationDao.getStation(id);
 	}
 }

@@ -19,7 +19,12 @@ public class RecycleStationDaoImpl extends HibernateDao<RecycleStation, Integer>
 
 	@Override
 	public Page<RecycleStation> getStations(Page<RecycleStation> page) {
-		return super.findPage(page, "from RecycleStation");
+		return this.findPage(page, "from RecycleStation");
+	}
+	
+	@Override
+	public RecycleStation getStation(Integer id) {
+		return get(id);
 	}
 
 }

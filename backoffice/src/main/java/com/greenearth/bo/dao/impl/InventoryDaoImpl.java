@@ -33,4 +33,10 @@ public class InventoryDaoImpl extends HibernateDao<Inventory, Integer> implement
 		Example example = Example.create(queryEntiy);
 		return super.find(example);
 	}
+
+	@Override
+	public Inventory getInventory(Integer id) {
+		// TODO Auto-generated method stub
+		return get(id);
+	}
 }

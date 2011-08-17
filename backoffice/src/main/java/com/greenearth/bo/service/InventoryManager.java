@@ -59,7 +59,7 @@ public class InventoryManager {
 	
 	@Transactional(readOnly = true)
 	public Inventory getInventory(Integer inventoryId) {
-		return inventoryDao.get(inventoryId);
+		return inventoryDao.getInventory(inventoryId);
 	}
 	
 	public void inbound(InventoryLog inbound) {
