@@ -41,9 +41,9 @@
          PropertiesPlaceholderConfigurer and abstract beans or anything else we might need: -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager" ref="securityManager"/>
-        <property name="loginUrl" value="/s/login"/>
+        <!-- property name="loginUrl" value="/login.html"/>
         <property name="successUrl" value="/s/home"/>
-        <property name="unauthorizedUrl" value="/unauthorized"/>
+        <property name="unauthorizedUrl" value="/unauthorized"/-->
         <!-- The 'filters' property is usually not necessary unless performing an override, which we
              want to do here (make authc point to a PassthruAuthenticationFilter instead of the
              default FormAuthenticationFilter: -->

@@ -2,8 +2,6 @@ Ext.define('AM.view.MainView', {
     extend: 'Ext.tab.Panel',
     alias: 'widget.mainview',
     
-    requires: ['AM.view.customer.Grid'],
-    
     activeItem: 0,
     margins: '0 5 5 0',
 //    deferredRender: false,

@@ -5,5 +5,7 @@
 
 	<package name="system" extends="default" namespace="/">
         <action name="menu_*" method="{1}" class="menuAction"/>
+        
+        <action name="auth_*" method="{1}" class="authenticationAction"/>
 	</package>
 </struts>

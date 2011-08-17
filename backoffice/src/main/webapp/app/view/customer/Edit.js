@@ -63,6 +63,7 @@ Ext.define('AM.view.customer.Edit', {
             {
                 xtype: 'form',
                 url: 'customer_save.do',
+                bodyPadding: 5,
                 items: [
 					{
                         xtype: 'hiddenfield',

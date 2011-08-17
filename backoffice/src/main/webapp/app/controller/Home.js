@@ -1,12 +1,12 @@
 Ext.define('AM.controller.Home', {
     extend: 'Ext.app.Controller',
-    
+//    requires: ['AM.view.LoginWindow'],
     stores: [
         'Menus', 'Customers'
     ],
  
     views: [
-        'Home', 'customer.Grid', 'sorting.Sorting','stock.List','station.List'
+        'Home', 'customer.Grid', 'sorting.Sorting','stock.List','station.List', 'LoginWindow'
     ],
     
     models: [
@@ -76,8 +76,11 @@ Ext.define('AM.controller.Home', {
     init: function() {
         this.control({
             'menu dataview': {
-                itemclick: this.switchView
-            }
+                itemclick: this.onSwitchView
+            },
+            'loginwindow button[action=login]': {
+                click: this.onLogin
+            },
         });
     },
     
@@ -89,7 +92,39 @@ Ext.define('AM.controller.Home', {
 //            store = this.getMenusStore();
 //        menuview.bindStore(store);
 //        menuview.getSelectionModel().select(store.getAt(0));
-
+    	
+    	// 检查用户是否已登录
+    	Ext.Ajax.request({
+    		url: 'auth_isAuthenticated.do',
+    		scope: this,
+    		success: function(response) {
+    			var json = Ext.decode(response.responseText);
+    			if (!json.loggedIn) {
+    				Ext.widget('loginwindow');
+    				this.loadMenus();
+    			} else {
+    				this.loadMenus();
+    			}
+    		}
+    	});
+    },
+    
+    onSwitchView: function(view, record, item, index) {
+    	var mainView = this.getMainView();
+    	var viewRef = record.get('viewRef');
+    	tab = mainView.down('[viewRef=' + viewRef + ']');
+        if (!tab) {
+    		tab = eval('this.get' + Ext.String.capitalize(viewRef) + '()');
+        	tab.viewRef = viewRef;
+        	tab.enable();
+        	mainView.add(tab);
+        }
+        mainView.setActiveTab(tab);     
+        
+        return tab;
+    },
+    
+    loadMenus: function() {
     	var menuPanel = this.getMenuPanel();
     	menuPanel.removeAll();
 		Ext.Ajax.request({
@@ -132,21 +167,22 @@ Ext.define('AM.controller.Home', {
 		        	menuPanel.add(g);
 		        });
 		    }
-		});
+		});    	
     },
     
-    switchView: function(view, record, item, index) {
-    	var mainView = this.getMainView();
-    	var viewRef = record.get('viewRef');
-    	tab = mainView.down('[viewRef=' + viewRef + ']');
-        if (!tab) {
-    		tab = eval('this.get' + Ext.String.capitalize(viewRef) + '()');
-        	tab.viewRef = viewRef;
-        	tab.enable();
-        	mainView.add(tab);
+    onLogin: function(button) {
+        var win    = button.up('window'),
+            form   = win.down('form').getForm();
+        if (form.isValid()) {
+            form.submit({
+                success: function(form, action) {
+                	Ext.Msg.alert('提示', action.result.msg);
+                },
+                failure: function(form, action) {
+                    Ext.Msg.alert('提示', action.result.msg);
+                }
+            });
         }
-        mainView.setActiveTab(tab);     
-        
-        return tab;
+        win.close();
     }
 });
