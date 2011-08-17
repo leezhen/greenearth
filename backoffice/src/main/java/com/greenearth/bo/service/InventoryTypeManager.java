@@ -16,6 +16,6 @@ public class InventoryTypeManager {
 	
 	@Transactional(readOnly = true)
 	public InventoryType getType(Integer id) {
-		return inventoryTypeDao.get(id);
+		return inventoryTypeDao.getInventoryType(id);
 	}
 }

@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.io.CharStreams;
+import com.greenearth.bo.mapper.JsonMapper;
 import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
@@ -22,7 +23,7 @@ public class BaseAction extends ActionSupport implements ServletRequestAware,
     protected int limit = 20;
     protected HttpServletResponse response;
 	protected HttpServletRequest request;
-//	protected JsonMapper jsonMapper = JsonMapper.buildNormalMapper();
+	protected JsonMapper jsonMapper = JsonMapper.buildNormalMapper();
     
 	@Override
 	public void setServletResponse(HttpServletResponse response) {
@@ -42,7 +43,7 @@ public class BaseAction extends ActionSupport implements ServletRequestAware,
 		this.limit = limit;
 	}
 	
-	/*protected String getJson() {
+	protected String getJson() {
 		String str = null;
 		try {
 			str = CharStreams.toString(new InputStreamReader(request.getInputStream(), "UTF-8"));
@@ -51,5 +52,5 @@ public class BaseAction extends ActionSupport implements ServletRequestAware,
 		}
 		
 		return str;
-	}*/
+	}
 }
