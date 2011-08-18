@@ -28,7 +28,7 @@ Ext.define('AM.view.sale.SaleRecord', {
 	            {text: '分拣站', dataIndex: 'station.name', flex: 1},
 	            {text: '合作商', dataIndex: 'partner.name', flex: 1},
 	            {text: '单价', dataIndex: 'price', flex: 1},
-	            {text: '重量', dataIndex: 'quantity', flex: 1},
+	            {text: '重量', dataIndex: 'weight', flex: 1},
 	            {text: '总价', dataIndex: 'totalAmount', flex: 1},
 	            {text: '创建时间', dataIndex: 'createdAt', flex: 1},
 	            ],

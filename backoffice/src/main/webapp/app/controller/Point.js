@@ -2,7 +2,7 @@ Ext.define('AM.controller.Point', {
     extend: 'Ext.app.Controller',
     
     stores: [
-        'Point','TotalPoint'
+        'EarnedPoints','TotalPoint','DeductedPoints'
     ],
  
     views: [
@@ -10,7 +10,7 @@ Ext.define('AM.controller.Point', {
     ],
     
     models: [
-        'Point','TotalPoint'
+        'EarnedPoints','TotalPoint','DeductedPoints'
     ],
     
     init: function() {

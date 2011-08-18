@@ -2,6 +2,7 @@ package com.greenearth.bo.action;
 
 import java.util.Date;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -19,7 +20,7 @@ import com.greenearth.bo.utils.Struts2Utils;
 @Component
 @Scope("prototype")
 public class SellRecordAction extends BaseAction{
-	
+	private static Logger log = Logger.getLogger(SellRecordAction.class);
 	@Autowired
 	private SellRecordManager sellRecordManger;
 	
@@ -48,14 +49,12 @@ public class SellRecordAction extends BaseAction{
 	}
 	
 	public void save() {
+		try {
 		boolean isNew = (id == null ? true : false);
 		SellRecord sr  = null;
 		if (isNew) {
 			sr = new SellRecord();
 			sr.setCreatedAt(new Date());
-		}
-		else {
-			
 		}
 		sr.setInventoryType(inventoryTypeManger.getType(inventoryTypeId));
 		sr.setPartner(partnerManager.getPartner(partnerId));
@@ -63,8 +62,12 @@ public class SellRecordAction extends BaseAction{
 		sr.setPrice(price);
 		sr.setWeight(weight);
 		sr.setTotalAmount(totalAmount);
-		sellRecordManger.save(sr);
+		sellRecordManger.sell(sr);
 		Struts2Utils.renderJson("{success: true, msg: '" + (isNew ? "添加" : "修改") + "成功'}");
+		} catch (Exception e) {
+			log.error("出库操作失败",e);
+			Struts2Utils.renderJson("{success: false, msg: '" + e.getMessage() + "'}");
+		}
 	}
 
 	public SellRecordManager getSellRecordManger() {

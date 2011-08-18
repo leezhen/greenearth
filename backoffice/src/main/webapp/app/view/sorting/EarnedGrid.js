@@ -24,7 +24,17 @@ Ext.define('AM.view.sorting.EarnedGrid', {
 					return Ext.widget('earnedgrid').inventoryTypes.getById(v).data.name;
 				}},
 				{text: '分拣站', dataIndex: 'stationId', flex: 1},
-	            {text: '重量', dataIndex: 'weight', flex: 1}
+	            {text: '重量', dataIndex: 'weight', flex: 1},
+	            {
+	                xtype: 'actioncolumn',
+	                items: [{
+	                    icon: 'images/cross.gif',
+	                    tooltip: '删除',
+	                    handler: function(grid, rowIndex, colIndex) {
+	                       	grid.getStore().removeAt(rowIndex);
+	                    }
+	                }]
+	            }
 	        ],
 	        dockedItems:[{
 				xtype: 'toolbar',

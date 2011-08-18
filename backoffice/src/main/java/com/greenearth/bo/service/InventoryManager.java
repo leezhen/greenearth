@@ -1,9 +1,9 @@
 package com.greenearth.bo.service;
 
+import java.util.Date;
 import java.util.List;
 
-import org.hibernate.criterion.Example;
-import org.hibernate.criterion.MatchMode;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.greenearth.bo.dao.InventoryDao;
 import com.greenearth.bo.dao.InventoryLogDao;
 import com.greenearth.bo.dao.Page;
-import com.greenearth.bo.domain.Customer;
 import com.greenearth.bo.domain.Inventory;
 import com.greenearth.bo.domain.InventoryLog;
 import com.greenearth.bo.domain.InventoryType;
@@ -21,6 +20,7 @@ import com.greenearth.bo.domain.RecycleStation;
 @Service
 @Transactional
 public class InventoryManager {
+	private static Logger log = Logger.getLogger(InventoryManager.class);
 	
 	@Autowired
 	private InventoryDao inventoryDao;
@@ -63,11 +63,12 @@ public class InventoryManager {
 	}
 	
 	public void inbound(InventoryLog inbound) {
+		inbound.setCreatedAt(new Date());
 		inventoryLogDao.saveInventoryLog(inbound);
 		addInventory(inbound.getType(),inbound.getWeight(),inbound.getStation());
 		PointRule pointRule = pointRuleManager.findPointRule(inbound.getType());
 		if(pointRule == null) {
-			;
+			log.error("can't find pointRule for type:" + inbound.getType().getId());
 		}
 		else {
 			Float points = pointRule.getPoints()*inbound.getWeight()/pointRule.getWeight();
@@ -89,15 +90,23 @@ public class InventoryManager {
 		inventoryDao.saveInventory(inventory);
 	}
 	
+	public void minusInventory(InventoryType type,Float weight,RecycleStation station) {
+		Inventory inventory = getInventoryByTypeAndStation(type,station);
+		if(inventory == null) {
+			log.error("don't find any inventory by type : " + type.getName() + ", station :" + station.getName());
+			throw new RuntimeException("找不到库存类型");
+		}
+		
+		if (inventory.getWeight() < weight) {
+			log.error("not enough weight for type:" + type.getName() + ",weight" + weight);
+			throw new RuntimeException("库存不足，可售库存: " + inventory.getWeight());
+		}
+		
+		addInventory(type,-weight,station);
+	}
+	
 	@Transactional(readOnly = true)
 	public Inventory getInventoryByTypeAndStation(InventoryType type,RecycleStation station) {
-		Inventory inventory = new Inventory();
-		inventory.setStation(station);
-		inventory.setType(type);
-		List<Inventory> resultList = inventoryDao.getInventories(inventory);
-		
-		if(resultList != null && !resultList.isEmpty())
-			return resultList.get(0);
-		return null;
+		return inventoryDao.getInventoryByStationAndType(type.getId(),station.getId());
 	}
 }

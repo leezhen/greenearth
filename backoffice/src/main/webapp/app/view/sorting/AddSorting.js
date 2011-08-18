@@ -47,7 +47,7 @@ Ext.define('AM.view.sorting.AddSorting', {
             handler: function() {
                 var form = this.up('form').getForm();
                 if (form.isValid()) {
-                	Ext.widget('addsorting').fireEvent('addSortRecord', this, form.getValues());
+                	Ext.widget('addsorting').fireEvent('addSortRecord', form, form.getValues());
                 }
             }
         }];	

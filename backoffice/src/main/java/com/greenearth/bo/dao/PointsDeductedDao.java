@@ -7,4 +7,5 @@ import com.greenearth.bo.domain.PointsDeducted;
 public interface PointsDeductedDao {
 	List<PointsDeducted> getPointsDeducted();
 	void savePointsDeducted(PointsDeducted points);
+	Page<PointsDeducted> getPointsDeducted(Page<PointsDeducted> p);
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.greenearth.bo.dao.Page;
 import com.greenearth.bo.dao.PointsDeductedDao;
 import com.greenearth.bo.dao.PointsEarnedDao;
 import com.greenearth.bo.domain.Customer;
@@ -27,7 +28,12 @@ public class PointsManager {
 	public List<PointsEarned> getPointsEarned() {
 		return earnedDao.getPointsEarned();
 	}
-
+	
+	@Transactional(readOnly = true)
+	public Page<PointsEarned> getPointsEarned(Page<PointsEarned> p,Long customerId) {
+		return earnedDao.getPointsEarned(p,customerId);
+	}
+	
 	public void savePointsEarned(PointsEarned points) {
 		earnedDao.savePointsEarned(points);
 	}
@@ -35,6 +41,11 @@ public class PointsManager {
 	@Transactional(readOnly = true)
 	public List<PointsDeducted> getPointsDeducted() {
 		return deductedDao.getPointsDeducted();
+	}
+	
+	@Transactional(readOnly = true)
+	public Page<PointsDeducted> getPointsDeducted(Page<PointsDeducted> p) {
+		return deductedDao.getPointsDeducted(p);
 	}
 
 	public void savePointsDeducted(PointsDeducted points) {

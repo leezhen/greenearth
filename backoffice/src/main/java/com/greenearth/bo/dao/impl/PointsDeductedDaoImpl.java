@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.greenearth.bo.dao.Page;
 import com.greenearth.bo.dao.PointsDeductedDao;
 import com.greenearth.bo.dao.hibernate.HibernateDao;
 import com.greenearth.bo.domain.PointsDeducted;
@@ -19,6 +20,12 @@ public class PointsDeductedDaoImpl extends HibernateDao<PointsDeducted, Integer>
 	@Override
 	public void savePointsDeducted(PointsDeducted points) {
 		save(points);
+	}
+
+	@Override
+	public Page<PointsDeducted> getPointsDeducted(Page<PointsDeducted> p) {
+		// TODO Auto-generated method stub
+		return this.findPage(p, "from PointsDeducted");
 	}
 
 }

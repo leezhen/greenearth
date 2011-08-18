@@ -43,7 +43,7 @@ Ext.define('AM.view.sale.Sale', {
             valueField: 'id'
         },{
             fieldLabel: '出库数量',
-            name: 'quantity',
+            name: 'weight',
             allowBlank: false
         }, {
             fieldLabel: '分拣站',
@@ -86,6 +86,7 @@ Ext.define('AM.view.sale.Sale', {
                     form.submit({
                         success: function(form, action) {
                            Ext.Msg.alert('Success', action.result.msg);
+                           form.reset();
                         },
                         failure: function(form, action) {
                             Ext.Msg.alert('Failed', action.result.msg);

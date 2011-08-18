@@ -21,6 +21,9 @@ Ext.define('AM.controller.Sorting', {
             },
             'earnedgrid button[action=confirm]': {
             	click: this.submitPoint
+            },
+            'earnedgrid button[action=clear]': {
+            	click: this.clearPoint
             }
         });
     },
@@ -40,9 +43,22 @@ Ext.define('AM.controller.Sorting', {
     	}, 'AM.model.Sortings');
     	instance.dirty = true;
     	this.getEarnedGrid().store.insert(0,instance);
+    	form.reset();
     },
     
     submitPoint : function() {
     	this.getEarnedGrid().store.sync();
+    	this.getEarnedGrid().store.on('write',function(store,op) {
+    		if(op.success) {
+    			Ext.Msg.alert('提示', '操作成功');
+    			store.removeAll();
+    			return ;
+    		}
+    	})
+    	Ext.Msg.alert('提示','操作失败');
+    },
+    
+    clearPoint : function() {
+    	this.getEarnedGrid().store.removeAll();
     }
 });

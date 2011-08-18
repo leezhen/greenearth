@@ -27,7 +27,8 @@ Ext.define('AM.view.stock.List', {
 			columns: [
 			    {text: 'id' ,dataIndex: 'id' ,flex :1 },
 				{text: '类型',  dataIndex:'type.name', flex: 1},
-	            {text: '库存数量', dataIndex: 'weight', flex: 1}
+	            {text: '库存数量', dataIndex: 'weight', flex: 1},
+	            {text: '分拣站', dataIndex: 'station.name', flex: 1},
 	            ],
 		    
 		    dockedItems: [{

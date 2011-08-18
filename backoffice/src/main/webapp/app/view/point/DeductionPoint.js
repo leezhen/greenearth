@@ -10,33 +10,27 @@ Ext.define('AM.view.point.DeductionPoint', {
     
     initComponent: function() {
 		Ext.apply(this, {
-		    store: 'Point',
+		    store: 'DeductedPoints',
 		    viewConfig: {
 		    	forceFit: true
 		    },
-			/*viewConfig: {
-				plugins: [{
-					pluginId: 'preview',
-					ptype: 'preview',
-					bodyField: 'description',
-					previewExpanded: true
-				}]
-			},*/
 
 			columns: [
 			    {text: 'id' ,dataIndex: 'id' ,flex :1 },
-	            {text: '积分额', dataIndex: 'points', flex: 1}
+	            {text: '积分额', dataIndex: 'points', flex: 1},
+	            {text: '顾客', dataIndex: 'customer.name', flex: 1},
+	            {text: '原因', dataIndex: 'reason.name', flex: 1},
+	            {text: '创建时间', dataIndex: 'createdAt', flex: 1}
 	            ],
 		    
 		    dockedItems: [{
                 xtype: 'pagingtoolbar',
-                store: 'Point',   // same store GridPanel is using
+                store: 'DeductedPoints',   // same store GridPanel is using
                 dock: 'bottom',
                 displayInfo: true
             }]
 		});
 
 		this.callParent(arguments);
-//		this.store.load();
 	}
 });

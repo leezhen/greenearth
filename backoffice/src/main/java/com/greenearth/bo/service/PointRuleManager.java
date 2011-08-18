@@ -33,8 +33,6 @@ public class PointRuleManager {
 	}
 	
 	public PointRule findPointRule(InventoryType type) {
-		PointRule pointRule = new PointRule();
-		pointRule.setInventoryType(type);
-		return pointRuleDao.getPointRule(pointRule);
+		return pointRuleDao.getPointRuleByType(type.getId());
 	}
 }

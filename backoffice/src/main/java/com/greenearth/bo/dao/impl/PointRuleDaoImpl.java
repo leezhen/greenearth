@@ -2,7 +2,10 @@ package com.greenearth.bo.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Example;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.greenearth.bo.dao.Page;
@@ -24,9 +27,8 @@ public class PointRuleDaoImpl extends HibernateDao<PointRule, Integer> implement
 	}
 
 	@Override
-	public PointRule getPointRule(PointRule queryEntity) {
-		Example example = Example.create(queryEntity);
-		return this.findUnique(example);
+	public PointRule getPointRuleByType(Integer typeId) {
+		return findUniqueBy(PointRule._InventoryTypeId, typeId);
 	}
 	
 	
