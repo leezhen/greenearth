@@ -15,6 +15,9 @@ public class SellRecordManager {
 	@Autowired
 	private SellRecordDao sellRecordDao;
 	
+	@Autowired
+	private InventoryManager inventoryManager;
+	
 	@Transactional(readOnly = true)
 	public Page<SellRecord> getSellRecords(Page<SellRecord> p) {
 		return sellRecordDao.getSellRecords(p);
@@ -22,5 +25,10 @@ public class SellRecordManager {
 	
 	public void save(SellRecord sr) {
 		sellRecordDao.save(sr);
+	}
+	
+	public void sell(SellRecord sr) {
+		save(sr);
+		inventoryManager.minusInventory(sr.getInventoryType(), sr.getWeight() , sr.getStation());
 	}
 }

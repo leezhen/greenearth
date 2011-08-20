@@ -84,4 +84,5 @@ public class PointRule {
 		return createdBy;
 	}
 	
+	public static String _InventoryTypeId = "inventoryType.id";
 }

@@ -31,4 +31,5 @@
     <include file="actions/struts-sellRecord.xml" />
     <include file="actions/struts-pointRule.xml" />
     <include file="actions/struts-system.xml" />
+    <include file="actions/struts-point.xml" />
 </struts>

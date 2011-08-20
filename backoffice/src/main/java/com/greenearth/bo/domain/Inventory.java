@@ -67,4 +67,6 @@ public class Inventory {
 		return builder.toString();
 	}
 	
+	public static String _StationId = "station.id";
+	public static String _TypeId = "type.id";
 }

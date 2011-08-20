@@ -134,5 +134,6 @@ Ext.define('AM.controller.Customers', {
         	mainView.add(tab);
     	}
     	mainView.setActiveTab(tab);
+    	this.getPointTab().items.items[0].store.load({params:{customerId: rec.data.id}});
     }
 });

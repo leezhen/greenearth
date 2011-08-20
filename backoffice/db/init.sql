@@ -51,7 +51,7 @@ insert into inventory(id,name,weight,recycle_station_id,inventory_type_id) value
 insert into inventory(id,name,weight,recycle_station_id,inventory_type_id) values(3,'',20,2,4);
 insert into inventory(id,name,weight,recycle_station_id,inventory_type_id) values(4,'',10,1,2);
 insert into inventory(id,name,weight,recycle_station_id,inventory_type_id) values(5,'',50,2,1);
-insert into inventory(id,name,weight,recycle_station_id,inventory_type_id) values(6,'',70,1,2);
+insert into inventory(id,name,weight,recycle_station_id,inventory_type_id) values(6,'',70,1,4);
 
 insert into inventory_log values(1,now(),4,1,1,2);
 insert into inventory_log values(2,now(),2,2,2,1);

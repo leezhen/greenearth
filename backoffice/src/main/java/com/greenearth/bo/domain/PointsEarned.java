@@ -82,4 +82,6 @@ public class PointsEarned {
 		builder.append("]");
 		return builder.toString();
 	}
+	
+	public static String _CustomerId = "customer.id";
 }

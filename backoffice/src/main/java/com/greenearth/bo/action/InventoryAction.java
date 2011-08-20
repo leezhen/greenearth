@@ -36,15 +36,6 @@ public class InventoryAction extends BaseAction {
 	@Autowired
 	private DistrictManager districtManager;
 	
-	@Autowired
-	private InventoryTypeManager inventoryTypeManager;
-	
-	@Autowired
-	private RecycleStationManager recycleStationManager;
-	
-	@Autowired
-	private CustomerManager customerManager;
-	
 	private Integer customerId;
 	
 	private Integer inventoryTypeId ;
@@ -78,27 +69,37 @@ public class InventoryAction extends BaseAction {
 	
 	public void sortInbound() {
 		try {
+			
+			List<InventoryLog> inventoryList = new ArrayList<InventoryLog>();
 			String s = super.getJson();
-			JavaType javaType = jsonMapper.constructParametricType(List.class, InventoryLog.class);
-			List<InventoryLog> inventoryList = jsonMapper.fromJson(s, javaType);
+			//List
+			if(s.startsWith("[")) {
+				JavaType javaType = jsonMapper.constructParametricType(List.class, InventoryLog.class);
+				inventoryList = jsonMapper.fromJson(s, javaType);
+			}
+			//Single
+			else {
+				InventoryLog inventoryLog = jsonMapper.fromJson(s, InventoryLog.class);
+				if(inventoryLog == null)
+					inventoryList = null;
+				else
+					inventoryList.add(inventoryLog);
+			}
+			
 			if(inventoryList != null) {
 				for (InventoryLog log:inventoryList) {
-					InventoryType inventoryType = inventoryTypeManager.getType(log.getInventoryTypeId());
-					RecycleStation station = recycleStationManager.getRecycleStation(log.getStationId());
-					Customer customer = new Customer();
-					customer.setId(log.getCustomerId());
-	//				Customer customer = customerManager.getCustomer(log.getCustomerId());
-					if (inventoryType != null && station != null && customer != null) {
-						log.setCreatedAt(new Date());
-						log.setCustomer(customer);
-						log.setStation(station);
-						log.setType(inventoryType);
-						inventoryManager.inbound(log);
-					}
+					inventoryManager.inbound(log);
 				}
 			}
+			else {
+				logger.error("jackson convertot exception");
+				Struts2Utils.renderJson("{success: false, msg: '入库失败'}");
+				return;
+			}
+			Struts2Utils.renderJson("{success: true, msg: '入库成功'}");
 		} catch (Exception e) {
 			log.error("入库操作失败",e);
+			Struts2Utils.renderJson("{success: false, msg: '入库失败'}");
 		}
 	}
 

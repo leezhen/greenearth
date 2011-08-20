@@ -18,9 +18,6 @@ public class InventoryLog {
 	private Float weight;
 	private Date createdAt;
 	private RecycleStation station;
-	private Long customerId;
-	private Integer stationId;
-	private Integer inventoryTypeId;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -71,26 +68,32 @@ public class InventoryLog {
 	
 	@Transient
 	public Long getCustomerId() {
-		return customerId;
+		return customer.getId();
 	}
 	public void setCustomerId(Long customerId) {
-		this.customerId = customerId;
+		Customer c = new Customer();
+		c.setId(customerId);
+		this.setCustomer(c);
 	}
 	
 	@Transient
 	public Integer getStationId() {
-		return stationId;
+		return station.getId();
 	}
 	public void setStationId(Integer stationId) {
-		this.stationId = stationId;
+		RecycleStation r = new RecycleStation();
+		r.setId(stationId);
+		this.setStation(r);
 	}
 	
 	@Transient
 	public Integer getInventoryTypeId() {
-		return inventoryTypeId;
+		return type.getId();
 	}
 	public void setInventoryTypeId(Integer inventoryTypeId) {
-		this.inventoryTypeId = inventoryTypeId;
+		InventoryType t = new InventoryType();
+		t.setId(inventoryTypeId);
+		this.setType(t);
 	}
 	
 	@Override

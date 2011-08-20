@@ -13,6 +13,13 @@ Ext.define('AM.view.point.Point', {
 	},
 	title: '查看积分详情',
 	
+	refs: [
+           {
+        	   ref: 'earnedPoint',
+        	   selector: 'earnedPoint'
+           }
+    ],
+	
 	initComponent: function() {
 		Ext.apply(this, {
 			items: [{
