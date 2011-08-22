@@ -6,8 +6,11 @@ Ext.define('AM.view.sorting.EarnedGrid', {
     store: 'Sortings',
     
     inventoryTypes: Ext.create('AM.store.ComboUtil',{
-    	urls: 'dict_inventoryTypes.do',
-    	autoLoad : true
+    	urls: 'dict_inventoryTypes.do'
+    }),
+    
+    reasons: Ext.create('AM.store.ComboUtil',{
+    	urls: 'dict_reasons.do',
     }),
     
     initComponent: function() {
@@ -25,6 +28,10 @@ Ext.define('AM.view.sorting.EarnedGrid', {
 				}},
 				{text: '分拣站', dataIndex: 'stationId', flex: 1},
 	            {text: '重量', dataIndex: 'weight', flex: 1},
+	            {text: '扣分原因', dataIndex: 'reasonId', flex: 1 ,renderer: function(v){
+	            	if(Ext.widget('earnedgrid').reasons.getById(v) != null)
+	            		return Ext.widget('earnedgrid').reasons.getById(v).data.name;
+				}},
 	            {
 	                xtype: 'actioncolumn',
 	                items: [{
@@ -50,7 +57,8 @@ Ext.define('AM.view.sorting.EarnedGrid', {
 				}]
 	        }]
 		});
-
+		this.inventoryTypes.load();
+		this.reasons.load();
 		this.callParent(arguments);
     }
 });

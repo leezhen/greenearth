@@ -3,11 +3,10 @@ Ext.define('AM.view.sorting.DeductionGrid', {
 	alias: 'widget.deductiongrid',
 	disabled: false,    
     border: true,
-    store: 'Sortings',
+    store: 'Deduction',
     
-    inventoryTypes: Ext.create('AM.store.ComboUtil',{
-    	urls: 'dict_inventoryTypes.do',
-    	autoLoad : true
+    reasons: Ext.create('AM.store.ComboUtil',{
+    	urls: 'dict_reasons.do',
     }),
     
     initComponent: function() {
@@ -21,12 +20,12 @@ Ext.define('AM.view.sorting.DeductionGrid', {
 			columns: [
 				{text: '顾客Id',  dataIndex:'customerId', flex: 1 },
 	            {text: '扣分原因', dataIndex: 'inventoryTypeId', flex: 1 , renderer: function(v){
-					return Ext.widget('deductiongrid').inventoryTypes.getById(v).data.name;
+					return Ext.widget('deductiongrid').reasons.getById(v).data.name;
 				}},
 	            {text: '扣分数', dataIndex: 'weight', flex: 1},
 	        ]
 		});
-
+		this.reasons.load();
 		this.callParent(arguments);
     }
 });

@@ -2,12 +2,15 @@ package com.greenearth.bo.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.SimpleExpression;
 import org.springframework.stereotype.Repository;
 
 import com.greenearth.bo.dao.Page;
 import com.greenearth.bo.dao.PointsDeductedDao;
 import com.greenearth.bo.dao.hibernate.HibernateDao;
 import com.greenearth.bo.domain.PointsDeducted;
+import com.greenearth.bo.domain.PointsEarned;
 
 @Repository
 public class PointsDeductedDaoImpl extends HibernateDao<PointsDeducted, Integer> implements PointsDeductedDao {
@@ -23,9 +26,9 @@ public class PointsDeductedDaoImpl extends HibernateDao<PointsDeducted, Integer>
 	}
 
 	@Override
-	public Page<PointsDeducted> getPointsDeducted(Page<PointsDeducted> p) {
-		// TODO Auto-generated method stub
-		return this.findPage(p, "from PointsDeducted");
+	public Page<PointsDeducted> getPointsDeducted(Page<PointsDeducted> p,Long customerId) {
+		SimpleExpression r = Restrictions.eq(PointsDeducted._CustomerId, customerId);
+		return this.findPage(p, r);
 	}
 
 }

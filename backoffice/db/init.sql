@@ -21,6 +21,7 @@ insert into menu(id, icon, code, caption, view_ref, parent_id) values(14, './ima
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(15, './images/kiva.png', 'inventoryLog', '查看入库记录', 'inventoryLogTab', 4);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(16, './images/kiva.png', 'station', '查看分拣站', 'stationTab',10);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(17, './images/kiva.png', 'pointRule', '积分规则设定', 'pointRuleTab',6);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(18, './images/kiva.png', 'partner', '供应商列表', 'partnerTab',8);
 
 insert into city(id, name) values (1, '成都');
 insert into city(id, name) values (2, '北京');

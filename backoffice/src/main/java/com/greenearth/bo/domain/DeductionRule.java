@@ -67,4 +67,6 @@ public class DeductionRule {
 	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
+	
+	public static String _ReasonId = "deductionReason.id" ;
 }

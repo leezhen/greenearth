@@ -14,7 +14,8 @@ Ext.application({
         'PointRule',
         'Sale',
         'SaleRecord',
-        'InventoryLog'
+        'InventoryLog',
+        'Partner'
     ],
            
     autoCreateViewport: true

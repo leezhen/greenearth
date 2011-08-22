@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.greenearth.bo.dao.Page;
 import com.greenearth.bo.dao.PartnerDao;
 import com.greenearth.bo.dao.hibernate.HibernateDao;
 import com.greenearth.bo.domain.Partner;
@@ -21,6 +22,11 @@ public class PartnerDaoImpl extends HibernateDao<Partner,Integer> implements Par
 	public Partner getPartner(Integer id) {
 		// TODO Auto-generated method stub
 		return get(id);
+	}
+
+	@Override
+	public Page<Partner> getPartners(Page<Partner> p) {
+		return this.findPage(p, "from Partner");
 	}
 
 }

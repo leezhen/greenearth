@@ -1,4 +1,4 @@
 Ext.define('AM.model.TotalPoint', {
     extend: 'Ext.data.Model',
-    fields: ['type', 'totalPoints']
+    fields: ['totalEarnedPoints', 'totalDeductedPoints','totalAvaliablePoints']
 });

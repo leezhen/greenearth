@@ -1,16 +1,15 @@
 // 分拣
-Ext.define('AM.view.sorting.Sorting', {
+Ext.define('AM.view.sorting.InboundPanel', {
 	extend: 'Ext.panel.Panel',
-	alias: 'widget.sorting',
+	alias: 'widget.inboundPanel',
 	
 	requires: ['AM.view.sorting.AddSorting',
-	           'AM.view.sorting.EarnedGrid',
-	           'AM.view.sorting.DeductionGrid',
-	           'AM.view.sorting.InboundPanel'],
+	           'AM.view.sorting.Deduct'],
 
 	closable: true,
 	layout: {
-		type: 'anchor',
+		type: 'hbox',
+		align: 'stretch'
 	},
 	title: '录入分拣结果',
 	
@@ -18,10 +17,10 @@ Ext.define('AM.view.sorting.Sorting', {
 		Ext.apply(this, {
 			items: [{
 				xtype: 'addsorting',
-				anchor: '40% 30%'
+				flex: 1
 			}, {
-				xtype: 'earnedgrid',
-				anchor: '100% 70%'
+				xtype: 'deduct',
+				flex: 1
 			}]
 		});
 

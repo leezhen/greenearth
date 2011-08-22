@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.greenearth.bo.domain.DeductionReason;
 import com.greenearth.bo.domain.InventoryType;
 import com.greenearth.bo.domain.Partner;
 import com.greenearth.bo.domain.RecycleStation;
@@ -32,5 +33,10 @@ public class DictionaryAction extends BaseAction {
 	public void partners() {
 		List<Partner> partners = dictManager.getPartners();
 		Struts2Utils.renderJson(partners);
+	}
+	
+	public void reasons() {
+		List<DeductionReason> reasons = dictManager.getReasons();
+		Struts2Utils.renderJson(reasons);
 	}
 }

@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.greenearth.bo.dao.InventoryDao;
 import com.greenearth.bo.dao.InventoryLogDao;
 import com.greenearth.bo.dao.Page;
+import com.greenearth.bo.domain.DeductionRule;
 import com.greenearth.bo.domain.Inventory;
 import com.greenearth.bo.domain.InventoryLog;
 import com.greenearth.bo.domain.InventoryType;
@@ -65,14 +66,28 @@ public class InventoryManager {
 	public void inbound(InventoryLog inbound) {
 		inbound.setCreatedAt(new Date());
 		inventoryLogDao.saveInventoryLog(inbound);
+		//积分
 		addInventory(inbound.getType(),inbound.getWeight(),inbound.getStation());
 		PointRule pointRule = pointRuleManager.findPointRule(inbound.getType());
 		if(pointRule == null) {
 			log.error("can't find pointRule for type:" + inbound.getType().getId());
-		}
-		else {
+		} else {
 			Float points = pointRule.getPoints()*inbound.getWeight()/pointRule.getWeight();
-			pointsManager.earnPoints(inbound.getCustomer(), points, inbound.getType());
+			pointsManager.addPoints(inbound.getCustomer(), points, inbound.getType());
+		}
+		//扣分
+		if(inbound.getReasonId() != null) {
+			log.info("need deduction, reasonId:" + inbound.getReasonId());
+			DeductionRule deductRule = pointRuleManager.findDeductionRule(inbound.getReasonId());
+			
+			if (deductRule == null) {
+				log.error("can't find deduction rule for reason:" + inbound.getReasonId());
+				return ;
+			} else {
+				Float points = deductRule.getPoints();
+				pointsManager.minusPoints(inbound.getCustomer(), points, inbound.getReasonId());
+			}
+			
 		}
 	}
 	
