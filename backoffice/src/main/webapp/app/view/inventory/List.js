@@ -36,7 +36,19 @@ Ext.define('AM.view.inventory.List', {
                 store: 'InventoryLog',   // same store GridPanel is using
                 dock: 'bottom',
                 displayInfo: true
-            }]
+            	}, {
+				xtype: 'toolbar',
+				dock: 'top',
+				items: [{
+					text: '录入',
+					action: 'add',
+					iconCls: 'add'
+				}, '-', {
+					text: '扣分',
+					action: 'cut',
+					iconCls: 'print'
+				}]
+			}]
 		});
 		this.callParent(arguments);
 		this.store.load();

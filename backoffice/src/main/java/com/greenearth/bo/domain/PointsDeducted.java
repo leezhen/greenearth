@@ -14,7 +14,7 @@ public class PointsDeducted {
 	private Long id;
 	private Customer customer;
 	private DeductionReason reason;
-	private Integer points;
+	private Float points;
 	private Date createdAt;
 	
 	@Id
@@ -43,10 +43,10 @@ public class PointsDeducted {
 	public void setReason(DeductionReason reason) {
 		this.reason = reason;
 	}
-	public Integer getPoints() {
+	public Float getPoints() {
 		return points;
 	}
-	public void setPoints(Integer points) {
+	public void setPoints(Float points) {
 		this.points = points;
 	}
 	public Date getCreatedAt() {
@@ -72,4 +72,5 @@ public class PointsDeducted {
 		return builder.toString();
 	}
 	
+	public static String _CustomerId = "customer.id";
 }

@@ -2,19 +2,35 @@ Ext.define('AM.controller.InventoryLog', {
     extend: 'Ext.app.Controller',
     
     stores: [
-        'InventoryLog'
+        'InventoryLog','Sortings'
     ],
  
     views: [
-        'inventory.List'
+        'inventory.List','inventory.SortWindow'
     ],
     
     models: [
-        'InventoryLog'
+        'InventoryLog','Sortings'
     ],
     
+    
     init: function() {
-        this.control(
-        );
+        this.control({
+        	'inventoryLog button[action=add]' : {
+        		click : this.addInventoryLog
+        	},
+        	'addsorting': {
+        		addSortRecord: this.addPointRecord
+        	}
+        });
+    },
+
+	addInventoryLog: function() {
+    	var win = Ext.widget('sortWindow');
+    	win.show();
+    },
+    
+    addPointRecord : function() {
+    	console.log("fuck");
     }
 });

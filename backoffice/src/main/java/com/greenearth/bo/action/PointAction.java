@@ -1,11 +1,13 @@
 package com.greenearth.bo.action;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.greenearth.bo.dao.Page;
 import com.greenearth.bo.domain.Customer;
+import com.greenearth.bo.domain.CustomerPoint;
 import com.greenearth.bo.domain.PointsDeducted;
 import com.greenearth.bo.domain.PointsEarned;
 import com.greenearth.bo.service.PointsManager;
@@ -16,6 +18,7 @@ import com.greenearth.bo.utils.Struts2Utils;
 @Scope("prototype")
 public class PointAction extends BaseAction {
 	
+	private static Logger log = Logger.getLogger(BaseAction.class);
 	@Autowired
 	private PointsManager pointsManager;
 	
@@ -31,8 +34,24 @@ public class PointAction extends BaseAction {
 	public void listDeductionPoints() {
 		Page<PointsDeducted> p = new Page<PointsDeducted>();
 		p.setStartAndLimit(start, limit);
-		p = pointsManager.getPointsDeducted(p);
+		p = pointsManager.getPointsDeducted(p,customerId);
 		Struts2Utils.renderJson(p);
+	}
+	
+	public void listTotal() {
+		Page<CustomerPoint> p = new Page<CustomerPoint>();
+		p.setStartAndLimit(start, limit);
+		p = pointsManager.getCustomerPoints(p,customerId);
+		Struts2Utils.renderJson(p);
+	}
+	
+	public void deductPoints() {
+		try {
+			String s = this.getJson();
+			log.info(s);
+		} catch (Exception e) {
+			
+		}
 	}
 
 	public void setCustomerId(Long customerId) {

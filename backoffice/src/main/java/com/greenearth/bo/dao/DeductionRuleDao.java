@@ -8,4 +8,5 @@ public interface DeductionRuleDao {
 	
 	public List<DeductionRule> getDeductionRules();
 	public Page<DeductionRule> getDeductionRules(Page<DeductionRule> p);
+	public DeductionRule findDeductionByReason(Integer reasonId);
 }

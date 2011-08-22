@@ -17,7 +17,7 @@ Ext.define('AM.controller.Customers', {
         'User', 'MenuItem', 'Customer'
     ],
     
-    requires: ['AM.store.ComboUtil'],
+    requires: ['AM.store.ComboUtil','AM.store.TotalPoint'],
     
     refs: [
            {ref: 'menuItemData', selector: 'menu dataview'},
@@ -134,6 +134,18 @@ Ext.define('AM.controller.Customers', {
         	mainView.add(tab);
     	}
     	mainView.setActiveTab(tab);
-    	this.getPointTab().items.items[0].store.load({params:{customerId: rec.data.id}});
+    	
+    	var items = this.getPointTab().items;
+    	items.items[0].store.load({params:{customerId: rec.data.id}});
+    	items.items[1].store.load({params:{customerId: rec.data.id}});
+    	var totalStore = new AM.store.TotalPoint();
+    	totalStore.load({
+    		params:{customerId: rec.data.id},
+    		callback: function(r,response,success) {
+    		if(success) {
+    			if(r[0] != null)
+    				items.items[2].loadRecord(r[0]);
+    		}
+    	}});
     }
 });

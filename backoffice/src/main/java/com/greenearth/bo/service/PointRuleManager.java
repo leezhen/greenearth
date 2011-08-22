@@ -35,4 +35,8 @@ public class PointRuleManager {
 	public PointRule findPointRule(InventoryType type) {
 		return pointRuleDao.getPointRuleByType(type.getId());
 	}
+	
+	public DeductionRule findDeductionRule(Integer reasonId) {
+		return deductionRuleDao.findDeductionByReason(reasonId);
+	}
 }
