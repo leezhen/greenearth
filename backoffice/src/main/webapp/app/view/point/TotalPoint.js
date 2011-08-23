@@ -1,35 +1,26 @@
 Ext.define('AM.view.point.TotalPoint', {
-	extend: 'Ext.grid.Panel',
+	extend: 'Ext.form.Panel',
 	alias: 'widget.totalPoint',
 
-//	cls: 'feed-grid',
     border: false,
     title: '积分统计',
-    
-    requires: ['Ext.toolbar.Toolbar'],
+    layout: 'anchor',
     
     initComponent: function() {
-		Ext.apply(this, {
-		    store: 'TotalPoint',
-		    viewConfig: {
-		    	forceFit: true
-		    },
-			/*viewConfig: {
-				plugins: [{
-					pluginId: 'preview',
-					ptype: 'preview',
-					bodyField: 'description',
-					previewExpanded: true
-				}]
-			},*/
-
-			columns: [
-			    {text: '积分类型' ,dataIndex: 'type' ,flex :1 },
-	            {text: '积分额', dataIndex: 'totalPoints', flex: 1}
-	            ],
-		});
+		this.items = [{
+			xtype: 'textfield',
+			name: 'totalEarnedPoints',
+	    	fieldLabel: '积分总额'
+	    }, {
+	    	xtype: 'textfield',
+	    	name: 'totalDeductedPoints',
+	        fieldLabel: '扣分总额'
+	    }, {
+	    	xtype: 'textfield',
+	    	name: 'totalAvaliablePoints',
+	    	fieldLabel: '可用积分'
+	    }];
 
 		this.callParent(arguments);
-//		this.store.load();
 	}
 });

@@ -1,17 +1,16 @@
-Ext.define('AM.store.TotalPoint', {
+Ext.define('AM.store.Deduction', {
     extend: 'Ext.data.Store',
-    model: 'AM.model.TotalPoint',
-    
+    model: 'AM.model.Deduction',
     remoteSort: true,
-    pageSize: 20,
-    
-    proxy: {
+	proxy: {
         type: 'ajax',
-        url: 'point_listTotal.do', 
+        api: {
+            update: 'point_deductPoints.do'
+        },
+        url: 'point_deductPoints.do',
         reader: {
             type: 'json',
             root: 'result',
-            totalProperty  : 'totalItems',
             successProperty: 'success'
         }
     }

@@ -23,4 +23,9 @@ public class DeductionRuleDaoImpl extends HibernateDao<DeductionRule,Integer> im
 		return this.findPage(p, "from DeductionRule");
 	}
 
+	@Override
+	public DeductionRule findDeductionByReason(Integer reasonId) {
+		return this.findUniqueBy(DeductionRule._ReasonId, reasonId);
+	}
+
 }

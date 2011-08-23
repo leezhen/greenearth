@@ -102,7 +102,7 @@ public class InventoryAction extends BaseAction {
 			Struts2Utils.renderJson("{success: false, msg: '入库失败'}");
 		}
 	}
-
+	
 	public void setCustomerId(Integer customerId) {
 		this.customerId = customerId;
 	}

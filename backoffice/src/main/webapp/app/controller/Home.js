@@ -70,6 +70,12 @@ Ext.define('AM.controller.Home', {
         	   closable: true,
         	   forceCreate: true,
         	   selector: 'inventoryLog'
+           },{
+        	   ref: 'partnerTab',
+        	   xtype: 'partnerList',
+        	   closable: true,
+        	   forceCreate: true,
+        	   selector: 'partnerList'
            }
     ],
  

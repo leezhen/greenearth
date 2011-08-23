@@ -1,7 +1,7 @@
 // 添加分拣
-Ext.define('AM.view.sorting.AddSorting', {
+Ext.define('AM.view.sorting.Deduct', {
 	extend: 'Ext.form.Panel',
-	alias : 'widget.addsorting',
+	alias : 'widget.deduct',
 
 	bodyPadding: 5,
     width: 350,
@@ -10,11 +10,6 @@ Ext.define('AM.view.sorting.AddSorting', {
     layout: 'anchor',
     
     requires: ['AM.store.ComboUtil'],
-    
-    inventoryTypes: Ext.create('AM.store.ComboUtil',{
-    	urls: 'dict_inventoryTypes.do',
-    	autoLoad : true
-    }),
     
     reasons: Ext.create('AM.store.ComboUtil',{
     	urls: 'dict_reasons.do',
@@ -29,29 +24,19 @@ Ext.define('AM.view.sorting.AddSorting', {
             name: 'customerId',
             allowBlank: false
         }, {
-            fieldLabel: '垃圾分类',
-            name: 'inventoryTypeId',
+            fieldLabel: '扣分原因',
+            name: 'reasonId',
             xtype: 'combo',
-            store: this.inventoryTypes,
+            store: this.reasons,
             allowBlank: false,
             emptyText: '请选择',
             queryMode: 'local',
             displayField: 'name',
             valueField: 'id'
         }, {
-            fieldLabel: '重量',
-            name: 'weight',
+            fieldLabel: '分数',
+            name: 'points',
             allowBlank: false
-        }, {
-        	fieldLabel: '扣分',
-            name: 'reasonId',
-            xtype: 'combo',
-            store: this.reasons,
-            allowBlank: true,
-            emptyText: '请选择',
-            queryMode: 'local',
-            displayField: 'name',
-            valueField: 'id'
         }];
 
         // Reset and Submit buttons

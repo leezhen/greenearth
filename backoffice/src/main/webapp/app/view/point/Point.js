@@ -8,8 +8,7 @@ Ext.define('AM.view.point.Point', {
 
 	closable: true,
 	layout: {
-		type: 'vbox',
-		align: 'stretch'
+		type: 'anchor',
 	},
 	title: '查看积分详情',
 	
@@ -24,15 +23,18 @@ Ext.define('AM.view.point.Point', {
 		Ext.apply(this, {
 			items: [{
 				xtype: 'earnedPoint',
-				flex: 1
+				flex: 1,
+				anchor: '100% 40%'
 			},
 			{
 				xtype: 'deductionPoint',
-				flex: 1
+				flex: 1,
+				anchor: '100% 40%'
 			},
 			{
 				xtype: 'totalPoint',
-				flex: 1
+				flex: 1,
+				anchor: '40% 20%'
 			}]
 		});
 

@@ -18,6 +18,7 @@ public class InventoryLog {
 	private Float weight;
 	private Date createdAt;
 	private RecycleStation station;
+	private Integer reasonId;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -96,6 +97,14 @@ public class InventoryLog {
 		this.setType(t);
 	}
 	
+	@Transient
+	public Integer getReasonId() {
+		return reasonId;
+	}
+	public void setReasonId(Integer reasonId) {
+		this.reasonId = reasonId;
+	}
+	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -111,6 +120,8 @@ public class InventoryLog {
 		builder.append(createdAt);
 		builder.append(", station=");
 		builder.append(station);
+		builder.append(", reasonId=");
+		builder.append(reasonId);
 		builder.append("]");
 		return builder.toString();
 	}

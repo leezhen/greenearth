@@ -17,7 +17,7 @@ Ext.define('AM.view.point.DeductionPoint', {
 
 			columns: [
 			    {text: 'id' ,dataIndex: 'id' ,flex :1 },
-	            {text: '积分额', dataIndex: 'points', flex: 1},
+	            {text: '扣分额', dataIndex: 'points', flex: 1},
 	            {text: '顾客', dataIndex: 'customer.name', flex: 1},
 	            {text: '原因', dataIndex: 'reason.name', flex: 1},
 	            {text: '创建时间', dataIndex: 'createdAt', flex: 1}
