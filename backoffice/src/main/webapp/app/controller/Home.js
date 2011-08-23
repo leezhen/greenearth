@@ -101,7 +101,6 @@ Ext.define('AM.controller.Home', {
     			var json = Ext.decode(response.responseText);
     			if (!json.loggedIn) {
     				Ext.widget('loginwindow');
-    				this.loadMenus();
     			} else {
     				this.loadMenus();
     			}
@@ -176,13 +175,15 @@ Ext.define('AM.controller.Home', {
         if (form.isValid()) {
             form.submit({
                 success: function(form, action) {
-                	Ext.Msg.alert('提示', action.result.msg);
+                	console.log(action.result);
+                	win.close();
+                	this.loadMenus();
                 },
                 failure: function(form, action) {
-                    Ext.Msg.alert('提示', action.result.msg);
-                }
+                    Ext.Msg.alert('提示', '登录失败');
+                },
+                scope: this
             });
         }
-        win.close();
     }
 });

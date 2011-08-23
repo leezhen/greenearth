@@ -4,9 +4,11 @@ public class LoginStatus {
 
     private final boolean loggedIn;
     private final String username;
+    private boolean success;
 
     public LoginStatus(boolean loggedIn, String username) {
         this.loggedIn = loggedIn;
+        this.success = loggedIn;
         this.username = username;
     }
 
@@ -17,4 +19,8 @@ public class LoginStatus {
     public String getUsername() {
         return username;
     }
+
+	public boolean isSuccess() {
+		return success;
+	} 
 }

@@ -69,7 +69,7 @@ public class User  {
      * @return the username associated with this user account;
      */
     @Basic(optional=false)
-    @Column(length=100)
+    @Column(length=100, unique = true)
     @Index(name="idx_user_username")
     public String getUsername() {
         return username;

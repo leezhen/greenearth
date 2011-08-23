@@ -22,9 +22,12 @@
     <logger name="org.springframework">
 		<level value="WARN" />
 	</logger>
-    <logger name="org.apache">
+    <!-- logger name="org.apache">
         <level value="WARN"/>
-    </logger>
+    </logger-->
+    <logger name="org.apache.shiro">
+        <level value="DEBUG"/>
+    </logger>    
     <logger name="org.logicalcobwebs.proxool">
         <level value="WARN"/>
     </logger>
