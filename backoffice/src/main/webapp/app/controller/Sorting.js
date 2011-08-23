@@ -16,7 +16,7 @@ Ext.define('AM.controller.Sorting', {
     
     init: function() {
         this.control({
-        	'sorting addsorting': {
+        	'addsorting': {
         		addSortRecord: this.addPointRecord
             },
             'earnedgrid button[action=confirm]': {
@@ -36,7 +36,7 @@ Ext.define('AM.controller.Sorting', {
     
     addPointRecord: function(form,value) {
     	var instance = Ext.ModelManager.create({
-    		customerId: value.customerId,
+    		cellPhone: value.cellPhone,
     		inventoryTypeId: value.inventoryTypeId,
     		weight: value.weight,
     		stationId:1,

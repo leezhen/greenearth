@@ -26,7 +26,7 @@ Ext.define('AM.view.sorting.AddSorting', {
     initComponent: function() {
     	this.items = [{
             fieldLabel: '客户ID',
-            name: 'customerId',
+            name: 'cellPhone',
             allowBlank: false
         }, {
             fieldLabel: '垃圾分类',

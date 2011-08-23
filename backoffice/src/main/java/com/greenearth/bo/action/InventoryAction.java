@@ -36,6 +36,9 @@ public class InventoryAction extends BaseAction {
 	@Autowired
 	private DistrictManager districtManager;
 	
+	@Autowired
+	private CustomerManager customerManager;
+	
 	private Integer customerId;
 	
 	private Integer inventoryTypeId ;
@@ -88,6 +91,13 @@ public class InventoryAction extends BaseAction {
 			
 			if(inventoryList != null) {
 				for (InventoryLog log:inventoryList) {
+					Customer customer  = customerManager.findCustomerByCellPhone(log.getCellPhone());
+					if(customer == null) {
+						logger.error("can't find customer by phone:" + log.getCellPhone());
+						Struts2Utils.renderJson("{success: false, msg: '手机号录入错误'}");
+						return;
+					}
+					log.setCustomer(customer);
 					inventoryManager.inbound(log);
 				}
 			}

@@ -1,5 +1,5 @@
 Ext.define('AM.view.point.Point', {
-	extend: 'Ext.panel.Panel',
+	extend: 'Ext.window.Window',
 	alias: 'widget.pointView',
 	
 	requires: ['AM.view.point.EarnedPoint',
@@ -11,6 +11,8 @@ Ext.define('AM.view.point.Point', {
 		type: 'anchor',
 	},
 	title: '查看积分详情',
+	height:600,
+	width:1000,
 	
 	refs: [
            {
