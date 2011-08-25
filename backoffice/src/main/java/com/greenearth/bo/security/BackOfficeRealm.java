@@ -56,6 +56,7 @@ public class BackOfficeRealm extends AuthorizingRealm {
     }
 
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authcToken) throws AuthenticationException {
+    	System.out.println("doGetAuthorizationInfo");
         UsernamePasswordToken token = (UsernamePasswordToken) authcToken;
         User user = userDao.findUser(token.getUsername());
         if( user != null ) {
@@ -67,6 +68,7 @@ public class BackOfficeRealm extends AuthorizingRealm {
 
 
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+    	System.out.println("doGetAuthorizationInfo");
         Long userId = (Long) principals.fromRealm(getName()).iterator().next();
         User user = userDao.getUser(userId);
         if( user != null ) {

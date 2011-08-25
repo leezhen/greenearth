@@ -1,20 +1,20 @@
-insert into role values (1, 'user', 'The default role given to all users.');
-insert into role values (2, 'admin', 'The administrator role only given to site admins');
+insert into role(id, name, description) values (1, 'user', 'The default role given to all users.');
+insert into role(id, name, description) values (2, 'admin', 'The administrator role only given to site admins');
 insert into role_permission values (2, 'customer:*');
 insert into user(id,username,email,password) values (1, 'admin', 'longzhi@gmail.com', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918');
 insert into user_role values (1, 2);
 
-insert into menu(id, icon, code, caption, view_ref, parent_id) values(1, null, null, '客户信息管理', null, null);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(1, null, 'customerManage', '客户信息管理', null, null);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(2, './images/kiva.png', 'customer', '客户信息查询', 'customerTab', 1);
-insert into menu(id, icon, code, caption, view_ref, parent_id) values(3, null, null, '收运管理', null, null);
-insert into menu(id, icon, code, caption, view_ref, parent_id) values(4, null, null, '分拣管理', null, null);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(3, null, 'shouyunManage', '收运管理', null, null);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(4, null, 'sortingManage', '分拣管理', null, null);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(5, './images/kiva.png', 'sorting', '分拣入库', 'sortingTab', 4);
-insert into menu(id, icon, code, caption, view_ref, parent_id) values(6, null, null, '积分管理', null, null);
-insert into menu(id, icon, code, caption, view_ref, parent_id) values(7, null, null, '出库销售管理', null, null);
-insert into menu(id, icon, code, caption, view_ref, parent_id) values(8, null, null, '合作商管理', null, null);
-insert into menu(id, icon, code, caption, view_ref, parent_id) values(9, null, null, '用户管理', null, null);
-insert into menu(id, icon, code, caption, view_ref, parent_id) values(10, null, null, '分拣站管理', null, null);
-insert into menu(id, icon, code, caption, view_ref, parent_id) values(11, null, null, '系统设置', null, null);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(6, null, 'pointsManage', '积分管理', null, null);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(7, null, 'salesManage', '出库销售管理', null, null);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(8, null, 'partnerManage', '合作商管理', null, null);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(9, null, 'userManage', '用户管理', null, null);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(10, null, 'stationManage', '分拣站管理', null, null);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(11, null, 'settings', '系统设置', null, null);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(12, './images/kiva.png', 'sales', '销售', 'saleTab', 7);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(13, './images/kiva.png', 'salesRecord', '销售记录', 'saleRecordTab', 7);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(14, './images/kiva.png', 'stock', '查看库存', 'stockTab', 4);
@@ -22,6 +22,10 @@ insert into menu(id, icon, code, caption, view_ref, parent_id) values(15, './ima
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(16, './images/kiva.png', 'station', '查看分拣站', 'stationTab',10);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(17, './images/kiva.png', 'pointRule', '积分规则设定', 'pointRuleTab',6);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(18, './images/kiva.png', 'partner', '供应商列表', 'partnerTab',8);
+
+insert into role_menu(role_id, menu_id) values(1, 2);
+insert into role_menu(role_id, menu_id) values(1, 5);
+insert into role_menu(role_id, menu_id) values(1, 7);
 
 insert into city(id, name) values (1, '成都');
 insert into city(id, name) values (2, '北京');

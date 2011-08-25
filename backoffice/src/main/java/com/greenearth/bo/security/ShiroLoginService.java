@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service("shiroLoginService")
 public class ShiroLoginService implements LoginService {
-    private Logger log = LoggerFactory.getLogger(ShiroLoginService.class);
+    private Logger logger = LoggerFactory.getLogger(ShiroLoginService.class);
 
     public LoginStatus getStatus() {
         Subject currentUser = SecurityUtils.getSubject();
@@ -25,14 +25,15 @@ public class ShiroLoginService implements LoginService {
         if (!getStatus().isLoggedIn()) {
             UsernamePasswordToken token = new UsernamePasswordToken(username, password);
             //this is all you have to do to support 'remember me' (no config - built in!):
-            token.setRememberMe(true);
+//            token.setRememberMe(true);
             Subject currentUser = SecurityUtils.getSubject();
             try {
                 currentUser.login(token);
-                log.debug("Login succeeded!");
+                logger.debug("Login succeeded!");
                 return new LoginStatus(currentUser.isAuthenticated(),
                         currentUser.getPrincipal().toString());
             } catch (AuthenticationException e) {
+//            	logger.error("Login failed: ", e);
                 return new LoginStatus(false, null);
             }
 

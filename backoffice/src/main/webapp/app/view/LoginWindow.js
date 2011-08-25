@@ -21,7 +21,7 @@ Ext.define('AM.view.LoginWindow', {
                 items: [
 					{
                         name : 'username',
-                        fieldLabel: '姓名',
+                        fieldLabel: '用户名',
                         allowBlank: false
                     },
 					{

@@ -18,6 +18,7 @@
  */
 package com.greenearth.bo.domain;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Basic;
@@ -28,6 +29,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -47,6 +50,8 @@ public class Role {
     private String description;
 
     private Set<String> permissions;
+    
+    private List<Menu> menus;
 
     protected Role() {
     }
@@ -102,6 +107,19 @@ public class Role {
         this.permissions = permissions;
     }
 
+    @ManyToMany
+    @JoinTable(name="role_menu",
+    	joinColumns=@JoinColumn(name="role_id"),
+    	inverseJoinColumns=@JoinColumn(name="menu_id")
+    )
+    @Cache(usage=CacheConcurrencyStrategy.READ_WRITE)
+	public List<Menu> getMenus() {
+		return menus;
+	}
+
+	public void setMenus(List<Menu> menus) {
+		this.menus = menus;
+	}
 }
 
 

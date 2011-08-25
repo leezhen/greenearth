@@ -2,6 +2,7 @@ package com.greenearth.bo.domain;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,6 +31,8 @@ public class Menu {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
+	@Column(unique = true)
 	public String getCode() {
 		return code;
 	}
@@ -71,6 +74,29 @@ public class Menu {
 	}
 	public void setSubMenus(List<Menu> subMenus) {
 		this.subMenus = subMenus;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((code == null) ? 0 : code.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Menu other = (Menu) obj;
+		if (code == null) {
+			if (other.code != null)
+				return false;
+		} else if (!code.equals(other.code))
+			return false;
+		return true;
 	}
 	@Override
 	public String toString() {
