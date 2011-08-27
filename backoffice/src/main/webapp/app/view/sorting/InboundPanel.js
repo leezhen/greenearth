@@ -5,13 +5,11 @@ Ext.define('AM.view.sorting.InboundPanel', {
 	
 	requires: ['AM.view.sorting.AddSorting',
 	           'AM.view.sorting.Deduct'],
-
-	closable: true,
 	layout: {
 		type: 'hbox',
 		align: 'stretch'
 	},
-	title: '录入分拣结果',
+	border: false,
 	
 	initComponent: function() {
 		Ext.apply(this, {
@@ -23,7 +21,6 @@ Ext.define('AM.view.sorting.InboundPanel', {
 				flex: 1
 			}]
 		});
-
 		this.callParent(arguments);
 	}
 });

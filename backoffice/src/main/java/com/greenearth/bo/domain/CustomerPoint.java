@@ -2,6 +2,7 @@ package com.greenearth.bo.domain;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -37,18 +38,23 @@ public class CustomerPoint {
 		this.customer = customer;
 	}
 	
+	@Column(columnDefinition="float not null default 0")
 	public Float getTotalEarnedPoints() {
 		return totalEarnedPoints;
 	}
 	public void setTotalEarnedPoints(Float totalEarnedPoints) {
 		this.totalEarnedPoints = totalEarnedPoints;
 	}
+	
+	@Column(columnDefinition="float not null default 0")
 	public Float getTotalDeductedPoints() {
 		return totalDeductedPoints;
 	}
 	public void setTotalDeductedPoints(Float totalDeductedPoints) {
 		this.totalDeductedPoints = totalDeductedPoints;
 	}
+	
+	@Column(columnDefinition="float not null default 0")
 	public Float getTotalAvaliablePoints() {
 		return totalAvaliablePoints;
 	}

@@ -14,7 +14,7 @@ Ext.define('AM.view.sale.Sale', {
     requires: ['AM.store.ComboUtil'],
 
     // Fields will be arranged vertically, stretched to full width
-    layout: 'anchor',
+//    layout: 'anchor',
     
     defaultType: 'textfield',
     

@@ -1,7 +1,6 @@
 Ext.define('AM.store.Customers', {
     extend: 'Ext.data.Store',
     model: 'AM.model.Customer',
-    autoLoad: true,
     remoteSort: true,
     pageSize: 20,
     
@@ -15,7 +14,7 @@ Ext.define('AM.store.Customers', {
         actionMethods: {
 //            create: 'POST',
 //            destroy: 'DELETE',
-            read: 'POST',
+            read: 'GET',
 //            update: 'POST'
         },
         url: 'customer_list.do', 

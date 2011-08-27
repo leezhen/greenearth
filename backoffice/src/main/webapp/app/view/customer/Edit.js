@@ -17,10 +17,6 @@ Ext.define('AM.view.customer.Edit', {
     	districtsStore: []
     },
     
-    citiesStore: Ext.create('AM.store.ComboUtil',{
-    	urls : 'customer_cities.do'
-    }),
-    
     citiesStore:Ext.create('Ext.data.Store', {
         fields: ['id', 'name'],
         autoLoad: false,
