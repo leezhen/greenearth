@@ -9,14 +9,18 @@ Ext.define('AM.controller.Sorting', {
     models: ['Sortings','Deduction'],
     
     refs: [
-           {ref: 'earnedGrid', selector: 'sorting earnedgrid'}
+           {ref: 'earnedGrid', selector: 'sorting earnedgrid'},
+           {ref: 'customerId' , selector : 'sorting textfield[name=cellPhone]'}
     ],
     
     requires: ['AM.store.ComboUtil'],
     
     init: function() {
         this.control({
-        	'sorting addsorting': {
+        	'addsorting': {
+        		addSortRecord: this.addPointRecord
+            },
+            'deduct': {
         		addSortRecord: this.addPointRecord
             },
             'earnedgrid button[action=confirm]': {
@@ -35,8 +39,15 @@ Ext.define('AM.controller.Sorting', {
     },
     
     addPointRecord: function(form,value) {
+    	var customerIdTxt = this.getCustomerId();
+    	if(customerIdTxt == null || customerIdTxt.value == null) {
+    		Ext.Msg.alert('警告','顾客信息未填写',function(){
+    			customerIdTxt.focus(true,true);
+    		});
+    		return;
+    	}
     	var instance = Ext.ModelManager.create({
-    		customerId: value.customerId,
+    		cellPhone: customerIdTxt.value,
     		inventoryTypeId: value.inventoryTypeId,
     		weight: value.weight,
     		stationId:1,

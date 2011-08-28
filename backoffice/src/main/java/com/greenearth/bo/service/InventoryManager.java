@@ -64,16 +64,18 @@ public class InventoryManager {
 	}
 	
 	public void inbound(InventoryLog inbound) {
-		inbound.setCreatedAt(new Date());
-		inventoryLogDao.saveInventoryLog(inbound);
-		//积分
-		addInventory(inbound.getType(),inbound.getWeight(),inbound.getStation());
-		PointRule pointRule = pointRuleManager.findPointRule(inbound.getType());
-		if(pointRule == null) {
-			log.error("can't find pointRule for type:" + inbound.getType().getId());
-		} else {
-			Float points = pointRule.getPoints()*inbound.getWeight()/pointRule.getWeight();
-			pointsManager.addPoints(inbound.getCustomer(), points, inbound.getType());
+		if (inbound.getWeight() != 0) {
+			inbound.setCreatedAt(new Date());
+			inventoryLogDao.saveInventoryLog(inbound);
+			//积分
+			addInventory(inbound.getType(),inbound.getWeight(),inbound.getStation());
+			PointRule pointRule = pointRuleManager.findPointRule(inbound.getType());
+			if(pointRule == null) {
+				log.error("can't find pointRule for type:" + inbound.getType().getId());
+			} else {
+				Float points = pointRule.getPoints()*inbound.getWeight()/pointRule.getWeight();
+				pointsManager.addPoints(inbound.getCustomer(), points, inbound.getType());
+			} 
 		}
 		//扣分
 		if(inbound.getReasonId() != null) {

@@ -7,4 +7,5 @@ public interface CustomerDao {
 	Page<Customer> getCustomers(Page<Customer> p, Customer c);
 	void saveCustomer(Customer c);
 	void removeCustomer(Long id);
+	Customer findCustomerByCellPhone(String cellPhone);
 }

@@ -32,5 +32,7 @@ public class CustomerManager {
 		customerDao.removeCustomer(id);
 	}
 	
-	
+	public Customer findCustomerByCellPhone(String cellPhone) {
+		return customerDao.findCustomerByCellPhone(cellPhone);
+	}
 }

@@ -22,9 +22,10 @@ Ext.define('AM.view.sorting.EarnedGrid', {
 		    },
 			
 			columns: [
-				{text: '顾客',  dataIndex:'customerId', flex: 1},
+				{text: '顾客',  dataIndex:'cellPhone', flex: 1},
 	            {text: '分类', dataIndex: 'inventoryTypeId', flex: 1 ,renderer: function(v){
-					return Ext.widget('earnedgrid').inventoryTypes.getById(v).data.name;
+					if(Ext.widget('earnedgrid').inventoryTypes.getById(v) != null)
+						return Ext.widget('earnedgrid').inventoryTypes.getById(v).data.name;
 				}},
 				{text: '分拣站', dataIndex: 'stationId', flex: 1},
 	            {text: '重量', dataIndex: 'weight', flex: 1},
