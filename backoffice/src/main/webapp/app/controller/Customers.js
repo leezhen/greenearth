@@ -125,26 +125,22 @@ Ext.define('AM.controller.Customers', {
     },
     
     viewPoints: function(grid,rec){
-    	var mainView = this.getMainView();
-    	tab = mainView.down('[viewCode=point]');
-    	if (!tab) {
-    		tab = this.getPointTab();
-    		tab.viewCode = 'point';
-        	tab.enable();
-        	mainView.add(tab);
-    	}
-    	mainView.setActiveTab(tab);
-    	
-    	var items = this.getPointTab().items;
-    	items.items[0].store.load({params:{customerId: rec.data.id}});
-    	items.items[1].store.load({params:{customerId: rec.data.id}});
+    	var pointView = Ext.widget('pointView');
+    	pointView.show();
+    	var items = pointView.items;
+    	items.items[0].store.proxy.extraParams = {customerId: rec.data.id};
+    	items.items[1].store.proxy.extraParams = {customerId: rec.data.id};
+    	items.items[0].store.load();
+    	items.items[1].store.load();
     	var totalStore = new AM.store.TotalPoint();
     	totalStore.load({
     		params:{customerId: rec.data.id},
     		callback: function(r,response,success) {
     		if(success) {
-    			if(r[0] != null)
-    				items.items[2].loadRecord(r[0]);
+    			if(r[0] != null) {
+    				items.items[2].show();
+    				items.items[2].getForm().loadRecord(r[0]);
+    			}
     		}
     	}});
     }

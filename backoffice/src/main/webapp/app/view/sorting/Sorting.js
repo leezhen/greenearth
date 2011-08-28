@@ -17,14 +17,19 @@ Ext.define('AM.view.sorting.Sorting', {
 	initComponent: function() {
 		Ext.apply(this, {
 			items: [{
-				xtype: 'addsorting',
-				anchor: '40% 30%'
+				xtype: 'textfield',
+				fieldLabel: '客户ID',
+	            name: 'cellPhone',
+	            allowBlank: false,
+			},{
+				xtype: 'inboundPanel',
+				anchor: '60% 20%'
 			}, {
 				xtype: 'earnedgrid',
-				anchor: '100% 70%'
+				anchor: '100% 75%'
 			}]
 		});
-
 		this.callParent(arguments);
+		this.items.items[0].focus(true,true);
 	}
 });

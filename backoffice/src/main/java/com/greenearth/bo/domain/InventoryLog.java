@@ -19,6 +19,7 @@ public class InventoryLog {
 	private Date createdAt;
 	private RecycleStation station;
 	private Integer reasonId;
+	private String cellPhone;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -105,6 +106,13 @@ public class InventoryLog {
 		this.reasonId = reasonId;
 	}
 	
+	@Transient
+	public String getCellPhone() {
+		return cellPhone;
+	}
+	public void setCellPhone(String cellPhone) {
+		this.cellPhone = cellPhone;
+	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

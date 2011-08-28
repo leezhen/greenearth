@@ -104,12 +104,13 @@ public class PointsManager {
 			customerPoint.setCustomer(customer);
 			customerPoint.setCreatedAt(new Date());
 			customerPoint.setTotalAvaliablePoints(points);
-			customerPoint.setTotalAvaliablePoints(points);
-			customerPoint.setTotalEarnedPoints((float) 0.0);
+			customerPoint.setTotalEarnedPoints(points);
+			customerPoint.setTotalDeductedPoints((float) 0.0);
+		} else {
+			customerPoint.setModifiedAt(new Date());
+			customerPoint.setTotalEarnedPoints(customerPoint.getTotalEarnedPoints() + points);
+			customerPoint.setTotalAvaliablePoints(customerPoint.getTotalAvaliablePoints() + points);
 		}
-		customerPoint.setModifiedAt(new Date());
-		customerPoint.setTotalEarnedPoints(customerPoint.getTotalEarnedPoints() + points);
-		customerPoint.setTotalAvaliablePoints(customerPoint.getTotalAvaliablePoints() + points);
 		customerPointDao.save(customerPoint);
 	}
 	

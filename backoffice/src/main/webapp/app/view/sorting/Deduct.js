@@ -20,10 +20,6 @@ Ext.define('AM.view.sorting.Deduct', {
     
     initComponent: function() {
     	this.items = [{
-            fieldLabel: '客户ID',
-            name: 'customerId',
-            allowBlank: false
-        }, {
             fieldLabel: '扣分原因',
             name: 'reasonId',
             xtype: 'combo',
@@ -33,10 +29,6 @@ Ext.define('AM.view.sorting.Deduct', {
             queryMode: 'local',
             displayField: 'name',
             valueField: 'id'
-        }, {
-            fieldLabel: '分数',
-            name: 'points',
-            allowBlank: false
         }];
 
         // Reset and Submit buttons

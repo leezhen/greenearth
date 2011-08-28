@@ -25,10 +25,6 @@ Ext.define('AM.view.sorting.AddSorting', {
     
     initComponent: function() {
     	this.items = [{
-            fieldLabel: '客户ID',
-            name: 'customerId',
-            allowBlank: false
-        }, {
             fieldLabel: '垃圾分类',
             name: 'inventoryTypeId',
             xtype: 'combo',
@@ -42,17 +38,18 @@ Ext.define('AM.view.sorting.AddSorting', {
             fieldLabel: '重量',
             name: 'weight',
             allowBlank: false
-        }, {
-        	fieldLabel: '扣分',
-            name: 'reasonId',
-            xtype: 'combo',
-            store: this.reasons,
-            allowBlank: true,
-            emptyText: '请选择',
-            queryMode: 'local',
-            displayField: 'name',
-            valueField: 'id'
-        }];
+        }
+        //{
+//        	fieldLabel: '扣分',
+//            name: 'reasonId',
+//            xtype: 'combo',
+//            store: this.reasons,
+//            allowBlank: true,
+//            emptyText: '请选择',
+//            queryMode: 'local',
+//            displayField: 'name',
+//            valueField: 'id'
+        ];
 
         // Reset and Submit buttons
         this.buttons = [{

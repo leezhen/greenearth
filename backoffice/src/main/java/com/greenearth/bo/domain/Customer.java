@@ -125,4 +125,6 @@ public class Customer {
 		builder.append("]");
 		return builder.toString();
 	}
+	
+	public static String _CellPhone = "cellphone" ;
 }

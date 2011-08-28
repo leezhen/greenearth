@@ -19,9 +19,6 @@ Ext.define('AM.controller.InventoryLog', {
         	'inventoryLog button[action=add]' : {
         		click : this.addInventoryLog
         	},
-        	'addsorting': {
-        		addSortRecord: this.addPointRecord
-        	}
         });
     },
 
@@ -30,7 +27,4 @@ Ext.define('AM.controller.InventoryLog', {
     	win.show();
     },
     
-    addPointRecord : function() {
-    	console.log("fuck");
-    }
 });
