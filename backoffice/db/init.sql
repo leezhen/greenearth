@@ -22,8 +22,10 @@ insert into menu(id, icon, code, caption, view_ref, parent_id) values(15, './ima
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(16, './images/kiva.png', 'station', '查看分拣站', 'stationTab',10);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(17, './images/kiva.png', 'pointRule', '积分规则设定', 'pointRuleTab',6);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(18, './images/kiva.png', 'partner', '供应商列表', 'partnerTab',8);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(19, './images/kiva.png', 'directTest', 'Direct测试', 'directTestTab', 1);
 
 insert into role_menu(role_id, menu_id) values(1, 2);
+insert into role_menu(role_id, menu_id) values(1, 19);
 insert into role_menu(role_id, menu_id) values(1, 5);
 insert into role_menu(role_id, menu_id) values(1, 7);
 

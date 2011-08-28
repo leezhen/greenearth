@@ -69,5 +69,5 @@ Ext.define('AM.view.customer.Grid', {
 		});
 		this.addEvents('viewPoints');
 		this.callParent(arguments);
-	},
+	}
 });

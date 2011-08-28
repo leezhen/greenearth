@@ -15,7 +15,8 @@ Ext.application({
         'Sale',
         'SaleRecord',
         'InventoryLog',
-        'Partner'
+        'Partner',
+        'DirectTest'
     ],
            
     autoCreateViewport: true
@@ -24,5 +25,6 @@ Ext.application({
 Ext.Loader.setPath('Ext.ux', './ext/ux');
 Ext.require([
     'Ext.ux.grid.FilterRow',
-    'Ext.ux.form.field.ClearButton'
+    'Ext.ux.form.field.ClearButton',
+    'Ext.direct.*'
 ]);

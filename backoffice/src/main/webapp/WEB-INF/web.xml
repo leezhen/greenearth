@@ -6,6 +6,47 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath*:/beans/beans.xml</param-value>
 	</context-param>
+	
+	<!-- DirectJNgine servlet -->
+	<servlet>
+		<servlet-name>DjnServlet</servlet-name>
+		<servlet-class>
+		  com.softwarementors.extjs.djn.servlet.DirectJNgineServlet
+		</servlet-class>
+		<init-param>
+			<param-name>providersUrl</param-name>
+			<param-value>djn/directprovider</param-value>
+		</init-param>
+		<init-param>
+			<param-name>apis</param-name>
+			<param-value>
+				demo
+			</param-value>
+		</init-param>
+		<init-param>
+			<param-name>demo.apiFile</param-name>
+			<param-value>demo/Api.js</param-value>
+		</init-param>
+		<init-param>
+			<param-name>demo.apiNamespace</param-name>
+			<param-value>Ext.app</param-value>
+		</init-param>
+		<init-param>
+			<param-name>demo.classes</param-name>
+			<param-value>
+				com.greenearth.bo.direct.Poll,
+				com.greenearth.bo.direct.TestAction
+			</param-value>
+		</init-param>
+		
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>DjnServlet</servlet-name>
+		<url-pattern>/djn/directprovider/*</url-pattern>
+	</servlet-mapping>
+	
 
     <filter>
         <filter-name>encodingFilter</filter-name>

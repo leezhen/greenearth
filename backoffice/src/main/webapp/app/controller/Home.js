@@ -6,7 +6,7 @@ Ext.define('AM.controller.Home', {
     ],
  
     views: [
-        'Home', 'customer.Grid', 'sorting.Sorting','stock.List','station.List', 'LoginWindow'
+        'Home', 'customer.Grid', 'sorting.Sorting','stock.List','station.List', 'LoginWindow', 'customer.DirectTest'
     ],
     
     models: [
@@ -76,6 +76,13 @@ Ext.define('AM.controller.Home', {
         	   closable: true,
         	   forceCreate: true,
         	   selector: 'partnerList'
+           },{
+        	   // Just for Direct test
+        	   ref: 'directTestTab',
+        	   xtype: 'directtest',
+        	   closable: true,
+        	   forceCreate: true,
+        	   selector: 'directtest'
            }
     ],
  
@@ -86,7 +93,7 @@ Ext.define('AM.controller.Home', {
             },
             'loginwindow button[action=login]': {
                 click: this.onLogin
-            },
+            }
         });
     },
     

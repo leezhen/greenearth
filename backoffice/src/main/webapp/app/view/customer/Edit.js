@@ -143,7 +143,7 @@ Ext.define('AM.view.customer.Edit', {
     		store: this.districtsStore,
             queryMode: 'local',
             displayField: 'name',
-            valueField: 'id',
+            valueField: 'id'
     	});
     	
     	return this.districts;
