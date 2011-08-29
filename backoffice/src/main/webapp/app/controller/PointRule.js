@@ -17,6 +17,9 @@ Ext.define('AM.controller.PointRule', {
         'PointRule','DeductionPointRule'
     ],
     
+    refs: [{ref: 'earnPointRule', selector: 'earnPointRule'},
+           {ref: 'deductionPointRule', selector: 'deductionPointRule'}],
+    
     init: function() {
         this.control({
         	'earnPointRule': {
@@ -60,5 +63,51 @@ Ext.define('AM.controller.PointRule', {
     	var view = Ext.widget('editDeductPointRule');
     	view.setTitle('编辑扣规则');
     	view.down('form').loadRecord(record);
+    },
+    
+    loadEarnPointRule: function() {
+    	this.getEarnPointRule().store.load();
+    },
+    
+    loadDeductionPointRule: function() {
+    	this.getDeductionPointRule().store.load();
+    },
+    
+    saveEarnPointRule: function(button) {
+    	var win    = button.up('window'),
+        	form   = win.down('form').getForm();
+    	
+    	if(form.isValid()) {
+    		form.submit({
+                success: function(form, action) {
+                   Ext.Msg.alert('提示', action.result.msg);
+                   this.loadEarnPointRule();
+                   win.close();
+                },
+                failure: function(form, action) {
+                    Ext.Msg.alert('提示', action.result.msg);
+                },
+                scope: this
+            });
+    	}
+    },
+    
+    saveDeductionPointRule: function(button) {
+    	var win    = button.up('window'),
+        	form   = win.down('form').getForm();
+    	
+    	if(form.isValid()) {
+    		form.submit({
+                success: function(form, action) {
+                   Ext.Msg.alert('提示', action.result.msg);
+                   this.loadDeductionPointRule();
+                   win.close();
+                },
+                failure: function(form, action) {
+                    Ext.Msg.alert('提示', action.result.msg);
+                },
+                scope: this
+            });
+    	}
     }
 });

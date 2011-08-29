@@ -6,7 +6,7 @@ Ext.define('AM.controller.Stock', {
     ],
  
     views: [
-        'stock.List'
+        'stock.List','stock.Search','stock.stockPanel'
     ],
     
     models: [
@@ -15,6 +15,9 @@ Ext.define('AM.controller.Stock', {
     
     init: function() {
         this.control(
+//        	'stocksearch': {
+//        		
+//        	}
         );
     }
 });

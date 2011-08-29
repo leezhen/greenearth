@@ -10,15 +10,18 @@ Ext.define('AM.view.point.TotalPoint', {
 		this.items = [{
 			xtype: 'textfield',
 			name: 'totalEarnedPoints',
-	    	fieldLabel: '积分总额'
+	    	fieldLabel: '积分总额',
+	    	readOnly:true
 	    }, {
 	    	xtype: 'textfield',
 	    	name: 'totalDeductedPoints',
-	        fieldLabel: '扣分总额'
+	        fieldLabel: '扣分总额',
+	        readOnly:true
 	    }, {
 	    	xtype: 'textfield',
 	    	name: 'totalAvaliablePoints',
-	    	fieldLabel: '可用积分'
+	    	fieldLabel: '可用积分',
+	    	readOnly:true
 	    }];
 
 		this.callParent(arguments);

@@ -3,7 +3,6 @@ Ext.define('AM.view.stock.List', {
 	alias: 'widget.stocklist',
 
 //	cls: 'feed-grid',
-	disabled: true,    
     border: false,
     title: '库存信息',
     

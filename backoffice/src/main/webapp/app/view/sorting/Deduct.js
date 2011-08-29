@@ -28,17 +28,18 @@ Ext.define('AM.view.sorting.Deduct', {
             emptyText: '请选择',
             queryMode: 'local',
             displayField: 'name',
+            enableKeyEvents: true,
             valueField: 'id'
         }];
 
         // Reset and Submit buttons
         this.buttons = [{
-            text: '添加',
+            text: '扣分',
             formBind: true, //only enabled once the form is valid
             handler: function() {
-                var form = this.up('form').getForm();
-                if (form.isValid()) {
-                	Ext.widget('addsorting').fireEvent('addSortRecord', form, form.getValues());
+                var form = this.up('form');
+                if (form.getForm().isValid()) {
+                	form.fireEvent('addSortRecord', form, form.getValues());
                 }
             }
         }];	

@@ -67,4 +67,8 @@ public class DictionaryManager {
 	public List<Partner> getPartners() {
 		return partnerDao.getPartners();
 	}
+	
+	public DeductionReason getReason(Integer id) {
+		return reasonDao.get(id);
+	}
 }

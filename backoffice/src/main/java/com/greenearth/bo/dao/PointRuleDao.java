@@ -8,4 +8,6 @@ public interface PointRuleDao {
 	public List<PointRule> getPointRules();
 	public Page<PointRule> getPointRules(Page<PointRule> p);
 	public PointRule getPointRuleByType(Integer typeId);
+	public PointRule get(Integer id);
+	void save(PointRule rule);
 }

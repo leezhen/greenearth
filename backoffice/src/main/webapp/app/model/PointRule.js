@@ -1,4 +1,4 @@
 Ext.define('AM.model.PointRule', {
     extend: 'Ext.data.Model',
-    fields: ['id', 'pointsType.name','inventoryType.name', 'weight', 'points','createdAt','modifiedAt','createdBy','modifiedBy']
+    fields: ['id', 'pointsType.name','inventoryType.name', 'weight', 'points','createdAt','modifiedAt','createdBy','modifiedBy','inventoryType.id']
 });

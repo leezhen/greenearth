@@ -12,12 +12,16 @@ Ext.define('AM.view.pointRule.EditEarnPointRule', {
     	title: '积分规则',
     },
     
+    inventoryTypes: Ext.create('AM.store.ComboUtil',{
+    	urls : 'dict_inventoryTypes.do'
+    }),
+    
     initComponent: function() {
     	Ext.apply(this, {
     		items: [
             {
                 xtype: 'form',
-                url: 'customer_save.do',
+                url: 'pointRule_savePointRules.do',
                 items: [
 					{
                         xtype: 'hiddenfield',
@@ -25,14 +29,19 @@ Ext.define('AM.view.pointRule.EditEarnPointRule', {
                         fieldLabel: 'ID'
                     },
 					{
-                        xtype: 'textfield',
-                        name : 'type',
                         fieldLabel: '类型',
-                        allowBlank: false
+                        name: 'inventoryType.id',
+                        xtype: 'combo',
+                        store: this.inventoryTypes,
+                        allowBlank: false,
+                        emptyText: '请选择',
+                        queryMode: 'local',
+                        displayField: 'name',
+                        valueField: 'id'
                     },
                     {
                         xtype: 'textfield',
-                        name : 'quantity',
+                        name : 'weight',
                         fieldLabel: '重量',
                         allowBlank: false
                     },
@@ -59,5 +68,6 @@ Ext.define('AM.view.pointRule.EditEarnPointRule', {
         ];
  
         this.callParent(arguments);
+        this.inventoryTypes.load();
     },
 });

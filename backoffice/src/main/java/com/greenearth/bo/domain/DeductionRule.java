@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class DeductionRule {
@@ -28,7 +29,7 @@ public class DeductionRule {
 		this.id = id;
 	}
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "dedcution_reason_id")
 	public DeductionReason getDeductionReason() {
 		return deductionReason;

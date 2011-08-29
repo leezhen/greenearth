@@ -23,10 +23,11 @@ Ext.define('AM.view.sorting.Sorting', {
 	            allowBlank: false,
 			},{
 				xtype: 'inboundPanel',
-				anchor: '60% 20%'
+				anchor: '60%',
+				height: 100
 			}, {
 				xtype: 'earnedgrid',
-				anchor: '100% 75%'
+				anchor: '100% -120'
 			}]
 		});
 		this.callParent(arguments);

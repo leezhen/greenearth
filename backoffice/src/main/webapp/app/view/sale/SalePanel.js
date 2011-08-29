@@ -5,10 +5,6 @@ Ext.define('AM.view.sale.SalePanel', {
 	requires: ['AM.view.sale.Sale'],
 
 	closable: true,
-	layout: {
-		type: 'vbox',
-		align: 'stretch'
-	},
 	title: '销售',
 	
 	initComponent: function() {

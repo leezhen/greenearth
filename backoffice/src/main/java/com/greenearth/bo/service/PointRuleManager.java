@@ -32,11 +32,27 @@ public class PointRuleManager {
 		return deductionRuleDao.getDeductionRules(p);
 	}
 	
+	public PointRule getPointRule(Integer id) {
+		return pointRuleDao.get(id);
+	}
+	
+	public DeductionRule getDeductionRule(Integer id) {
+		return deductionRuleDao.get(id);
+	}
+	
 	public PointRule findPointRule(InventoryType type) {
 		return pointRuleDao.getPointRuleByType(type.getId());
 	}
 	
 	public DeductionRule findDeductionRule(Integer reasonId) {
 		return deductionRuleDao.findDeductionByReason(reasonId);
+	}
+	
+	public void savePointRule(PointRule rule) {
+		pointRuleDao.save(rule);
+	}
+	
+	public void saveDeductionRule(DeductionRule rule) {
+		deductionRuleDao.save(rule);
 	}
 }

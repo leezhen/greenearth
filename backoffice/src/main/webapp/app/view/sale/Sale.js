@@ -4,9 +4,8 @@ Ext.define('AM.view.sale.Sale', {
 	alias : 'widget.saleOp',
 	
 	bodyPadding: 5,
-    width: 350,
-    
-    title: '销售',
+    width: 300,
+    height: 250,
 
     // The form will submit an AJAX request to this URL when submitted
     url: 'sellRecord_save.do',
@@ -14,9 +13,7 @@ Ext.define('AM.view.sale.Sale', {
     requires: ['AM.store.ComboUtil'],
 
     // Fields will be arranged vertically, stretched to full width
-//    layout: 'anchor',
-    
-    defaultType: 'textfield',
+    layout: 'anchor',
     
     inventoryTypes: Ext.create('AM.store.ComboUtil',{
     	urls : 'dict_inventoryTypes.do'
@@ -40,11 +37,19 @@ Ext.define('AM.view.sale.Sale', {
             emptyText: '请选择',
             queryMode: 'local',
             displayField: 'name',
+            enableKeyEvents: true,
             valueField: 'id'
         },{
             fieldLabel: '出库数量',
             name: 'weight',
-            allowBlank: false
+            allowBlank: false,
+            minValue: 0,
+            xtype: 'numberfield',
+            enableKeyEvents: true,
+            keyNavEnabled: false,
+            hideTrigger: true,
+            mouseWheelEnabled: false,
+            maxLength: 9
         }, {
             fieldLabel: '分拣站',
             name: 'recycleStationId',
@@ -54,6 +59,7 @@ Ext.define('AM.view.sale.Sale', {
             emptyText: '请选择',
             queryMode: 'local',
             displayField: 'name',
+            enableKeyEvents: true,
             valueField: 'id'
         },{
             fieldLabel: '合作商',
@@ -64,15 +70,30 @@ Ext.define('AM.view.sale.Sale', {
             emptyText: '请选择',
             queryMode: 'local',
             displayField: 'name',
+            enableKeyEvents: true,
             valueField: 'id'
         },{
+        	xtype: 'numberfield',
             fieldLabel: '单价',
             name: 'price',
-            allowBlank: false
+            minValue: 0,
+            allowBlank: false,
+            enableKeyEvents: true,
+            keyNavEnabled: false,
+            hideTrigger: true,
+            maxLength: 9,
+            mouseWheelEnabled: false
         },{
+        	xtype: 'numberfield',
             fieldLabel: '总价',
             name: 'totalAmount',
-            allowBlank: false
+            allowBlank: false,
+            minValue: 0,
+            hideTrigger: true,
+            keyNavEnabled: false,
+            enableKeyEvents: true,
+            maxLength: 12,
+            mouseWheelEnabled: false
         }];
 
         // Reset and Submit buttons
@@ -81,7 +102,6 @@ Ext.define('AM.view.sale.Sale', {
             formBind: true, //only enabled once the form is valid
             handler: function() {
                 var form = this.up('form').getForm();
-                	form.url = 'sellRecord_save.do';
                 if (form.isValid()) {
                     form.submit({
                         success: function(form, action) {
@@ -100,5 +120,6 @@ Ext.define('AM.view.sale.Sale', {
         this.inventoryTypes.load();
         this.partners.load();
         this.stations.load();
+        this.getForm().url = 'sellRecord_save.do';
     }
 });
