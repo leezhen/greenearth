@@ -2,6 +2,8 @@ package com.greenearth.bo.action;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +25,7 @@ public class BaseAction extends ActionSupport implements ServletRequestAware,
     protected int limit = 20;
     protected HttpServletResponse response;
 	protected HttpServletRequest request;
-	protected JsonMapper jsonMapper = JsonMapper.buildNormalMapper();
+	protected Map<String,Object> params = new HashMap<String,Object>();
     
 	@Override
 	public void setServletResponse(HttpServletResponse response) {
@@ -41,16 +43,5 @@ public class BaseAction extends ActionSupport implements ServletRequestAware,
 
 	public void setLimit(int limit) {
 		this.limit = limit;
-	}
-	
-	protected String getJson() {
-		String str = null;
-		try {
-			str = CharStreams.toString(new InputStreamReader(request.getInputStream(), "UTF-8"));
-		} catch (IOException e) {
-			logger.warn("Error occured converting InputStream to String: ", e);
-		}
-		
-		return str;
 	}
 }

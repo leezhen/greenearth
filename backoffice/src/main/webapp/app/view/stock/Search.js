@@ -29,6 +29,7 @@ Ext.define('AM.view.stock.Search', {
             emptyText: '请选择',
             queryMode: 'local',
             displayField: 'name',
+            enableKeyEvents: true,
             valueField: 'id'
         },{
         	fieldLabel: '分拣站',
@@ -38,6 +39,7 @@ Ext.define('AM.view.stock.Search', {
             emptyText: '请选择',
             queryMode: 'local',
             displayField: 'name',
+            enableKeyEvents: true,
             valueField: 'id'
         }];
 
@@ -45,12 +47,6 @@ Ext.define('AM.view.stock.Search', {
         this.buttons = [{
 	            text: '查询',
 	            formBind: true, //only enabled once the form is valid
-	            handler: function() {
-	                var form = this.up('form');
-	                if (form.getForm().isValid()) {
-	                	;
-	                }
-                }
         	},{
             	text: '重置',
             	handler: function() {

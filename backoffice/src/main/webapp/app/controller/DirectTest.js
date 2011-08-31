@@ -21,7 +21,7 @@ Ext.define('AM.controller.DirectTest', {
     },
     
     onLaunch: function() {
-        Ext.direct.Manager.addProvider(Ext.app.REMOTING_API, {
+        Ext.direct.Manager.addProvider(Ext.app.REMOTING_API/*, {
             type:'polling',
             url: Ext.app.POLLING_URLS.message,
             listeners: {
@@ -30,7 +30,7 @@ Ext.define('AM.controller.DirectTest', {
                     this.updateMain('<i>' + event.data + '</i>');
                 }
             }
-        });    	
+        }*/);    	
     },
     
     doEcho: function(button){

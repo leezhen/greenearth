@@ -121,5 +121,6 @@ Ext.define('AM.view.sale.Sale', {
         this.partners.load();
         this.stations.load();
         this.getForm().url = 'sellRecord_save.do';
+        this.items.items[0].focus(true,true);
     }
 });

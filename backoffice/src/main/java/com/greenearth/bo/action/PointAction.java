@@ -44,15 +44,6 @@ public class PointAction extends BaseAction {
 		p = pointsManager.getCustomerPoints(p,customerId);
 		Struts2Utils.renderJson(p);
 	}
-	
-	public void deductPoints() {
-		try {
-			String s = this.getJson();
-			log.info(s);
-		} catch (Exception e) {
-			
-		}
-	}
 
 	public void setCustomerId(Long customerId) {
 		this.customerId = customerId;

@@ -19,7 +19,7 @@ Ext.define('AM.view.stock.stockPanel', {
 				height: 80
 			}, {
 				xtype: 'stocklist',
-				anchor: '100% 80%'
+				anchor: '100% -80'
 			}]
 		});
 		this.callParent(arguments);
