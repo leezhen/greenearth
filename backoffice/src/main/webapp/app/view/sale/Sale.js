@@ -10,18 +10,18 @@ Ext.define('AM.view.sale.Sale', {
     // The form will submit an AJAX request to this URL when submitted
     url: 'sellRecord_save.do',
     
-    requires: ['AM.store.ComboUtil','Ext.ux.util.ComboDataUtil'],
+    requires: ['Ext.ux.util.ComboDataUtil'],
 
     // Fields will be arranged vertically, stretched to full width
     layout: 'anchor',
     
-    stations: Ext.create('AM.store.ComboUtil',{
-    	urls : 'dict_recycleStations.do'
-    }),
+//    stations: Ext.create('AM.store.ComboUtil',{
+//    	urls : 'dict_recycleStations.do'
+//    }),
     
-    partners: Ext.create('AM.store.ComboUtil',{
-    	urls : 'dict_partners.do'
-    }),
+//    partners: Ext.create('AM.store.ComboUtil',{
+//    	urls : 'dict_partners.do'
+//    }),
     
     initComponent: function() {
     	this.items = [{
@@ -50,7 +50,7 @@ Ext.define('AM.view.sale.Sale', {
             fieldLabel: '分拣站',
             name: 'recycleStationId',
             xtype: 'combo',
-            store: this.stations,
+            store: new Ext.ux.util.ComboDataUtil().getStations(),
             allowBlank: false,
             emptyText: '请选择',
             queryMode: 'local',
@@ -61,7 +61,7 @@ Ext.define('AM.view.sale.Sale', {
             fieldLabel: '合作商',
             name: 'partnerId',
             xtype: 'combo',
-            store: this.partners,
+            store: new Ext.ux.util.ComboDataUtil().getPartners(),
             allowBlank: false,
             emptyText: '请选择',
             queryMode: 'local',
@@ -114,8 +114,8 @@ Ext.define('AM.view.sale.Sale', {
         
         this.callParent(arguments);
 //        this.inventoryTypes.load();
-        this.partners.load();
-        this.stations.load();
+//        this.partners.load();
+//        this.stations.load();
         this.getForm().url = 'sellRecord_save.do';
         this.items.items[0].focus(true,true);
     }

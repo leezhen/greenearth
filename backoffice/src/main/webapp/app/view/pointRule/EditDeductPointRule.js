@@ -12,9 +12,11 @@ Ext.define('AM.view.pointRule.EditDeductPointRule', {
     	title: '扣分规则',
     },
     
-    reasons: Ext.create('AM.store.ComboUtil',{
-    	urls: 'dict_reasons.do',
-    }),
+    requires: ['Ext.ux.util.ComboDataUtil'],
+    
+//    reasons: Ext.create('AM.store.ComboUtil',{
+//    	urls: 'dict_reasons.do',
+//    }),
     
     initComponent: function() {
     	Ext.apply(this, {
@@ -32,7 +34,7 @@ Ext.define('AM.view.pointRule.EditDeductPointRule', {
                         fieldLabel: '原因',
                         name: 'deductionReason.id',
                         xtype: 'combo',
-                        store: this.reasons,
+                        store: new Ext.ux.util.ComboDataUtil().getDeductReasons(),
                         allowBlank: false,
                         emptyText: '请选择',
                         queryMode: 'local',
@@ -62,6 +64,6 @@ Ext.define('AM.view.pointRule.EditDeductPointRule', {
         ];
  
         this.callParent(arguments);
-        this.reasons.load();
+//        this.reasons.load();
     },
 });

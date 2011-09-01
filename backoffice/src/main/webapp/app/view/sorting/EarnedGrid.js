@@ -9,10 +9,10 @@ Ext.define('AM.view.sorting.EarnedGrid', {
     
 //    inventoryTypes: new Ext.ux.util.ComboDataUtil().getInventoryTypes(),
     
-    reasons: Ext.create('AM.store.ComboUtil',{
-    	urls: 'dict_reasons.do',
-    	autoLoad: true
-    }),
+//    reasons: Ext.create('AM.store.ComboUtil',{
+//    	urls: 'dict_reasons.do',
+//    	autoLoad: true
+//    }),
     
     initComponent: function() {
 		Ext.apply(this, {
@@ -32,8 +32,9 @@ Ext.define('AM.view.sorting.EarnedGrid', {
 				{text: '分拣站', dataIndex: 'stationId', flex: 1},
 	            {text: '重量', dataIndex: 'weight', flex: 1},
 	            {text: '扣分原因', dataIndex: 'reasonId', flex: 1 ,renderer: function(v){
-	            	if(Ext.widget('earnedgrid').reasons.getById(v) != null)
-	            		return Ext.widget('earnedgrid').reasons.getById(v).data.name;
+	            	var reasons = new Ext.ux.util.ComboDataUtil().getDeductReasons();
+	            	if(reasons.getById(v) != null)
+	            		return reasons.getById(v).data.name;
 				}},
 	            {
 	                xtype: 'actioncolumn',

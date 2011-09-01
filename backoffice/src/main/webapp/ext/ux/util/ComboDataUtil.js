@@ -9,14 +9,12 @@ Ext.define('Ext.ux.util.ComboDataUtil' ,{
 	},
 	
 	getCities : function() {
-		console.log(this.statics().cities);
 		if(!(this.statics().cities)) {
 			this.statics().cities = Ext.create('Ext.ux.util.ComboUtil',{
 		    	urls: 'customer_cities.do',
 		    });
 			this.statics().cities.load();
 		}
-		console.log(this.statics().cities);
 		return this.statics().cities;
 	},
 
@@ -28,6 +26,36 @@ Ext.define('Ext.ux.util.ComboDataUtil' ,{
 			this.statics().inventoryTypes.load();
 		}
 		return this.statics().inventoryTypes;
+	},
+	
+	getDeductReasons : function() {
+		if(!(this.statics().reasons)) {
+			this.statics().reasons = Ext.create('Ext.ux.util.ComboUtil',{
+		    	urls: 'dict_reasons.do',
+		    });
+			this.statics().reasons.load();
+		}
+		return this.statics().reasons;
+	},
+	
+	getStations : function() {
+		if(!(this.statics().stations)) {
+			this.statics().stations = Ext.create('Ext.ux.util.ComboUtil',{
+		    	urls: 'dict_recycleStations.do',
+		    });
+			this.statics().stations.load();
+		}
+		return this.statics().stations;
+	},
+	
+	getPartners : function() {
+		if(!(this.statics().partners)) {
+			this.statics().partners = Ext.create('Ext.ux.util.ComboUtil',{
+		    	urls: 'dict_partners.do',
+		    });
+			this.statics().partners.load();
+		}
+		return this.statics().partners;
 	}
- 
+	
 });

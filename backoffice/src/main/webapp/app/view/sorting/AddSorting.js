@@ -9,12 +9,7 @@ Ext.define('AM.view.sorting.AddSorting', {
     // Fields will be arranged vertically, stretched to full width
     layout: 'anchor',
     
-    requires: ['AM.store.ComboUtil','Ext.ux.util.ComboDataUtil'],
-    
-    reasons: Ext.create('AM.store.ComboUtil',{
-    	urls: 'dict_reasons.do',
-    	autoLoad : true
-    }),
+    requires: ['Ext.ux.util.ComboDataUtil'],
     
     defaultType: 'textfield',
     

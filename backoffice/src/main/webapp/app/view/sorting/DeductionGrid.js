@@ -5,10 +5,7 @@ Ext.define('AM.view.sorting.DeductionGrid', {
     border: true,
     store: 'Deduction',
     
-    reasons: Ext.create('AM.store.ComboUtil',{
-    	urls: 'dict_reasons.do',
-    }),
-    
+    requires: ['Ext.ux.util.ComboDataUtil'],
     initComponent: function() {
 		Ext.apply(this, {
 //		    store: Ext.data.StoreManager.lookup('sortingStore'),
@@ -20,7 +17,8 @@ Ext.define('AM.view.sorting.DeductionGrid', {
 			columns: [
 				{text: '顾客Id',  dataIndex:'customerId', flex: 1 },
 	            {text: '扣分原因', dataIndex: 'inventoryTypeId', flex: 1 , renderer: function(v){
-					return Ext.widget('deductiongrid').reasons.getById(v).data.name;
+					var reasonStore = new Ext.ux.util.ComboDataUtil().getDeductReasons();
+					return reasonStore.getById(v).data.name;
 				}},
 	            {text: '扣分数', dataIndex: 'weight', flex: 1},
 	        ]

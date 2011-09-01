@@ -2,7 +2,7 @@ Ext.define('AM.view.customer.Edit', {
     extend: 'Ext.window.Window',
     alias : 'widget.customeredit',
     
-    requires: ['AM.store.Cities','AM.store.ComboUtil','Ext.ux.util.ComboDataUtil'],
+    requires: ['AM.store.Cities','Ext.ux.util.ComboDataUtil'],
  
 //    title : '编辑客户信息',
     layout: 'fit',
