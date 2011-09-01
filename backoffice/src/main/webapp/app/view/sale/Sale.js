@@ -10,14 +10,10 @@ Ext.define('AM.view.sale.Sale', {
     // The form will submit an AJAX request to this URL when submitted
     url: 'sellRecord_save.do',
     
-    requires: ['AM.store.ComboUtil'],
+    requires: ['AM.store.ComboUtil','Ext.ux.util.ComboDataUtil'],
 
     // Fields will be arranged vertically, stretched to full width
     layout: 'anchor',
-    
-    inventoryTypes: Ext.create('AM.store.ComboUtil',{
-    	urls : 'dict_inventoryTypes.do'
-    }),
     
     stations: Ext.create('AM.store.ComboUtil',{
     	urls : 'dict_recycleStations.do'
@@ -32,7 +28,7 @@ Ext.define('AM.view.sale.Sale', {
             fieldLabel: '类型',
             name: 'inventoryTypeId',
             xtype: 'combo',
-            store: this.inventoryTypes,
+            store: new Ext.ux.util.ComboDataUtil().getInventoryTypes(),
             allowBlank: false,
             emptyText: '请选择',
             queryMode: 'local',
@@ -117,7 +113,7 @@ Ext.define('AM.view.sale.Sale', {
         }];	
         
         this.callParent(arguments);
-        this.inventoryTypes.load();
+//        this.inventoryTypes.load();
         this.partners.load();
         this.stations.load();
         this.getForm().url = 'sellRecord_save.do';

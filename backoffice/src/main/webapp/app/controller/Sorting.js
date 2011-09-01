@@ -1,7 +1,6 @@
 Ext.define('AM.controller.Sorting', {
     extend: 'Ext.app.Controller',
     title: '录入分拣结果',
-    
     views: ['sorting.Sorting'],
     
     stores: ['Sortings','Deduction'],

@@ -30,8 +30,9 @@ Ext.define('Ext.ux.grid.FilterRow', {
 					col.xfilter = { };
 				} else if(!col.xfilter){
 					col.xfilter = { };
-					col.xfilter.xtype = 'textfield';
-				}
+//					col.xfilter.xtype = 'textfield';
+				} 
+				
 				col.xfilter = Ext.apply({
 					id:filterDivId,
 					hidden:col.hidden,
@@ -65,6 +66,9 @@ Ext.define('Ext.ux.grid.FilterRow', {
 				col.xfilterField.on("change", this.onChange, this);
 			}
 			
+			if(!col.xfilterField.dataIndex)
+				col.xfilterField.dataIndex = col.dataIndex;
+			
 			col.xfilterField.on("keydown", this.onKeyDown, this);
 			
 			searchItems.push(col.xfilterField);
@@ -86,24 +90,24 @@ Ext.define('Ext.ux.grid.FilterRow', {
 	},
 	
 	onSelect: function(field, value, option) {
-		if(!this.onChangeTask) {
-			this.onChangeTask = new Ext.util.DelayedTask(function(){
-	    		this.storeSearch();	
-			}, this);
-		}
-		
-		this.onChangeTask.delay(1000);
+//		if(!this.onChangeTask) {
+//			this.onChangeTask = new Ext.util.DelayedTask(function(){
+//	    		this.storeSearch();	
+//			}, this);
+//		}
+//		
+//		this.onChangeTask.delay(1000);
 	},
 	
 	onChange: function(field, newValue, oldValue) {
 		
-		if(!this.onChangeTask) {
-			this.onChangeTask = new Ext.util.DelayedTask(function(){
-	    		this.storeSearch();	
-			}, this);
-		}
-		
-		this.onChangeTask.delay(1000);
+//		if(!this.onChangeTask) {
+//			this.onChangeTask = new Ext.util.DelayedTask(function(){
+//	    		this.storeSearch();	
+//			}, this);
+//		}
+//		
+//		this.onChangeTask.delay(1000);
 				
 	},
 	
@@ -117,7 +121,7 @@ Ext.define('Ext.ux.grid.FilterRow', {
 		var values = {};
 		this.eachColumn( function(col) {
 			if(col.xfilterField && col.xfilterField.xtype != 'component') {
-				values[col.dataIndex] = col.xfilterField.getValue();
+				values[col.xfilterField.dataIndex] = col.xfilterField.getValue();
 			}
 		});
 //		return Ext.JSON.encode(values);
@@ -125,12 +129,11 @@ Ext.define('Ext.ux.grid.FilterRow', {
 	},
 	
 	storeSearch: function() {
-//		if(!this.grid.store.proxy.extraParams) {
-			this.grid.store.proxy.extraParams = {};
-//		}
 		for (k in this.getSearchValues()) {
 			if (!Ext.isEmpty(this.getSearchValues()[k]))
 				this.grid.store.proxy.extraParams[k] = this.getSearchValues()[k];
+			else
+				delete this.grid.store.proxy.extraParams[k];
 		}
 		this.grid.store.currentPage = 1;
 		this.grid.store.load();

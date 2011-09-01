@@ -7,7 +7,9 @@ Ext.define('AM.view.station.List', {
     border: false,
     title: '分拣站列表',
     
-    requires: ['Ext.toolbar.Toolbar'],
+    requires: ['Ext.toolbar.Toolbar',
+               'Ext.ux.grid.FilterRow',
+               'Ext.ux.util.ComboDataUtil'],
     
     initComponent: function() {
 		Ext.apply(this, {
@@ -25,7 +27,13 @@ Ext.define('AM.view.station.List', {
 			},*/
 			columns: [
 				{text: '编号',  dataIndex:'id', flex: 1},
-	            {text: '所在城市', dataIndex: 'address', flex: 1},
+	            {text: '所在城市', dataIndex: 'address', flex: 1, xfilter:{
+					xtype:'combo',
+					store:new Ext.ux.util.ComboDataUtil().getCities(),
+				    dataIndex:'stationId',
+				    displayField: 'name',
+				    valueField: 'id'
+				}},
 	            {text: '分拣站名称', dataIndex: 'name', flex: 1}
 	            ],
             dockedItems: [{
@@ -41,7 +49,8 @@ Ext.define('AM.view.station.List', {
 					action: 'add',
 					iconCls: 'add'
 				}]
-			}]
+			}],
+		    plugins: [ Ext.create('Ext.ux.grid.FilterRow') ]
 		});
 		this.callParent(arguments);
 		this.store.load();

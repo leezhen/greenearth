@@ -2,7 +2,7 @@ Ext.define('AM.view.customer.Edit', {
     extend: 'Ext.window.Window',
     alias : 'widget.customeredit',
     
-    requires: ['AM.store.Cities','AM.store.ComboUtil'],
+    requires: ['AM.store.Cities','AM.store.ComboUtil','Ext.ux.util.ComboDataUtil'],
  
 //    title : '编辑客户信息',
     layout: 'fit',
@@ -17,17 +17,17 @@ Ext.define('AM.view.customer.Edit', {
     	districtsStore: []
     },
     
-    citiesStore:Ext.create('Ext.data.Store', {
-        fields: ['id', 'name'],
-        autoLoad: false,
-        proxy: {
-            type: 'ajax',
-            url: 'customer_cities.do',
-            reader: {
-                type: 'json'
-            }
-        }
-    }),
+//    citiesStore:Ext.create('Ext.data.Store', {
+//        fields: ['id', 'name'],
+//        autoLoad: false,
+//        proxy: {
+//            type: 'ajax',
+//            url: 'customer_cities.do',
+//            reader: {
+//                type: 'json'
+//            }
+//        }
+//    }),
     
     districtsStore: Ext.create('Ext.data.Store', {
         fields: ['id', 'name'],
@@ -107,7 +107,7 @@ Ext.define('AM.view.customer.Edit', {
                 handler: this.close
             }
         ];
-        this.citiesStore.load();
+//        this.citiesStore.load();
         this.callParent(arguments);
     },
     
@@ -117,7 +117,7 @@ Ext.define('AM.view.customer.Edit', {
     		name : 'cityId',
             fieldLabel: '市',
             emptyText: '请选择',
-    		store: this.citiesStore,
+    		store: new Ext.ux.util.ComboDataUtil().getCities(),
             queryMode: 'local',
             displayField: 'name',
             valueField: 'id',
@@ -126,7 +126,6 @@ Ext.define('AM.view.customer.Edit', {
                 'select': this.showDistrict
             }
     	});
-    	
     	return this.cities;
     },
     

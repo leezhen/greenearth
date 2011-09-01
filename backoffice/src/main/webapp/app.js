@@ -26,5 +26,6 @@ Ext.Loader.setPath('Ext.ux', './ext/ux');
 Ext.require([
     'Ext.ux.grid.FilterRow',
     'Ext.ux.form.field.ClearButton',
+    'Ext.ux.util.*',
     'Ext.direct.*'
 ]);
