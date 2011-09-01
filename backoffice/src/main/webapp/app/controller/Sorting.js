@@ -20,6 +20,12 @@ Ext.define('AM.controller.Sorting', {
         	'addsorting': {
         		addSortRecord: this.addPointRecord
             },
+            'addsorting *': {
+            	keydown: this.commitRecord
+            },
+            'deduct *': {
+            	keydown: this.commitRecord
+            },
             'deduct': {
         		addSortRecord: this.addPointRecord
             },
@@ -40,7 +46,7 @@ Ext.define('AM.controller.Sorting', {
     
     addPointRecord: function(form,value) {
     	var customerIdTxt = this.getCustomerId();
-    	if(customerIdTxt == null || customerIdTxt.value == null) {
+    	if(customerIdTxt == null || customerIdTxt.value == null || '' == customerIdTxt.value.trim()) {
     		Ext.Msg.alert('警告','顾客信息未填写',function(){
     			customerIdTxt.focus(true,true);
     		});
@@ -55,7 +61,8 @@ Ext.define('AM.controller.Sorting', {
     	}, 'AM.model.Sortings');
     	instance.dirty = true;
     	this.getEarnedGrid().store.insert(0,instance);
-    	form.reset();
+    	form.getForm().reset();
+    	form.items.items[0].focus(true,true);
     },
     
     submitPoint : function() {
@@ -72,5 +79,14 @@ Ext.define('AM.controller.Sorting', {
     
     clearPoint : function() {
     	this.getEarnedGrid().store.removeAll();
+    },
+    
+    commitRecord: function(text,e) {
+    	if(e.getKey() == e.ENTER) {
+    		var form = text.up('form');
+            if (form.getForm().isValid()) {
+            	form.fireEvent('addSortRecord', form, form.getValues());
+            }
+		}
     }
 });

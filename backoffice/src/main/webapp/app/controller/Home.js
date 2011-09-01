@@ -6,7 +6,8 @@ Ext.define('AM.controller.Home', {
     ],
  
     views: [
-        'Home', 'customer.Grid', 'sorting.Sorting','stock.List','station.List', 'LoginWindow', 'customer.DirectTest'
+        'Home', 'customer.Grid', 'sorting.Sorting','stock.stockPanel','station.List', 'LoginWindow', 'customer.DirectTest',
+        'sale.SalePanel'
     ],
     
     models: [
@@ -33,10 +34,10 @@ Ext.define('AM.controller.Home', {
            },
            {
         	   ref: 'stockTab',
-        	   xtype: 'stocklist',
+        	   xtype: 'stockPanel',
         	   closable: true,
         	   forceCreate: true,
-        	   selector: 'stocklist'
+        	   selector: 'stockPanel'
            },
            {
         	   ref: 'stationTab',
@@ -54,10 +55,10 @@ Ext.define('AM.controller.Home', {
            },
            {
         	   ref: 'saleTab',
-        	   xtype: 'saleOp',
+        	   xtype: 'salePanel',
         	   closable: true,
         	   forceCreate: true,
-        	   selector: 'saleOp'
+        	   selector: 'salePanel'
            }, {
         	   ref: 'saleRecordTab',
         	   xtype: 'saleRecord',

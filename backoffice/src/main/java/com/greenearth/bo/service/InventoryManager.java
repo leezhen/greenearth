@@ -2,6 +2,7 @@ package com.greenearth.bo.service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +42,8 @@ public class InventoryManager {
 	}
 	
 	@Transactional(readOnly = true)
-	public Page<Inventory> getInventories(Page<Inventory> p) {
-		return inventoryDao.getInventories(p);
+	public Page<Inventory> getInventories(Page<Inventory> p, Map<String,Object> params) {
+		return inventoryDao.getInventories(p,params);
 	}
 	
 	@Transactional(readOnly = true)

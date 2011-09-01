@@ -6,11 +6,13 @@ Ext.define('AM.view.sorting.EarnedGrid', {
     store: 'Sortings',
     
     inventoryTypes: Ext.create('AM.store.ComboUtil',{
-    	urls: 'dict_inventoryTypes.do'
+    	urls: 'dict_inventoryTypes.do',
+    	autoLoad: true
     }),
     
     reasons: Ext.create('AM.store.ComboUtil',{
     	urls: 'dict_reasons.do',
+    	autoLoad: true
     }),
     
     initComponent: function() {
@@ -58,8 +60,6 @@ Ext.define('AM.view.sorting.EarnedGrid', {
 				}]
 	        }]
 		});
-		this.inventoryTypes.load();
-		this.reasons.load();
 		this.callParent(arguments);
     }
 });

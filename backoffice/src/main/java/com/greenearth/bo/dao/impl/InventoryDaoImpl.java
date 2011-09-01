@@ -1,6 +1,8 @@
 package com.greenearth.bo.dao.impl;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Example;
@@ -11,8 +13,6 @@ import com.greenearth.bo.dao.InventoryDao;
 import com.greenearth.bo.dao.Page;
 import com.greenearth.bo.dao.hibernate.HibernateDao;
 import com.greenearth.bo.domain.Inventory;
-import com.greenearth.bo.domain.InventoryType;
-import com.greenearth.bo.domain.RecycleStation;
 
 @Repository
 public class InventoryDaoImpl extends HibernateDao<Inventory, Integer> implements InventoryDao {
@@ -28,8 +28,13 @@ public class InventoryDaoImpl extends HibernateDao<Inventory, Integer> implement
 	}
 
 	@Override
-	public Page<Inventory> getInventories(Page<Inventory> p) {
-		return findPage(p,"from Inventory");
+	public Page<Inventory> getInventories(Page<Inventory> p , Map<String,Object> params) {
+		Criteria cr = createCriteria();
+		Set<String> keySet = params.keySet();
+		for(String key : keySet) {
+			cr.add(Restrictions.eq(key, params.get(key)));
+		}
+		return this.findPage(p, cr);
 	}
 
 	@Override

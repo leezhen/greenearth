@@ -33,32 +33,24 @@ Ext.define('AM.view.sorting.AddSorting', {
             emptyText: '请选择',
             queryMode: 'local',
             displayField: 'name',
+            enableKeyEvents: true,
             valueField: 'id'
         }, {
             fieldLabel: '重量',
             name: 'weight',
-            allowBlank: false
+            allowBlank: false,
+            enableKeyEvents: true,
         }
-        //{
-//        	fieldLabel: '扣分',
-//            name: 'reasonId',
-//            xtype: 'combo',
-//            store: this.reasons,
-//            allowBlank: true,
-//            emptyText: '请选择',
-//            queryMode: 'local',
-//            displayField: 'name',
-//            valueField: 'id'
         ];
 
         // Reset and Submit buttons
         this.buttons = [{
-            text: '添加',
+            text: '积分',
             formBind: true, //only enabled once the form is valid
             handler: function() {
-                var form = this.up('form').getForm();
-                if (form.isValid()) {
-                	Ext.widget('addsorting').fireEvent('addSortRecord', form, form.getValues());
+                var form = this.up('form');
+                if (form.getForm().isValid()) {
+                	form.fireEvent('addSortRecord', form, form.getValues());
                 }
             }
         }];	

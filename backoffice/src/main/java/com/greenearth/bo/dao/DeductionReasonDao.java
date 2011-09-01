@@ -6,4 +6,5 @@ import com.greenearth.bo.domain.DeductionReason;
 
 public interface DeductionReasonDao {
 	List<DeductionReason> getReasons();
+	DeductionReason get(Integer id);
 }

@@ -1,8 +1,12 @@
 package com.greenearth.bo.action;
 
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.codehaus.jackson.type.JavaType;
@@ -10,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.google.common.io.CharStreams;
 import com.greenearth.bo.dao.Page;
 import com.greenearth.bo.domain.Customer;
 import com.greenearth.bo.domain.Inventory;
@@ -34,47 +39,46 @@ public class InventoryAction extends BaseAction {
 	private InventoryManager inventoryManager;
 	
 	@Autowired
-	private DistrictManager districtManager;
-	
-	@Autowired
 	private CustomerManager customerManager;
 	
 	private Integer customerId;
-	
-	private Integer inventoryTypeId ;
 	
 	private Float weight;
 	
 	private Integer id;
 	
-	public void setInventoryManager(InventoryManager inventoryManager) {
-		this.inventoryManager = inventoryManager;
-	}
-
-	public InventoryManager getInventoryManager() {
-		return inventoryManager;
-	}
+	protected JsonMapper jsonMapper = JsonMapper.buildNormalMapper();
 	
 	public void query()
 	{
-		Page<Inventory> p = new Page<Inventory>();
-		p.setStartAndLimit(start, limit);
-		p = inventoryManager.getInventories(p);
-		Struts2Utils.renderJson(p);
+		try {
+			Page<Inventory> p = new Page<Inventory>();
+			p.setStartAndLimit(start, limit);
+			p = inventoryManager.getInventories(p,params);
+			Struts2Utils.renderJson(p);
+		} catch(Exception e) {
+			log.error("query inventory error:",e);
+			Struts2Utils.renderJson("{success: false, msg: '查询失败'}");
+		}
 	}
 	
 	public void listInventoryLog() {
-		Page<InventoryLog> p = new Page<InventoryLog>();
-		p.setStartAndLimit(start, limit);
-		p = inventoryManager.getInventoryLogs(p);
-		Struts2Utils.renderJson(p);
+		try {
+			Page<InventoryLog> p = new Page<InventoryLog>();
+			p.setStartAndLimit(start, limit);
+			p = inventoryManager.getInventoryLogs(p);
+			Struts2Utils.renderJson(p);
+		} catch(Exception e) {
+			log.error("query inventoryLog error:",e);
+			Struts2Utils.renderJson("{success: false, msg: '查询失败'}");
+		}
 	}
 	
 	public void sortInbound() {
 		try {
 			
 			List<InventoryLog> inventoryList = new ArrayList<InventoryLog>();
-			String s = super.getJson();
+			String s = this.getJson();
 			//List
 			if(s.startsWith("[")) {
 				JavaType javaType = jsonMapper.constructParametricType(List.class, InventoryLog.class);
@@ -113,6 +117,17 @@ public class InventoryAction extends BaseAction {
 		}
 	}
 	
+	protected String getJson() {
+		String str = null;
+		try {
+			str = CharStreams.toString(new InputStreamReader(request.getInputStream(), "UTF-8"));
+		} catch (IOException e) {
+			logger.warn("Error occured converting InputStream to String: ", e);
+		}
+		
+		return str;
+	}
+	
 	public void setCustomerId(Integer customerId) {
 		this.customerId = customerId;
 	}
@@ -122,11 +137,11 @@ public class InventoryAction extends BaseAction {
 	}
 
 	public void setInventoryTypeId(Integer inventoryTypeId) {
-		this.inventoryTypeId = inventoryTypeId;
+		params.put(Inventory._TypeId, inventoryTypeId);
 	}
 
 	public Integer getInventoryTypeId() {
-		return inventoryTypeId;
+		return (Integer) params.get(Inventory._TypeId);
 	}
 
 	public void setWeight(Float weight) {
@@ -143,5 +158,13 @@ public class InventoryAction extends BaseAction {
 
 	public Integer getId() {
 		return id;
+	}
+
+	public Integer getStationId() {
+		return (Integer) params.get(Inventory._StationId);
+	}
+
+	public void setStationId(Integer stationId) {
+		params.put(Inventory._StationId, stationId);
 	}
 }

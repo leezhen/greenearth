@@ -160,6 +160,31 @@ public class HibernateDao<T, ID extends Serializable> extends SimpleHibernateDao
 		page.setResult(result);
 		return page;
 	}
+	
+	/**
+	 * 按Criteria分页查询.
+	 * 
+	 * @param page 分页参数.
+	 * @param Criteria Criteria参数
+	 * 
+	 * @return 分页查询结果.附带结果列表及所有查询输入参数.
+	 */
+	public Page<T> findPage(final PageRequest pageRequest, final Criteria c) {
+		AssertUtils.notNull(pageRequest, "page不能为空");
+
+		Page<T> page = new Page<T>(pageRequest);
+
+		if (pageRequest.isCountTotal()) {
+			long totalCount = countCriteriaResult(c);
+			page.setTotalItems(totalCount);
+		}
+
+		setPageRequestToCriteria(c, pageRequest);
+
+		List result = c.list();
+		page.setResult(result);
+		return page;
+	}
 
 	/**
 	 * 在HQL的后面添加分页参数定义的orderBy, 辅助函数.
