@@ -90,6 +90,7 @@ Ext.define('AM.controller.Customers', {
             form.submit({
                 success: function(form, action) {
                    Ext.Msg.alert('提示', action.result.msg);
+                   win.close();
                    this.loadCustomers();
                 },
                 failure: function(form, action) {
@@ -98,8 +99,6 @@ Ext.define('AM.controller.Customers', {
                 scope: this
             });
         }
-        win.close();
-     
         /*if (record) {
         	// 修改
         	record.set(values);
@@ -131,7 +130,7 @@ Ext.define('AM.controller.Customers', {
     	items.items[0].store.proxy.extraParams = {customerId: rec.data.id};
     	items.items[1].store.proxy.extraParams = {customerId: rec.data.id};
     	items.items[0].store.load();
-    	items.items[1].store.load();
+    	items.items[1].store.load();/*
     	var totalStore = new AM.store.TotalPoint();
     	totalStore.load({
     		params:{customerId: rec.data.id},
@@ -142,6 +141,6 @@ Ext.define('AM.controller.Customers', {
     				items.items[2].getForm().loadRecord(r[0]);
     			}
     		}
-    	}});
+    	}});*/
     }
 });

@@ -33,8 +33,6 @@ import com.greenearth.bo.utils.Struts2Utils;
 @Component
 @Scope("prototype")
 public class InventoryAction extends BaseAction {
-	
-	private static Logger log = Logger.getLogger(InventoryAction.class);
 	@Autowired
 	private InventoryManager inventoryManager;
 	
@@ -57,7 +55,7 @@ public class InventoryAction extends BaseAction {
 			p = inventoryManager.getInventories(p,params);
 			Struts2Utils.renderJson(p);
 		} catch(Exception e) {
-			log.error("query inventory error:",e);
+			logger.error("query inventory error:",e);
 			Struts2Utils.renderJson("{success: false, msg: '查询失败'}");
 		}
 	}
@@ -69,7 +67,7 @@ public class InventoryAction extends BaseAction {
 			p = inventoryManager.getInventoryLogs(p);
 			Struts2Utils.renderJson(p);
 		} catch(Exception e) {
-			log.error("query inventoryLog error:",e);
+			logger.error("query inventoryLog error:",e);
 			Struts2Utils.renderJson("{success: false, msg: '查询失败'}");
 		}
 	}
@@ -112,7 +110,7 @@ public class InventoryAction extends BaseAction {
 			}
 			Struts2Utils.renderJson("{success: true, msg: '入库成功'}");
 		} catch (Exception e) {
-			log.error("入库操作失败",e);
+			logger.error("入库操作失败",e);
 			Struts2Utils.renderJson("{success: false, msg: '入库失败'}");
 		}
 	}

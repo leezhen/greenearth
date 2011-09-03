@@ -1,5 +1,6 @@
 package com.greenearth.bo.dao.impl;
 
+import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.SimpleExpression;
 import org.springframework.stereotype.Repository;
@@ -14,8 +15,11 @@ import com.greenearth.bo.domain.PointsDeducted;
 public class CustomerPointDaoImpl extends HibernateDao<CustomerPoint, Long> implements CustomerPointDao {
 
 	@Override
-	public CustomerPoint findPointByCustomer(Long customerId) {
-		return this.findUniqueBy(CustomerPoint._CustomerId,customerId);
+	public CustomerPoint findPointByCustomerAndType(Long customerId,Integer pointTypeId) {
+		Criteria cr = createCriteria();
+		cr.add(Restrictions.eq(CustomerPoint._CustomerId, customerId));
+		cr.add(Restrictions.eq(CustomerPoint._PointTypeId, pointTypeId));
+		return (CustomerPoint) cr.uniqueResult();
 	}
 
 	@Override

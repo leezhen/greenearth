@@ -26,18 +26,18 @@ Ext.define('AM.view.point.Point', {
 			items: [{
 				xtype: 'earnedPoint',
 				flex: 1,
-				anchor: '100% 40%'
+				anchor: '100% 50%'
 			},
 			{
 				xtype: 'deductionPoint',
 				flex: 1,
-				anchor: '100% 40%'
-			},
+				anchor: '100% 50%'
+			}/*,
 			{
 				xtype: 'totalPoint',
 				flex: 1,
 				anchor: '40% 20%'
-			}]
+			}*/]
 		});
 
 		this.callParent(arguments);

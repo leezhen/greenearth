@@ -41,9 +41,9 @@ insert into district(id, name, city_id) values (6, '朝阳区', 2);
 insert into district(id, name, city_id) values (7, '海淀区', 2);
 insert into district(id, name, city_id) values (8, '东城区', 2);
 
-insert into customer(id, name, cellphone, city_id, district_id, street_address, barcode, created_at, created_by, modified_at, modified_by) values(1, '张三', '13300000000', 1, 1, 'X街道X号X小区X楼X号', '00000001', now(), 'admin', null, null);
-insert into customer(id, name, cellphone, city_id, district_id, street_address, barcode, created_at, created_by, modified_at, modified_by) values(2, '李四', '13411111111', 1, 5, 'Y街道Y号Y小区Y楼Y号', '00000002', now(), 'admin', null, null);
-insert into customer(id, name, cellphone, city_id, district_id, street_address, barcode, created_at, created_by, modified_at, modified_by) values(3, '王五', '13522222222', 2, 2, 'Z街道Z号Z小区Z楼Z号', '00000003', now(), 'admin', null, null);
+insert into customer(id, name, cellphone, city_id, district_id, street_address, barcode, community, email,created_at, created_by, modified_at, modified_by) values(1, '张三', '13300000000', 1, 1, 'X街道X号X小区X楼X号', '00000001', 'XX小区','131083080@qq.com', now(), 'admin', null, null);
+insert into customer(id, name, cellphone, city_id, district_id, street_address, barcode, community, email,created_at, created_by, modified_at, modified_by) values(2, '李四', '13411111111', 1, 5, 'Y街道Y号Y小区Y楼Y号', '00000002', 'XX小区','131083081@qq.com', now(), 'admin', null, null);
+insert into customer(id, name, cellphone, city_id, district_id, street_address, barcode, community, email,created_at, created_by, modified_at, modified_by) values(3, '王五', '13522222222', 2, 2, 'Z街道Z号Z小区Z楼Z号', '00000003', 'XX小区','131083082@qq.com', now(), 'admin', null, null);
 
 insert into inventory_type(id, name) values(1, '厨余');
 insert into inventory_type(id, name) values(2, '塑料瓶');
@@ -66,18 +66,18 @@ insert into inventory_log values(3,now(),1,3,1,3);
 insert into inventory_log values(4,now(),4,2,2,2);
 insert into inventory_log values(5,now(),5,1,1,1);
 
-insert into points_type values(1,'something','可回收');
-insert into points_type values(2,'something','不可回收');
-insert into points_type values(3,'something','差不多可回收');
-insert into points_type values(4,'something','勉强可回收');
+insert into points_type values(1,'垃圾积分','垃圾积分');
+insert into points_type values(2,'活动积分','活动积分');
+insert into points_type values(3,'贡献积分','贡献积分');
+insert into points_type values(4,'保留','保留');
 
 insert into deduction_reason values(1,'something','dirty');
 insert into deduction_reason values(2,'something','有毒');
 
 insert into point_rule values(1,now(),'lizhen',now(),'lizhen',10,1,1,1);
-insert into point_rule values(2,now(),'lizhen',now(),'lizhen',5,1,2,2);
-insert into point_rule values(3,now(),'lizhen',now(),'lizhen',2,1,3,3);
-insert into point_rule values(4,now(),'lizhen',now(),'lizhen',1,1,4,4);
+insert into point_rule values(2,now(),'lizhen',now(),'lizhen',5,1,2,1);
+insert into point_rule values(3,now(),'lizhen',now(),'lizhen',2,1,3,1);
+insert into point_rule values(4,now(),'lizhen',now(),'lizhen',1,1,4,1);
 
 insert into deduction_rule values(1,now(),'lizhen',now(),'lizhen',5,1);
 insert into deduction_rule values(2,now(),'lizhen',now(),'lizhen',10,2);

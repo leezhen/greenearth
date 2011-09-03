@@ -121,6 +121,7 @@ Ext.define('AM.view.customer.Edit', {
             queryMode: 'local',
             displayField: 'name',
             valueField: 'id',
+            allowBlank: false,
             listeners:{
             	scope: this,
                 'select': this.showDistrict
@@ -136,6 +137,7 @@ Ext.define('AM.view.customer.Edit', {
             fieldLabel: '区',
             emptyText: '请选择',
     		store: this.districtsStore,
+    		allowBlank: false,
             queryMode: 'local',
             displayField: 'name',
             valueField: 'id'

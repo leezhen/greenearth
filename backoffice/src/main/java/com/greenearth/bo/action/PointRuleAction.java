@@ -21,8 +21,6 @@ import com.greenearth.bo.utils.Struts2Utils;
 @Component
 @Scope("prototype")
 public class PointRuleAction extends BaseAction {
-	private Logger log = Logger.getLogger(PointRuleAction.class);
-	
 	@Autowired
 	private PointRuleManager pointRuleManager;
 	
@@ -69,7 +67,7 @@ public class PointRuleAction extends BaseAction {
 			pointRuleManager.savePointRule(rule);
 			Struts2Utils.renderJson("{success: true, msg: '" + (isNew ? "添加" : "修改") + "成功'}");
 		} catch (Exception e) {
-			log.error("save point rule failed:" ,e);
+			logger.error("save point rule failed:" ,e);
 			Struts2Utils.renderJson("{success: true, msg: '操作失败'}");
 		}
 	}
@@ -92,7 +90,7 @@ public class PointRuleAction extends BaseAction {
 			pointRuleManager.saveDeductionRule(rule);
 			Struts2Utils.renderJson("{success: true, msg: '" + (isNew ? "添加" : "修改") + "成功'}");
 		} catch (Exception e) {
-			log.error("save point rule failed:" ,e);
+			logger.error("save point rule failed:" ,e);
 			Struts2Utils.renderJson("{success: true, msg: '操作失败'}");
 		}
 	}

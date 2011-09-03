@@ -2,6 +2,7 @@ package com.greenearth.bo.domain;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +18,10 @@ public class Customer {
 	private City city;
 	private District district;
 	private String streetAddress;
+	private String community;
+	private String email ;
 	private String barcode;
+	private Float totalScore;
 	private Date createdAt;
 	private String createdBy;
 	private Date modifiedAt;
@@ -67,12 +71,33 @@ public class Customer {
 	public void setStreetAddress(String streetAddress) {
 		this.streetAddress = streetAddress;
 	}
+	public String getCommunity() {
+		return community;
+	}
+	public void setCommunity(String community) {
+		this.community = community;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getBarcode() {
 		return barcode;
 	}
 	public void setBarcode(String barcode) {
 		this.barcode = barcode;
 	}
+	
+	@Column(columnDefinition="float not null default 0")
+	public Float getTotalScore() {
+		return totalScore;
+	}
+	public void setTotalScore(Float totalScore) {
+		this.totalScore = totalScore;
+	}
+	
 	public Date getCreatedAt() {
 		return createdAt;
 	}

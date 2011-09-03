@@ -27,8 +27,13 @@ Ext.define('AM.view.customer.Grid', {
 			columns: [
 				{text: '姓名',  dataIndex:'name', flex: 1},
 	            {text: '手机号码', dataIndex: 'cellphone', flex: 1},
-	            {text: '地址', dataIndex: 'streetAddress', flex: 2, nofilter: {}},
-	            {text: '当前积分', dataIndex: 'scores', flex: 0.5, nofilter: {}},
+	            {text: '条形码', dataIndex: 'barcode', flex: 1},
+	            {text: '邮箱', dataIndex: 'email', flex: 1},
+	            {text: '城市', dataIndex: 'city.name', flex: 1},
+	            {text: '城区', dataIndex: 'district.name', flex: 1},
+	            {text: '小区', dataIndex: 'community', flex: 1},
+	            {text: '地址', dataIndex: 'streetAddress', flex: 2},
+	            {text: '当前积分', dataIndex: 'totalScore', flex: 0.5},
 	            /*{text: '积分详情', flex: 1,
 	            	renderer: function(value, metaData, record) {
 	                    return Ext.String.format('<a href="#">查看详情</a>');
