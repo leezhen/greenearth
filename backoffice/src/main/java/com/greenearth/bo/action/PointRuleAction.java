@@ -3,6 +3,7 @@ package com.greenearth.bo.action;
 import java.util.Date;
 
 import org.apache.log4j.Logger;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -12,6 +13,7 @@ import com.greenearth.bo.domain.DeductionReason;
 import com.greenearth.bo.domain.DeductionRule;
 import com.greenearth.bo.domain.InventoryType;
 import com.greenearth.bo.domain.PointRule;
+import com.greenearth.bo.domain.PointsType;
 import com.greenearth.bo.service.DictionaryManager;
 import com.greenearth.bo.service.InventoryTypeManager;
 import com.greenearth.bo.service.PointRuleManager;
@@ -32,7 +34,7 @@ public class PointRuleAction extends BaseAction {
 	private InventoryType inventoryType;
 	private Integer id;
 	private DeductionReason deductionReason;
-	
+	private PointsType pointType;
 	
 	public void listPointRules() {
 		Page<PointRule> p = new Page<PointRule>();
@@ -64,11 +66,15 @@ public class PointRuleAction extends BaseAction {
 			rule.setPoints(points);
 			rule.setWeight(weight);
 			rule.setInventoryType(inventoryType);
+			rule.setPointsType(pointType);
 			pointRuleManager.savePointRule(rule);
 			Struts2Utils.renderJson("{success: true, msg: '" + (isNew ? "添加" : "修改") + "成功'}");
-		} catch (Exception e) {
+		}  catch (ConstraintViolationException e) {
 			logger.error("save point rule failed:" ,e);
-			Struts2Utils.renderJson("{success: true, msg: '操作失败'}");
+			Struts2Utils.renderJson("{success: false, msg: '库存类型定义重复'}");
+		}  catch (Exception e) {
+			logger.error("save point rule failed:" ,e);
+			Struts2Utils.renderJson("{success: false, msg: '操作失败'}");
 		}
 	}
 	
@@ -142,5 +148,12 @@ public class PointRuleAction extends BaseAction {
 	public void setDeductionReason(DeductionReason deductionReason) {
 		this.deductionReason = deductionReason;
 	}
-	
+
+	public PointsType getPointType() {
+		return pointType;
+	}
+
+	public void setPointType(PointsType pointType) {
+		this.pointType = pointType;
+	}
 }

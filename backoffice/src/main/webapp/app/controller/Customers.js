@@ -17,7 +17,7 @@ Ext.define('AM.controller.Customers', {
         'User', 'MenuItem', 'Customer'
     ],
     
-    requires: ['AM.store.ComboUtil','AM.store.TotalPoint'],
+    requires: ['AM.store.TotalPoint'],
     
     refs: [
            {ref: 'menuItemData', selector: 'menu dataview'},

@@ -9,8 +9,6 @@ Ext.define('AM.view.customer.Edit', {
     autoShow: true,
     width: 400,
     height: 300,
-    closeAction: 'hide',
-    url: 'customer_save.do',
     
     config: {
     	title: '客户信息',

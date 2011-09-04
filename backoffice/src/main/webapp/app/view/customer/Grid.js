@@ -25,11 +25,24 @@ Ext.define('AM.view.customer.Grid', {
 				}]
 			},*/
 			columns: [
-				{text: '姓名',  dataIndex:'name', flex: 1},
-	            {text: '手机号码', dataIndex: 'cellphone', flex: 1},
+				{text: '姓名',  dataIndex:'name', flex: 1 , xfilter:{xtype : 'textfield'}},
+	            {text: '手机号码', dataIndex: 'cellphone', flex: 1, xfilter:{xtype : 'textfield'}},
 	            {text: '条形码', dataIndex: 'barcode', flex: 1},
 	            {text: '邮箱', dataIndex: 'email', flex: 1},
-	            {text: '城市', dataIndex: 'city.name', flex: 1},
+	            {text: '省', dataIndex: 'province.name', flex: 1, xfilter:{
+	            	xtype:'combo',
+					store:new Ext.ux.util.ComboDataUtil().getCities(),
+				    dataIndex:'cityId',
+				    displayField: 'name',
+				    valueField: 'id'
+	            }},
+	            {text: '城市', dataIndex: 'city.name', flex: 1, xfilter:{
+	            	xtype:'combo',
+					store:new Ext.ux.util.ComboDataUtil().getProvinces(),
+				    dataIndex:'provinceId',
+				    displayField: 'name',
+				    valueField: 'id'
+	            }},
 	            {text: '城区', dataIndex: 'district.name', flex: 1},
 	            {text: '小区', dataIndex: 'community', flex: 1},
 	            {text: '地址', dataIndex: 'streetAddress', flex: 2},

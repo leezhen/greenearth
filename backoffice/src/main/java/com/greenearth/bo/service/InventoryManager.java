@@ -49,8 +49,8 @@ public class InventoryManager {
 	}
 	
 	@Transactional(readOnly = true)
-	public Page<InventoryLog> getInventoryLogs(Page<InventoryLog> p) {
-		return inventoryLogDao.getInventoryLogs(p);
+	public Page<InventoryLog> getInventoryLogs(Page<InventoryLog> p,Map<String,Object> params) {
+		return inventoryLogDao.getInventoryLogs(p,params);
 	}
 
 	public void saveInventory(Inventory inventory) {

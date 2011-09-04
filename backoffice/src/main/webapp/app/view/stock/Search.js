@@ -10,15 +10,11 @@ Ext.define('AM.view.stock.Search', {
         columns: 2
     },
     
-    requires: ['AM.store.ComboUtil','Ext.ux.util.ComboDataUtil'],
+    requires: ['Ext.ux.util.ComboDataUtil'],
     
 //    inventoryTypes: Ext.create('AM.store.ComboUtil',{
 //    	urls: 'dict_inventoryTypes.do',
 //    }),
-    
-    stations: Ext.create('AM.store.ComboUtil',{
-    	urls: 'dict_recycleStations.do',
-    }),
     
     initComponent: function() {
     	this.items = [{
@@ -35,7 +31,7 @@ Ext.define('AM.view.stock.Search', {
         	fieldLabel: '分拣站',
             name: 'stationId',
             xtype: 'combo',
-            store: this.stations,
+            store: new Ext.ux.util.ComboDataUtil().getStations(),
             emptyText: '请选择',
             queryMode: 'local',
             displayField: 'name',
@@ -55,7 +51,6 @@ Ext.define('AM.view.stock.Search', {
             	}
             }];	
 //        this.inventoryTypes.load();
-        this.stations.load();
         this.callParent(arguments);
     }
 });

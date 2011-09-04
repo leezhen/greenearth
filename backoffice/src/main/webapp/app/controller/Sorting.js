@@ -12,7 +12,6 @@ Ext.define('AM.controller.Sorting', {
            {ref: 'customerId' , selector : 'sorting textfield[name=cellPhone]'}
     ],
     
-    requires: ['AM.store.ComboUtil'],
     
     init: function() {
         this.control({

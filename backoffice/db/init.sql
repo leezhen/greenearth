@@ -41,9 +41,12 @@ insert into district(id, name, city_id) values (6, '朝阳区', 2);
 insert into district(id, name, city_id) values (7, '海淀区', 2);
 insert into district(id, name, city_id) values (8, '东城区', 2);
 
-insert into customer(id, name, cellphone, city_id, district_id, street_address, barcode, community, email,created_at, created_by, modified_at, modified_by) values(1, '张三', '13300000000', 1, 1, 'X街道X号X小区X楼X号', '00000001', 'XX小区','131083080@qq.com', now(), 'admin', null, null);
-insert into customer(id, name, cellphone, city_id, district_id, street_address, barcode, community, email,created_at, created_by, modified_at, modified_by) values(2, '李四', '13411111111', 1, 5, 'Y街道Y号Y小区Y楼Y号', '00000002', 'XX小区','131083081@qq.com', now(), 'admin', null, null);
-insert into customer(id, name, cellphone, city_id, district_id, street_address, barcode, community, email,created_at, created_by, modified_at, modified_by) values(3, '王五', '13522222222', 2, 2, 'Z街道Z号Z小区Z楼Z号', '00000003', 'XX小区','131083082@qq.com', now(), 'admin', null, null);
+insert into province(id,name) values(2,'北京');
+insert into province(id,name) values(1,'成都');
+
+insert into customer(id, name, cellphone, city_id, district_id, province_id,street_address, barcode, community, email,created_at, created_by, modified_at, modified_by) values(1, '张三', '13300000000', 1, 1,1, 'X街道X号X小区X楼X号', '00000001', 'XX小区','131083080@qq.com', now(), 'admin', null, null);
+insert into customer(id, name, cellphone, city_id, district_id, province_id,street_address, barcode, community, email,created_at, created_by, modified_at, modified_by) values(2, '李四', '13411111111', 1, 5,1, 'Y街道Y号Y小区Y楼Y号', '00000002', 'XX小区','131083081@qq.com', now(), 'admin', null, null);
+insert into customer(id, name, cellphone, city_id, district_id, province_id,street_address, barcode, community, email,created_at, created_by, modified_at, modified_by) values(3, '王五', '13522222222', 2, 2,2, 'Z街道Z号Z小区Z楼Z号', '00000003', 'XX小区','131083082@qq.com', now(), 'admin', null, null);
 
 insert into inventory_type(id, name) values(1, '厨余');
 insert into inventory_type(id, name) values(2, '塑料瓶');
@@ -87,3 +90,5 @@ insert into partner values(2,'','020-110293430','汪老板','13151241706',2);
 
 insert into sell_record values(1,now(),10,2,20,1,1,1);
 insert into sell_record values(2,now(),5,3,15,2,2,2);
+
+ALTER TABLE point_rule ADD UNIQUE idx_inventory_point(inventory_type_id,points_type_id);

@@ -10,11 +10,13 @@ import com.greenearth.bo.dao.DeductionReasonDao;
 import com.greenearth.bo.dao.InventoryTypeDao;
 import com.greenearth.bo.dao.PartnerDao;
 import com.greenearth.bo.dao.PointsTypeDao;
+import com.greenearth.bo.dao.ProvinceDao;
 import com.greenearth.bo.dao.RecycleStationDao;
 import com.greenearth.bo.domain.DeductionReason;
 import com.greenearth.bo.domain.InventoryType;
 import com.greenearth.bo.domain.Partner;
 import com.greenearth.bo.domain.PointsType;
+import com.greenearth.bo.domain.Province;
 import com.greenearth.bo.domain.RecycleStation;
 
 @Service
@@ -34,6 +36,9 @@ public class DictionaryManager {
 	
 	@Autowired
 	private RecycleStationDao recycleStationDao;
+	
+	@Autowired
+	private ProvinceDao provinceDao;
 	
 	@Autowired
 	private PartnerDao partnerDao;
@@ -68,7 +73,13 @@ public class DictionaryManager {
 		return partnerDao.getPartners();
 	}
 	
+	@Transactional(readOnly = true)
 	public DeductionReason getReason(Integer id) {
 		return reasonDao.get(id);
+	}
+	
+	@Transactional(readOnly = true)
+	public List<Province> getProvinces() {
+		return provinceDao.getProvinces();
 	}
 }

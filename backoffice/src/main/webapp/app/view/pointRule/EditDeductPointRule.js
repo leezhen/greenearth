@@ -5,8 +5,6 @@ Ext.define('AM.view.pointRule.EditDeductPointRule', {
     autoShow: true,
     width: 400,
     height: 300,
-    closeAction: 'hide',
-    url: 'customer_save.do',
     
     config: {
     	title: '扣分规则',

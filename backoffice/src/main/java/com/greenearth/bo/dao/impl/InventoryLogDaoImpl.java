@@ -1,5 +1,10 @@
 package com.greenearth.bo.dao.impl;
 
+import java.util.Map;
+import java.util.Set;
+
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import com.greenearth.bo.dao.InventoryLogDao;
@@ -16,8 +21,13 @@ public class InventoryLogDaoImpl extends HibernateDao<InventoryLog, Long> implem
 	}
 
 	@Override
-	public Page<InventoryLog> getInventoryLogs(Page<InventoryLog> p) {
-		return this.findPage(p, "from InventoryLog");
+	public Page<InventoryLog> getInventoryLogs(Page<InventoryLog> p,Map<String,Object> params) {
+		Criteria cr = createCriteria();
+		Set<String> keySet = params.keySet();
+		for(String key : keySet) {
+			cr.add(Restrictions.eq(key, params.get(key)));
+		}
+		return this.findPage(p, cr);
 	}
 
 }

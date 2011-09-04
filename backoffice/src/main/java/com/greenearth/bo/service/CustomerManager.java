@@ -1,5 +1,7 @@
 package com.greenearth.bo.service;
 
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +25,8 @@ public class CustomerManager {
 	}
 
 	@Transactional(readOnly = true)
-	public Page<Customer> getCustomers(Page<Customer> p, Customer c) {
-		return customerDao.getCustomers(p, c);
+	public Page<Customer> getCustomers(Page<Customer> p, Map<String,Object> params) {
+		return customerDao.getCustomers(p, params);
 	}
 
 	public void saveCustomer(Customer c) {

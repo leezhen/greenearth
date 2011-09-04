@@ -56,6 +56,26 @@ Ext.define('Ext.ux.util.ComboDataUtil' ,{
 			this.statics().partners.load();
 		}
 		return this.statics().partners;
+	},
+	
+	getProvinces : function() {
+		if(!(this.statics().provinces)) {
+			this.statics().provinces = Ext.create('Ext.ux.util.ComboUtil',{
+				urls: 'dict_provinces.do'
+			})
+			this.statics().provinces.load();
+		}
+		return this.statics().provinces;
+	},
+	
+	getPointTypes : function() {
+		if(!(this.statics().pointTypes)) {
+			this.statics().pointTypes = Ext.create('Ext.ux.util.ComboUtil',{
+				urls: 'dict_pointTypes.do'
+			})
+			this.statics().pointTypes.load();
+		}
+		return this.statics().pointTypes;
 	}
 	
 });

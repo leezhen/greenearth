@@ -1,5 +1,9 @@
 package com.greenearth.bo.dao.impl;
 
+import java.util.Map;
+import java.util.Set;
+
+import org.hibernate.Criteria;
 import org.hibernate.criterion.Example;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
@@ -21,11 +25,14 @@ public class CustomerDaoImpl extends HibernateDao<Customer, Long> implements Cus
 	}
 
 	@Override
-	public Page<Customer> getCustomers(Page<Customer> p, Customer c) {
-		Example example = Example.create(c)
-				.excludeZeroes()           //exclude zero valued properties
-			    .enableLike(MatchMode.ANYWHERE);             //use like for string comparisons
-		return super.findPage(p, example);
+	public Page<Customer> getCustomers(Page<Customer> p, Map<String,Object> params) {
+		Criteria cr = createCriteria();
+		Set<String> keySet = params.keySet();
+		for(String key : keySet) {
+			System.out.println(key + ":" + params.get(key));
+			cr.add(Restrictions.eq(key, params.get(key)));
+		}
+		return this.findPage(p, cr);
 	}
 
 	@Override

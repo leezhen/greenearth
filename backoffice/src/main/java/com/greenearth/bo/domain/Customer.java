@@ -17,6 +17,7 @@ public class Customer {
 	private String cellphone;
 	private City city;
 	private District district;
+	private Province province;
 	private String streetAddress;
 	private String community;
 	private String email ;
@@ -65,6 +66,16 @@ public class Customer {
 	public void setDistrict(District district) {
 		this.district = district;
 	}
+	
+	@ManyToOne
+	@JoinColumn(name = "province_id")
+	public Province getProvince() {
+		return province;
+	}
+	public void setProvince(Province province) {
+		this.province = province;
+	}
+	
 	public String getStreetAddress() {
 		return streetAddress;
 	}
@@ -152,4 +163,7 @@ public class Customer {
 	}
 	
 	public static String _CellPhone = "cellphone" ;
+	public static String _Name = "name";
+	public static String _ProvinceId = "province.id";
+	public static String _CityId = "city.id";
 }

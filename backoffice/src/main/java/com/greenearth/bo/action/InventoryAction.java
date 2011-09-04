@@ -47,8 +47,7 @@ public class InventoryAction extends BaseAction {
 	
 	protected JsonMapper jsonMapper = JsonMapper.buildNormalMapper();
 	
-	public void query()
-	{
+	public void query() {
 		try {
 			Page<Inventory> p = new Page<Inventory>();
 			p.setStartAndLimit(start, limit);
@@ -64,7 +63,7 @@ public class InventoryAction extends BaseAction {
 		try {
 			Page<InventoryLog> p = new Page<InventoryLog>();
 			p.setStartAndLimit(start, limit);
-			p = inventoryManager.getInventoryLogs(p);
+			p = inventoryManager.getInventoryLogs(p,params);
 			Struts2Utils.renderJson(p);
 		} catch(Exception e) {
 			logger.error("query inventoryLog error:",e);
@@ -115,16 +114,6 @@ public class InventoryAction extends BaseAction {
 		}
 	}
 	
-	protected String getJson() {
-		String str = null;
-		try {
-			str = CharStreams.toString(new InputStreamReader(request.getInputStream(), "UTF-8"));
-		} catch (IOException e) {
-			logger.warn("Error occured converting InputStream to String: ", e);
-		}
-		
-		return str;
-	}
 	
 	public void setCustomerId(Integer customerId) {
 		this.customerId = customerId;

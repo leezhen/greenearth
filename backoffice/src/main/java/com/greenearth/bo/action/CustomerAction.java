@@ -39,10 +39,12 @@ public class CustomerAction extends BaseAction {
 	}
 
 	public void setName(String name) {
+		this.params.put(Customer._Name, name);
 		this.name = name;
 	}
 
 	public void setCellphone(String cellphone) {
+		this.params.put(Customer._CellPhone, cellphone);
 		this.cellphone = cellphone;
 	}
 
@@ -55,11 +57,16 @@ public class CustomerAction extends BaseAction {
 	}
 	
 	public void setCityId(Integer cityId) {
+		this.params.put(Customer._CityId, cityId);
 		this.cityId = cityId;
 	}
 
 	public void setDistrictId(Integer districtId) {
 		this.districtId = districtId;
+	}
+	
+	public void setProvinceId(Integer provinceId) {
+		this.params.put(Customer._ProvinceId, provinceId);
 	}
 
 	@Override
@@ -70,10 +77,7 @@ public class CustomerAction extends BaseAction {
 	public void list() {
 		Page<Customer> p = new Page<Customer>();
 		p.setStartAndLimit(start, limit);
-		Customer c = new Customer();
-		c.setName(name);
-		c.setCellphone(cellphone);
-		p = customerManager.getCustomers(p, c);
+		p = customerManager.getCustomers(p, params);
 		Struts2Utils.renderJson(p);
 	}
 	

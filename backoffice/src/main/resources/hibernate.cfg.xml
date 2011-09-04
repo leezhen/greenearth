@@ -29,6 +29,6 @@
         <mapping class="com.greenearth.bo.domain.Menu"/>
         <mapping class="com.greenearth.bo.domain.Role"/>
         <mapping class="com.greenearth.bo.domain.User"/>
-        <mapping class="com.greenearth.bo.domain.CustomerPoint"/>
+        <mapping class="com.greenearth.bo.domain.Province"/>
     </session-factory>
 </hibernate-configuration>
