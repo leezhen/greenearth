@@ -33,4 +33,5 @@
     <include file="actions/struts-system.xml" />
     <include file="actions/struts-point.xml" />
     <include file="actions/struts-partner.xml" />
+    <include file="actions/struts-inventoryType.xml" />
 </struts>

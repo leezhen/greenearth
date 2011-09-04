@@ -8,4 +8,5 @@ public interface InventoryTypeDao {
 	List<InventoryType> getInventoryTypes();
 	InventoryType getInventoryType(Integer id);
 	Page<InventoryType> getInventoryTypes(Page<InventoryType> p);
+	void save(InventoryType type);
 }

@@ -34,7 +34,7 @@ public class PointRuleAction extends BaseAction {
 	private InventoryType inventoryType;
 	private Integer id;
 	private DeductionReason deductionReason;
-	private PointsType pointType;
+	private PointsType pointsType;
 	
 	public void listPointRules() {
 		Page<PointRule> p = new Page<PointRule>();
@@ -66,12 +66,12 @@ public class PointRuleAction extends BaseAction {
 			rule.setPoints(points);
 			rule.setWeight(weight);
 			rule.setInventoryType(inventoryType);
-			rule.setPointsType(pointType);
+			rule.setPointsType(pointsType);
 			pointRuleManager.savePointRule(rule);
 			Struts2Utils.renderJson("{success: true, msg: '" + (isNew ? "添加" : "修改") + "成功'}");
 		}  catch (ConstraintViolationException e) {
 			logger.error("save point rule failed:" ,e);
-			Struts2Utils.renderJson("{success: false, msg: '库存类型定义重复'}");
+			Struts2Utils.renderJson("{success: false, msg: '积分规则重复定义'}");
 		}  catch (Exception e) {
 			logger.error("save point rule failed:" ,e);
 			Struts2Utils.renderJson("{success: false, msg: '操作失败'}");
@@ -95,9 +95,12 @@ public class PointRuleAction extends BaseAction {
 			rule.setDeductionReason(deductionReason);
 			pointRuleManager.saveDeductionRule(rule);
 			Struts2Utils.renderJson("{success: true, msg: '" + (isNew ? "添加" : "修改") + "成功'}");
-		} catch (Exception e) {
+		} catch (ConstraintViolationException e) {
 			logger.error("save point rule failed:" ,e);
-			Struts2Utils.renderJson("{success: true, msg: '操作失败'}");
+			Struts2Utils.renderJson("{success: false, msg: '扣分规则重复定义'}");
+		}catch (Exception e) {
+			logger.error("save point rule failed:" ,e);
+			Struts2Utils.renderJson("{success: false, msg: '操作失败'}");
 		}
 	}
 
@@ -149,11 +152,11 @@ public class PointRuleAction extends BaseAction {
 		this.deductionReason = deductionReason;
 	}
 
-	public PointsType getPointType() {
-		return pointType;
+	public PointsType getPointsType() {
+		return pointsType;
 	}
 
-	public void setPointType(PointsType pointType) {
-		this.pointType = pointType;
+	public void setPointsType(PointsType pointsType) {
+		this.pointsType = pointsType;
 	}
 }

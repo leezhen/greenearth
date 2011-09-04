@@ -16,6 +16,7 @@ Ext.application({
         'SaleRecord',
         'InventoryLog',
         'Partner',
+        'InventoryType',
         'DirectTest'
     ],
            

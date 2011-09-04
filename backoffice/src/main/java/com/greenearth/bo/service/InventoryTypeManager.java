@@ -23,4 +23,8 @@ public class InventoryTypeManager {
 	public Page<InventoryType> getInventoryTypes(Page<InventoryType> p) {
 		return inventoryTypeDao.getInventoryTypes(p);
 	}
+	
+	public void save(InventoryType type) {
+		inventoryTypeDao.save(type);
+	}
 }
