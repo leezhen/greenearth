@@ -2,7 +2,7 @@ Ext.define('AM.view.station.Add', {
     extend: 'Ext.window.Window',
     alias : 'widget.stationadd',
     
-    requires: ['AM.store.Cities'],
+    requires: ['AM.store.Cities','Ext.ux.util.ComboDataUtil'],
  
 //    title : '编辑客户信息',
     layout: 'fit',
@@ -16,17 +16,17 @@ Ext.define('AM.view.station.Add', {
     	title: '分拣站信息',
     },
     
-    citiesStore: Ext.create('Ext.data.Store', {
-        fields: ['id', 'name'],
-        autoLoad: true,
-        proxy: {
-            type: 'ajax',
-            url: 'customer_cities.do',
-            reader: {
-                type: 'json'
-            }
-        }
-    }),
+//    citiesStore: Ext.create('Ext.data.Store', {
+//        fields: ['id', 'name'],
+//        autoLoad: true,
+//        proxy: {
+//            type: 'ajax',
+//            url: 'customer_cities.do',
+//            reader: {
+//                type: 'json'
+//            }
+//        }
+//    }),
  
     initComponent: function() {
     	Ext.apply(this, {
@@ -78,7 +78,7 @@ Ext.define('AM.view.station.Add', {
     		name : 'cityId',
             fieldLabel: '所在城市',
             emptyText: '请选择',
-    		store: this.citiesStore,
+    		store: new Ext.ux.util.ComboDataUtil().getCities(),
             queryMode: 'local',
             displayField: 'name',
             valueField: 'id'

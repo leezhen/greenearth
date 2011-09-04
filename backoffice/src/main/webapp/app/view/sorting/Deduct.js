@@ -9,12 +9,7 @@ Ext.define('AM.view.sorting.Deduct', {
     // Fields will be arranged vertically, stretched to full width
     layout: 'anchor',
     
-    requires: ['AM.store.ComboUtil'],
-    
-    reasons: Ext.create('AM.store.ComboUtil',{
-    	urls: 'dict_reasons.do',
-    	autoLoad : true
-    }),
+    requires: ['Ext.ux.util.ComboDataUtil'],
     
     defaultType: 'textfield',
     
@@ -23,7 +18,7 @@ Ext.define('AM.view.sorting.Deduct', {
             fieldLabel: '扣分原因',
             name: 'reasonId',
             xtype: 'combo',
-            store: this.reasons,
+            store: new Ext.ux.util.ComboDataUtil().getDeductReasons(),
             allowBlank: false,
             emptyText: '请选择',
             queryMode: 'local',

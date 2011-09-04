@@ -44,4 +44,15 @@ public class BaseAction extends ActionSupport implements ServletRequestAware,
 	public void setLimit(int limit) {
 		this.limit = limit;
 	}
+	
+	protected String getJson() {
+		String str = null;
+		try {
+			str = CharStreams.toString(new InputStreamReader(request.getInputStream(), "UTF-8"));
+		} catch (IOException e) {
+			logger.warn("Error occured converting InputStream to String: ", e);
+		}
+		
+		return str;
+	}
 }

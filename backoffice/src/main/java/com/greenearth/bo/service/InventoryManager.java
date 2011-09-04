@@ -4,7 +4,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.greenearth.bo.dao.InventoryDao;
 import com.greenearth.bo.dao.InventoryLogDao;
 import com.greenearth.bo.dao.Page;
+import com.greenearth.bo.domain.Customer;
 import com.greenearth.bo.domain.DeductionRule;
 import com.greenearth.bo.domain.Inventory;
 import com.greenearth.bo.domain.InventoryLog;
@@ -22,7 +24,7 @@ import com.greenearth.bo.domain.RecycleStation;
 @Service
 @Transactional
 public class InventoryManager {
-	private static Logger log = Logger.getLogger(InventoryManager.class);
+	private Logger log = LoggerFactory.getLogger(InventoryManager.class);
 	
 	@Autowired
 	private InventoryDao inventoryDao;
@@ -47,8 +49,8 @@ public class InventoryManager {
 	}
 	
 	@Transactional(readOnly = true)
-	public Page<InventoryLog> getInventoryLogs(Page<InventoryLog> p) {
-		return inventoryLogDao.getInventoryLogs(p);
+	public Page<InventoryLog> getInventoryLogs(Page<InventoryLog> p,Map<String,Object> params) {
+		return inventoryLogDao.getInventoryLogs(p,params);
 	}
 
 	public void saveInventory(Inventory inventory) {
@@ -75,7 +77,7 @@ public class InventoryManager {
 				log.error("can't find pointRule for type:" + inbound.getType().getId());
 			} else {
 				Float points = pointRule.getPoints()*inbound.getWeight()/pointRule.getWeight();
-				pointsManager.addPoints(inbound.getCustomer(), points, inbound.getType());
+				pointsManager.addPoints(inbound.getCustomer(), points, inbound.getType(),pointRule.getPointsType());
 			} 
 		}
 		//扣分

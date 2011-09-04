@@ -1,7 +1,6 @@
 Ext.define('AM.controller.Sorting', {
     extend: 'Ext.app.Controller',
     title: '录入分拣结果',
-    
     views: ['sorting.Sorting'],
     
     stores: ['Sortings','Deduction'],
@@ -13,7 +12,6 @@ Ext.define('AM.controller.Sorting', {
            {ref: 'customerId' , selector : 'sorting textfield[name=cellPhone]'}
     ],
     
-    requires: ['AM.store.ComboUtil'],
     
     init: function() {
         this.control({

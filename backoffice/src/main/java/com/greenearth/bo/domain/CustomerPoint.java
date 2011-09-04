@@ -8,14 +8,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
 public class CustomerPoint {
 	private Long id;
 	private Customer customer;
-	private Float totalEarnedPoints;
-	private Float totalDeductedPoints;
+	private PointsType pointType;
 	private Float totalAvaliablePoints;
 	private Date modifiedAt;
 	private Date createdAt;
@@ -29,7 +29,7 @@ public class CustomerPoint {
 		this.id = id;
 	}
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "customer_id")
 	public Customer getCustomer() {
 		return customer;
@@ -38,20 +38,13 @@ public class CustomerPoint {
 		this.customer = customer;
 	}
 	
-	@Column(columnDefinition="float not null default 0")
-	public Float getTotalEarnedPoints() {
-		return totalEarnedPoints;
+	@ManyToOne
+	@JoinColumn(name = "point_type_id")
+	public PointsType getPointType() {
+		return pointType;
 	}
-	public void setTotalEarnedPoints(Float totalEarnedPoints) {
-		this.totalEarnedPoints = totalEarnedPoints;
-	}
-	
-	@Column(columnDefinition="float not null default 0")
-	public Float getTotalDeductedPoints() {
-		return totalDeductedPoints;
-	}
-	public void setTotalDeductedPoints(Float totalDeductedPoints) {
-		this.totalDeductedPoints = totalDeductedPoints;
+	public void setPointType(PointsType pointType) {
+		this.pointType = pointType;
 	}
 	
 	@Column(columnDefinition="float not null default 0")
@@ -61,6 +54,7 @@ public class CustomerPoint {
 	public void setTotalAvaliablePoints(Float totalAvaliablePoints) {
 		this.totalAvaliablePoints = totalAvaliablePoints;
 	}
+	
 	public Date getModifiedAt() {
 		return modifiedAt;
 	}
@@ -76,4 +70,5 @@ public class CustomerPoint {
 	
 
 	public static String _CustomerId = "customer.id";
+	public static String _PointTypeId = "pointType.id";
 }

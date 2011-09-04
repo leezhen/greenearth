@@ -2,33 +2,25 @@
 Ext.define('AM.view.sorting.AddSorting', {
 	extend: 'Ext.form.Panel',
 	alias : 'widget.addsorting',
-
+	
 	bodyPadding: 5,
     width: 350,
 
     // Fields will be arranged vertically, stretched to full width
     layout: 'anchor',
     
-    requires: ['AM.store.ComboUtil'],
-    
-    inventoryTypes: Ext.create('AM.store.ComboUtil',{
-    	urls: 'dict_inventoryTypes.do',
-    	autoLoad : true
-    }),
-    
-    reasons: Ext.create('AM.store.ComboUtil',{
-    	urls: 'dict_reasons.do',
-    	autoLoad : true
-    }),
+    requires: ['Ext.ux.util.ComboDataUtil'],
     
     defaultType: 'textfield',
+    
+//    inventoryTypes: new AM.view.util.ComboDataUtil().comboInventoryTypes(),
     
     initComponent: function() {
     	this.items = [{
             fieldLabel: '垃圾分类',
             name: 'inventoryTypeId',
             xtype: 'combo',
-            store: this.inventoryTypes,
+            store: new Ext.ux.util.ComboDataUtil().getInventoryTypes(),
             allowBlank: false,
             emptyText: '请选择',
             queryMode: 'local',

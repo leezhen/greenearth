@@ -2,32 +2,30 @@ Ext.define('AM.view.customer.Edit', {
     extend: 'Ext.window.Window',
     alias : 'widget.customeredit',
     
-    requires: ['AM.store.Cities','AM.store.ComboUtil'],
+    requires: ['AM.store.Cities','Ext.ux.util.ComboDataUtil'],
  
 //    title : '编辑客户信息',
     layout: 'fit',
     autoShow: true,
     width: 400,
     height: 300,
-    closeAction: 'hide',
-    url: 'customer_save.do',
     
     config: {
     	title: '客户信息',
     	districtsStore: []
     },
     
-    citiesStore:Ext.create('Ext.data.Store', {
-        fields: ['id', 'name'],
-        autoLoad: false,
-        proxy: {
-            type: 'ajax',
-            url: 'customer_cities.do',
-            reader: {
-                type: 'json'
-            }
-        }
-    }),
+//    citiesStore:Ext.create('Ext.data.Store', {
+//        fields: ['id', 'name'],
+//        autoLoad: false,
+//        proxy: {
+//            type: 'ajax',
+//            url: 'customer_cities.do',
+//            reader: {
+//                type: 'json'
+//            }
+//        }
+//    }),
     
     districtsStore: Ext.create('Ext.data.Store', {
         fields: ['id', 'name'],
@@ -107,7 +105,7 @@ Ext.define('AM.view.customer.Edit', {
                 handler: this.close
             }
         ];
-        this.citiesStore.load();
+//        this.citiesStore.load();
         this.callParent(arguments);
     },
     
@@ -117,16 +115,16 @@ Ext.define('AM.view.customer.Edit', {
     		name : 'cityId',
             fieldLabel: '市',
             emptyText: '请选择',
-    		store: this.citiesStore,
+    		store: new Ext.ux.util.ComboDataUtil().getCities(),
             queryMode: 'local',
             displayField: 'name',
             valueField: 'id',
+            allowBlank: false,
             listeners:{
             	scope: this,
                 'select': this.showDistrict
             }
     	});
-    	
     	return this.cities;
     },
     
@@ -137,6 +135,7 @@ Ext.define('AM.view.customer.Edit', {
             fieldLabel: '区',
             emptyText: '请选择',
     		store: this.districtsStore,
+    		allowBlank: false,
             queryMode: 'local',
             displayField: 'name',
             valueField: 'id'

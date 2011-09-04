@@ -20,7 +20,6 @@ import com.greenearth.bo.utils.Struts2Utils;
 @Component
 @Scope("prototype")
 public class SellRecordAction extends BaseAction{
-	private static Logger log = Logger.getLogger(SellRecordAction.class);
 	@Autowired
 	private SellRecordManager sellRecordManger;
 	
@@ -65,7 +64,7 @@ public class SellRecordAction extends BaseAction{
 		sellRecordManger.sell(sr);
 		Struts2Utils.renderJson("{success: true, msg: '" + (isNew ? "添加" : "修改") + "成功'}");
 		} catch (Exception e) {
-			log.error("出库操作失败",e);
+			logger.error("出库操作失败",e);
 			Struts2Utils.renderJson("{success: false, msg: '" + e.getMessage() + "'}");
 		}
 	}

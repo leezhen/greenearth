@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.greenearth.bo.dao.InventoryTypeDao;
+import com.greenearth.bo.dao.Page;
 import com.greenearth.bo.dao.hibernate.HibernateDao;
 import com.greenearth.bo.domain.InventoryType;
 
@@ -20,5 +21,11 @@ public class InventoryTypeDaoImpl extends HibernateDao<InventoryType, Integer> i
 	@Override
 	public InventoryType getInventoryType(Integer id) {
 		return get(id);
+	}
+
+	@Override
+	public Page<InventoryType> getInventoryTypes(Page<InventoryType> p) {
+		// TODO Auto-generated method stub
+		return this.findPage(p, "from InventoryType");
 	}
 }

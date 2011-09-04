@@ -5,16 +5,15 @@ Ext.define('AM.view.pointRule.EditEarnPointRule', {
     autoShow: true,
     width: 400,
     height: 300,
-    closeAction: 'hide',
-    url: 'customer_save.do',
     
     config: {
     	title: '积分规则',
     },
     
-    inventoryTypes: Ext.create('AM.store.ComboUtil',{
-    	urls : 'dict_inventoryTypes.do'
-    }),
+//    inventoryTypes: Ext.create('AM.store.ComboUtil',{
+//    	urls : 'dict_inventoryTypes.do'
+//    }),
+    requires: ['Ext.ux.util.ComboDataUtil'],
     
     initComponent: function() {
     	Ext.apply(this, {
@@ -27,25 +26,32 @@ Ext.define('AM.view.pointRule.EditEarnPointRule', {
                         xtype: 'hiddenfield',
                         name : 'id',
                         fieldLabel: 'ID'
-                    },
-					{
-                        fieldLabel: '类型',
-                        name: 'inventoryType.id',
+                    }, {
+                        fieldLabel: '积分类型',
+                        name: 'pointsType.id',
                         xtype: 'combo',
-                        store: this.inventoryTypes,
+                        store: new Ext.ux.util.ComboDataUtil().getPointTypes(),
                         allowBlank: false,
                         emptyText: '请选择',
                         queryMode: 'local',
                         displayField: 'name',
                         valueField: 'id'
-                    },
-                    {
+                    },{
+                        fieldLabel: '类型',
+                        name: 'inventoryType.id',
+                        xtype: 'combo',
+                        store: new Ext.ux.util.ComboDataUtil().getInventoryTypes(),
+                        allowBlank: false,
+                        emptyText: '请选择',
+                        queryMode: 'local',
+                        displayField: 'name',
+                        valueField: 'id'
+                    },{
                         xtype: 'textfield',
                         name : 'weight',
                         fieldLabel: '重量',
                         allowBlank: false
-                    },
-                    {
+                    },{
                         xtype: 'textfield',
                         name : 'points',
                         fieldLabel: '分数',
@@ -68,6 +74,6 @@ Ext.define('AM.view.pointRule.EditEarnPointRule', {
         ];
  
         this.callParent(arguments);
-        this.inventoryTypes.load();
+//        this.inventoryTypes.load();
     },
 });

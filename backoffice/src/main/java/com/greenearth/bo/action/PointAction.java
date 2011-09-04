@@ -1,6 +1,7 @@
 package com.greenearth.bo.action;
 
 import org.apache.log4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -17,8 +18,6 @@ import com.greenearth.bo.utils.Struts2Utils;
 @Component
 @Scope("prototype")
 public class PointAction extends BaseAction {
-	
-	private static Logger log = Logger.getLogger(BaseAction.class);
 	@Autowired
 	private PointsManager pointsManager;
 	

@@ -34,10 +34,11 @@ Ext.define('AM.controller.Stock', {
     			values[item.name] = item.getValue();
     		}
     	})
-    	this.getStockGrid().store.proxy.extraParams = {};
     	for(k in values) {
     		if (!Ext.isEmpty(values[k]))
     			this.getStockGrid().store.proxy.extraParams[k] = values[k];
+    		else
+    			delete this.getStockGrid().store.proxy.extraParams[k];
     	}
     	this.getStockGrid().store.currentPage = 1;
     	this.getStockGrid().store.load();
