@@ -1,3 +1,4 @@
+drop table if exists customer_point;
 insert into role(id, name, description) values (1, 'user', 'The default role given to all users.');
 insert into role(id, name, description) values (2, 'admin', 'The administrator role only given to site admins');
 insert into role_permission values (2, 'customer:*');
@@ -23,6 +24,7 @@ insert into menu(id, icon, code, caption, view_ref, parent_id) values(16, './ima
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(17, './images/kiva.png', 'pointRule', '积分规则设定', 'pointRuleTab',6);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(18, './images/kiva.png', 'partner', '供应商列表', 'partnerTab',8);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(19, './images/kiva.png', 'directTest', 'Direct测试', 'directTestTab', 1);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(20, './images/kiva.png', 'inventoryType', '库存类型设定', 'inventoryTypeTab',6);
 
 insert into role_menu(role_id, menu_id) values(1, 2);
 insert into role_menu(role_id, menu_id) values(1, 19);
@@ -92,3 +94,4 @@ insert into sell_record values(1,now(),10,2,20,1,1,1);
 insert into sell_record values(2,now(),5,3,15,2,2,2);
 
 ALTER TABLE point_rule ADD UNIQUE idx_inventory_point(inventory_type_id,points_type_id);
+ALTER TABLE deduction_rule ADD UNIQUE idx_reason(deduction_reason_id);

@@ -30,7 +30,7 @@ public class DeductionRule {
 	}
 	
 	@OneToOne
-	@JoinColumn(name = "dedcution_reason_id")
+	@JoinColumn(name = "deduction_reason_id")
 	public DeductionReason getDeductionReason() {
 		return deductionReason;
 	}
