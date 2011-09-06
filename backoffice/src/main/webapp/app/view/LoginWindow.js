@@ -22,12 +22,14 @@ Ext.define('AM.view.LoginWindow', {
 					{
                         name : 'username',
                         fieldLabel: '用户名',
+                        enableKeyEvents: true,
                         allowBlank: false
                     },
 					{
                         name : 'password',
                         fieldLabel: '密码',
                         allowBlank: false,
+                        enableKeyEvents: true,
                         inputType: 'password'
                     }
                 ]

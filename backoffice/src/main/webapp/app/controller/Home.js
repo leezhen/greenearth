@@ -101,7 +101,10 @@ Ext.define('AM.controller.Home', {
             },
             'loginwindow button[action=login]': {
                 click: this.onLogin
-            }
+            },
+            'loginwindow *': {
+            	keydown: this.login
+            } 
         });
     },
     
@@ -196,7 +199,6 @@ Ext.define('AM.controller.Home', {
         if (form.isValid()) {
             form.submit({
                 success: function(form, action) {
-                	console.log(action.result);
                 	win.close();
                 	this.loadMenus();
                 },
@@ -206,5 +208,12 @@ Ext.define('AM.controller.Home', {
                 scope: this
             });
         }
+    },
+    
+    
+    login: function(com,e) {
+    	if(e.getKey() == e.ENTER) {
+    		this.onLogin(com);
+    	}
     }
 });

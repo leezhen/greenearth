@@ -79,4 +79,8 @@ public class SellRecord {
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
+	
+	public static String _InventoryTypeId = "inventoryType.id";
+	public static String _StationId = "station.id";
+	public static String _PartnerId = "partner.id";
 }

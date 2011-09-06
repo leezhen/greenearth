@@ -12,6 +12,7 @@ import com.greenearth.bo.dao.Page;
 import com.greenearth.bo.domain.City;
 import com.greenearth.bo.domain.Customer;
 import com.greenearth.bo.domain.District;
+import com.greenearth.bo.domain.Province;
 import com.greenearth.bo.service.CustomerManager;
 import com.greenearth.bo.service.DistrictManager;
 import com.greenearth.bo.utils.Struts2Utils;
@@ -27,6 +28,9 @@ public class CustomerAction extends BaseAction {
 	private String barcode;
 	private Integer cityId;
 	private Integer districtId;
+	private Integer provinceId;
+	private String email;
+	private String community;
 	
 	@Autowired
 	private CustomerManager customerManager;
@@ -67,6 +71,15 @@ public class CustomerAction extends BaseAction {
 	
 	public void setProvinceId(Integer provinceId) {
 		this.params.put(Customer._ProvinceId, provinceId);
+		this.provinceId = provinceId;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setCommunity(String community) {
+		this.community = community;
 	}
 
 	@Override
@@ -101,13 +114,21 @@ public class CustomerAction extends BaseAction {
 		c.setName(name);
 		c.setCellphone(cellphone);
 		c.setStreetAddress(streetAddress);
-		c.setBarcode(barcode);
+//		c.setBarcode(barcode);
+		c.setCommunity(community);
+		c.setEmail(email);
 		City city = new City();
 		city.setId(cityId);
 		c.setCity(city);
+		
 		District district = new District();
 		district.setId(districtId);
 		c.setDistrict(district);
+		
+		Province province = new Province();
+		province.setId(provinceId);
+		c.setProvince(province);
+		
 		customerManager.saveCustomer(c);
 		Struts2Utils.renderJson("{success: true, msg: '" + (isNew ? "添加" : "修改") + "成功'}");
 	}
@@ -125,4 +146,6 @@ public class CustomerAction extends BaseAction {
 			districts = districtManager.getDistricts();
 		Struts2Utils.renderJson(districts);
 	}
+	
+	
 }
