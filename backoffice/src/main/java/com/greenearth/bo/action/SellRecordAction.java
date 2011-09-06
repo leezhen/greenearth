@@ -43,7 +43,7 @@ public class SellRecordAction extends BaseAction{
 	public void list() {
 		Page<SellRecord> p = new Page<SellRecord>();
 		p.setStartAndLimit(start, limit);
-		p = sellRecordManger.getSellRecords(p);
+		p = sellRecordManger.getSellRecords(p,params);
 		Struts2Utils.renderJson(p);
 	}
 	
@@ -91,6 +91,7 @@ public class SellRecordAction extends BaseAction{
 
 	public void setRecycleStationId(Integer recycleStationId) {
 		this.recycleStationId = recycleStationId;
+		params.put(SellRecord._StationId, recycleStationId);
 	}
 
 	public Integer getPartnerId() {
@@ -99,6 +100,7 @@ public class SellRecordAction extends BaseAction{
 
 	public void setPartnerId(Integer partnerId) {
 		this.partnerId = partnerId;
+		params.put(SellRecord._PartnerId, partnerId);
 	}
 
 	public Integer getInventoryTypeId() {
@@ -107,6 +109,7 @@ public class SellRecordAction extends BaseAction{
 
 	public void setInventoryTypeId(Integer inventoryTypeId) {
 		this.inventoryTypeId = inventoryTypeId;
+		params.put(SellRecord._InventoryTypeId, inventoryTypeId);
 	}
 	
 	public Float getWeight() {

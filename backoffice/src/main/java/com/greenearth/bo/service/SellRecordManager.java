@@ -1,5 +1,7 @@
 package com.greenearth.bo.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,8 +21,8 @@ public class SellRecordManager {
 	private InventoryManager inventoryManager;
 	
 	@Transactional(readOnly = true)
-	public Page<SellRecord> getSellRecords(Page<SellRecord> p) {
-		return sellRecordDao.getSellRecords(p);
+	public Page<SellRecord> getSellRecords(Page<SellRecord> p ,Map<String,Object> params) {
+		return sellRecordDao.getSellRecords(p,params);
 	}
 	
 	public void save(SellRecord sr) {

@@ -76,20 +76,32 @@ Ext.define('AM.view.customer.Edit', {
                         fieldLabel: '手机号码',
                         allowBlank: false
                     },
+                    {
+                        xtype: 'textfield',
+                        name : 'email',
+                        fieldLabel: '邮箱',
+                        allowBlank: false
+                    },
+                    this.createProvinceCombo(),
                     this.createCityCombo(),
                     this.createDistrictCombo(),
                     {
                         xtype: 'textfield',
+                        name : 'community',
+                        fieldLabel: '社区',
+                        allowBlank: false
+                    },{
+                        xtype: 'textfield',
                         name : 'streetAddress',
                         fieldLabel: '地址',
                         allowBlank: false
-                    },
-                    {
-                        xtype: 'textfield',
-                        name : 'barcode',
-                        fieldLabel: '条码',
-                        allowBlank: false
                     }
+//                    {
+//                        xtype: 'textfield',
+//                        name : 'barcode',
+//                        fieldLabel: '条码',
+//                        allowBlank: false
+//                    }
                 ]
             }
         ]});
@@ -142,6 +154,22 @@ Ext.define('AM.view.customer.Edit', {
     	});
     	
     	return this.districts;
+    },
+    
+    createProvinceCombo : function() {
+    	this.provinces = Ext.create('Ext.form.ComboBox', {
+    		id: 'province.id',
+    		name : 'provinceId',
+            fieldLabel: '省',
+            emptyText: '请选择',
+    		store: new Ext.ux.util.ComboDataUtil().getProvinces(),
+    		allowBlank: false,
+            queryMode: 'local',
+            displayField: 'name',
+            valueField: 'id'
+    	});
+    	
+    	return this.provinces;
     },
     
     showDistrict: function(combo) {

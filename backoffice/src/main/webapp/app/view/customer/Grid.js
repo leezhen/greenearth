@@ -28,7 +28,7 @@ Ext.define('AM.view.customer.Grid', {
 				{text: '姓名',  dataIndex:'name', flex: 1 , xfilter:{xtype : 'textfield'}},
 	            {text: '手机号码', dataIndex: 'cellphone', flex: 1, xfilter:{xtype : 'textfield'}},
 	            {text: '条形码', dataIndex: 'barcode', flex: 1},
-	            {text: '邮箱', dataIndex: 'email', flex: 1},
+	            {text: '邮箱', dataIndex: 'email', flex: 1.2},
 	            {text: '省', dataIndex: 'province.name', flex: 1, xfilter:{
 	            	xtype:'combo',
 					store:new Ext.ux.util.ComboDataUtil().getCities(),

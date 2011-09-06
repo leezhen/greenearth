@@ -1,7 +1,11 @@
 package com.greenearth.bo.dao.impl;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
+import org.hibernate.Criteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 
@@ -21,9 +25,13 @@ public class SellRecordDaoImpl extends HibernateDao<SellRecord, Long>
 	}
 
 	@Override
-	public Page<SellRecord> getSellRecords(Page<SellRecord> p) {
-		// TODO Auto-generated method stub
-		return this.findPage(p, "from SellRecord");
+	public Page<SellRecord> getSellRecords(Page<SellRecord> p,Map<String,Object> params) {
+		Criteria cr = createCriteria();
+		Set<String> keySet = params.keySet();
+		for(String key : keySet) {
+			cr.add(Restrictions.eq(key, params.get(key)));
+		}
+		return this.findPage(p, cr);
 	}
 
 }
