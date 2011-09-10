@@ -14,6 +14,8 @@ public class PointsDeducted {
 	private Long id;
 	private Customer customer;
 	private DeductionReason reason;
+	private Activity activity;
+	private Merchant merchant;
 	private Float points;
 	private Date createdAt;
 	
@@ -43,6 +45,25 @@ public class PointsDeducted {
 	public void setReason(DeductionReason reason) {
 		this.reason = reason;
 	}
+	
+	@ManyToOne
+	@JoinColumn(name = "activity_id")
+	public Activity getActivity() {
+		return activity;
+	}
+	public void setActivity(Activity activity) {
+		this.activity = activity;
+	}
+	
+	@ManyToOne
+	@JoinColumn(name = "merchant_id")
+	public Merchant getMerchant() {
+		return merchant;
+	}
+	public void setMerchant(Merchant merchant) {
+		this.merchant = merchant;
+	}
+	
 	public Float getPoints() {
 		return points;
 	}

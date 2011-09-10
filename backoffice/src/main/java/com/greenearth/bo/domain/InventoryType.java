@@ -9,6 +9,7 @@ import javax.persistence.Id;
 @Entity
 public class InventoryType {
 	private Integer id;
+	private Integer level;
 	private String name;
 	private String desc;
 	
@@ -20,6 +21,14 @@ public class InventoryType {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	
+	public Integer getLevel() {
+		return level;
+	}
+	public void setLevel(Integer level) {
+		this.level = level;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -34,4 +43,6 @@ public class InventoryType {
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
+	
+	public final static String _Level = "level"; 
 }

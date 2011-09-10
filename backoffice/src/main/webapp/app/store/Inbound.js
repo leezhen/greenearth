@@ -1,13 +1,13 @@
-Ext.define('AM.store.Sortings', {
+Ext.define('AM.store.Inbound', {
     extend: 'Ext.data.Store',
-    model: 'AM.model.Sortings',
+    model: 'AM.model.Inbound',
     remoteSort: true,
 	proxy: {
         type: 'ajax',
         api: {
-            update: 'point_calculatePoint.do'
+            update: 'inventory_sortInbound.do'
         },
-        url: 'point_calculatePoint.do',
+        url: 'inventory_sortInbound.do',
         reader: {
             type: 'json',
             root: 'result',

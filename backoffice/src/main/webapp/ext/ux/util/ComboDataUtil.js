@@ -76,6 +76,18 @@ Ext.define('Ext.ux.util.ComboDataUtil' ,{
 			this.statics().pointTypes.load();
 		}
 		return this.statics().pointTypes;
+	},
+	/**
+	 * 库存类型二级分类
+	 */
+	getSecondTypes : function() {
+		if(!(this.statics().secondTypes)) {
+			this.statics().secondTypes = Ext.create('Ext.ux.util.ComboUtil',{
+				urls: 'dict_secondTypes.do'
+			})
+			this.statics().secondTypes.load();
+		}
+		return this.statics().secondTypes;
 	}
 	
 });

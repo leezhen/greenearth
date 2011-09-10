@@ -59,8 +59,8 @@ public class DictionaryManager {
 	}
 
 	@Transactional(readOnly = true)
-	public List<InventoryType> getInventoryTypes() {
-		return inventoryTypeDao.getInventoryTypes();
+	public List<InventoryType> getInventoryTypes(Integer level) {
+		return inventoryTypeDao.getInventoryTypes(level);
 	}
 	
 	@Transactional(readOnly = true)

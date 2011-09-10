@@ -2,6 +2,8 @@ package com.greenearth.bo.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.SimpleExpression;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,8 +16,8 @@ import com.greenearth.bo.domain.InventoryType;
 public class InventoryTypeDaoImpl extends HibernateDao<InventoryType, Integer> implements InventoryTypeDao {
 
 	@Override
-	public List<InventoryType> getInventoryTypes() {
-		return getAll();
+	public List<InventoryType> getInventoryTypes(Integer level) {
+		return this.findBy(InventoryType._Level, level);
 	}
 	
 	@Override

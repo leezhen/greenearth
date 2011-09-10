@@ -9,5 +9,5 @@ public interface CustomerDao {
 	Page<Customer> getCustomers(Page<Customer> p, Map<String,Object> params);
 	void saveCustomer(Customer c);
 	void removeCustomer(Long id);
-	Customer findCustomerByCellPhone(String cellPhone);
+	Customer findCustomerByBarCode(String barCode);
 }

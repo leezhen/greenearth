@@ -7,7 +7,7 @@ Ext.define('AM.controller.Home', {
  
     views: [
         'Home', 'customer.Grid', 'sorting.Sorting','stock.stockPanel','station.List', 'LoginWindow', 'customer.DirectTest',
-        'sale.SalePanel','inventoryType.List'
+        'sale.SalePanel','inventoryType.List','inbound.Inbound'
     ],
     
     models: [
@@ -91,6 +91,12 @@ Ext.define('AM.controller.Home', {
         	   closable: true,
         	   forceCreate: true,
         	   selector: 'inventoryTypeList'
+           },{
+        	   ref: 'inboundTab',
+        	   xtype: 'inbound',
+        	   closable: true,
+        	   forceCreate: true,
+        	   selector: 'inbound'
            }
     ],
  

@@ -17,10 +17,13 @@ import com.greenearth.bo.dao.PointsEarnedDao;
 import com.greenearth.bo.domain.Customer;
 import com.greenearth.bo.domain.CustomerPoint;
 import com.greenearth.bo.domain.DeductionReason;
+import com.greenearth.bo.domain.DeductionRule;
 import com.greenearth.bo.domain.InventoryType;
+import com.greenearth.bo.domain.PointRule;
 import com.greenearth.bo.domain.PointsDeducted;
 import com.greenearth.bo.domain.PointsEarned;
 import com.greenearth.bo.domain.PointsType;
+import com.greenearth.bo.expand.PointRef;
 
 @Service
 @Transactional
@@ -37,6 +40,12 @@ public class PointsManager {
 	
 	@Autowired
 	private CustomerManager customerManager;
+	
+	@Autowired
+	private PointRuleManager pointRuleManager;
+	
+	@Autowired
+	private InventoryTypeManager inventoryTypeManager;
 
 	@Transactional(readOnly = true)
 	public List<PointsEarned> getPointsEarned() {
@@ -135,5 +144,37 @@ public class PointsManager {
 //			customerPoint.setTotalAvaliablePoints((float) 0.0);
 //		}
 //		customerPointDao.save(customerPoint);
+	}
+	
+	public void caculatePoint(PointRef ref,Customer customer) {
+		//积分
+		if (ref.getWeight() != null && ref.getWeight() > 0.0) {
+			PointRule pointRule = pointRuleManager.findPointRule(ref.getInventoryTypeId());
+			if (pointRule == null) {
+				log.error("can't find pointRule for type:" + ref.getInventoryTypeId());
+			} else {
+				Float points = pointRule.getPoints()*ref.getWeight()/pointRule.getWeight();
+				InventoryType type = inventoryTypeManager.getType(ref.getInventoryTypeId());
+				if (type != null) {
+					this.addPoints(customer, points, type, pointRule.getPointsType());
+				} else {
+					log.error("can't find inventoryType for type:" + ref.getInventoryTypeId());
+				}
+			}
+		}
+		
+		//扣分
+		if (ref.getReasonId() != null && ref.getReasonId() > 0) {
+			log.info("need deduction, reasonId:" + ref.getReasonId());
+			DeductionRule deductRule = pointRuleManager.findDeductionRule(ref.getReasonId());
+			
+			if (deductRule == null) {
+				log.error("can't find deduction rule for reason:" + ref.getReasonId());
+				return ;
+			} else {
+				Float points = deductRule.getPoints();
+				this.minusPoints(customer, points, ref.getReasonId());
+			}
+		}
 	}
 }

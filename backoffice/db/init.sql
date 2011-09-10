@@ -9,7 +9,7 @@ insert into menu(id, icon, code, caption, view_ref, parent_id) values(1, null, '
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(2, './images/kiva.png', 'customer', '客户信息查询', 'customerTab', 1);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(3, null, 'shouyunManage', '收运管理', null, null);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(4, null, 'sortingManage', '分拣管理', null, null);
-insert into menu(id, icon, code, caption, view_ref, parent_id) values(5, './images/kiva.png', 'sorting', '分拣入库', 'sortingTab', 4);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(5, './images/kiva.png', 'sorting', '分拣积分', 'sortingTab', 4);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(6, null, 'pointsManage', '积分管理', null, null);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(7, null, 'salesManage', '出库销售管理', null, null);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(8, null, 'partnerManage', '合作商管理', null, null);
@@ -25,6 +25,7 @@ insert into menu(id, icon, code, caption, view_ref, parent_id) values(17, './ima
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(18, './images/kiva.png', 'partner', '供应商列表', 'partnerTab',8);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(19, './images/kiva.png', 'directTest', 'Direct测试', 'directTestTab', 1);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(20, './images/kiva.png', 'inventoryType', '库存类型设定', 'inventoryTypeTab',6);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(21, './images/kiva.png', 'inbound', '分类入库', 'inboundTab',4);
 
 insert into role_menu(role_id, menu_id) values(1, 2);
 insert into role_menu(role_id, menu_id) values(1, 19);
@@ -50,10 +51,18 @@ insert into customer(id, name, cellphone, city_id, district_id, province_id,stre
 insert into customer(id, name, cellphone, city_id, district_id, province_id,street_address, barcode, community, email,created_at, created_by, modified_at, modified_by) values(2, '李四', '13411111111', 1, 5,1, 'Y街道Y号Y小区Y楼Y号', '00000002', 'XX小区','131083081@qq.com', now(), 'admin', null, null);
 insert into customer(id, name, cellphone, city_id, district_id, province_id,street_address, barcode, community, email,created_at, created_by, modified_at, modified_by) values(3, '王五', '13522222222', 2, 2,2, 'Z街道Z号Z小区Z楼Z号', '00000003', 'XX小区','131083082@qq.com', now(), 'admin', null, null);
 
-insert into inventory_type(id, name) values(1, '厨余');
-insert into inventory_type(id, name) values(2, '塑料瓶');
-insert into inventory_type(id, name) values(3, '玻璃制品');
-insert into inventory_type(id, name) values(4, '铁制品');
+insert into inventory_type(id, name,level) values(1, '厨余',1);
+insert into inventory_type(id, name,level) values(2, '塑料',1);
+insert into inventory_type(id, name,level) values(3, '玻璃',1);
+insert into inventory_type(id, name,level) values(4, '金属',1);
+
+insert into inventory_type(id, name,level) values(5, '铁制品',2);
+insert into inventory_type(id, name,level) values(6, '铜制品',2);
+insert into inventory_type(id, name,level) values(7, '锌制品',2);
+insert into inventory_type(id, name,level) values(8, '玻璃碗 ',2);
+insert into inventory_type(id, name,level) values(9, '塑料碗',2);
+insert into inventory_type(id, name,level) values(10, '玻璃雕像',2);
+insert into inventory_type(id, name,level) values(11, '塑料玩具',2);
 
 insert into recycle_station(id,name,address) values(1,'成都','成都');
 insert into recycle_station(id,name,address) values(2,'北京','北京');

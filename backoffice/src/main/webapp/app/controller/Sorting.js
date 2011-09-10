@@ -9,7 +9,7 @@ Ext.define('AM.controller.Sorting', {
     
     refs: [
            {ref: 'earnedGrid', selector: 'sorting earnedgrid'},
-           {ref: 'customerId' , selector : 'sorting textfield[name=cellPhone]'}
+           {ref: 'customerId' , selector : 'sorting textfield[name=barCode]'}
     ],
     
     
@@ -51,10 +51,9 @@ Ext.define('AM.controller.Sorting', {
     		return;
     	}
     	var instance = Ext.ModelManager.create({
-    		cellPhone: customerIdTxt.value,
+    		barCode: customerIdTxt.value,
     		inventoryTypeId: value.inventoryTypeId,
     		weight: value.weight,
-    		stationId:1,
     		reasonId:value.reasonId
     	}, 'AM.model.Sortings');
     	instance.dirty = true;

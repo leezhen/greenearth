@@ -1,32 +1,20 @@
 package com.greenearth.bo.action;
 
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import org.apache.log4j.Logger;
 import org.codehaus.jackson.type.JavaType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.google.common.io.CharStreams;
 import com.greenearth.bo.dao.Page;
 import com.greenearth.bo.domain.Customer;
 import com.greenearth.bo.domain.Inventory;
 import com.greenearth.bo.domain.InventoryLog;
-import com.greenearth.bo.domain.InventoryType;
-import com.greenearth.bo.domain.RecycleStation;
 import com.greenearth.bo.mapper.JsonMapper;
 import com.greenearth.bo.service.CustomerManager;
-import com.greenearth.bo.service.DistrictManager;
 import com.greenearth.bo.service.InventoryManager;
-import com.greenearth.bo.service.InventoryTypeManager;
-import com.greenearth.bo.service.RecycleStationManager;
 import com.greenearth.bo.utils.Struts2Utils;
 
 @SuppressWarnings("serial")
@@ -92,10 +80,10 @@ public class InventoryAction extends BaseAction {
 			
 			if(inventoryList != null) {
 				for (InventoryLog log:inventoryList) {
-					Customer customer  = customerManager.findCustomerByCellPhone(log.getCellPhone());
+					Customer customer  = customerManager.findCustomerByBarCode(log.getBarCode());
 					if(customer == null) {
-						logger.error("can't find customer by phone:" + log.getCellPhone());
-						Struts2Utils.renderJson("{success: false, msg: '手机号录入错误'}");
+						logger.error("can't find customer by barcode:" + log.getBarCode());
+						Struts2Utils.renderJson("{success: false, msg: '条码找不到对应的顾客'}");
 						return;
 					}
 					log.setCustomer(customer);

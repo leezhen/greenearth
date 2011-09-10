@@ -17,7 +17,8 @@ Ext.application({
         'InventoryLog',
         'Partner',
         'InventoryType',
-        'DirectTest'
+        'DirectTest',
+        'Inbound'
     ],
            
     autoCreateViewport: true

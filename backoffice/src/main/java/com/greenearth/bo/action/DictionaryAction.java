@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.greenearth.bo.Constants;
 import com.greenearth.bo.domain.DeductionReason;
 import com.greenearth.bo.domain.InventoryType;
 import com.greenearth.bo.domain.Partner;
@@ -23,7 +24,12 @@ public class DictionaryAction extends BaseAction {
 	private DictionaryManager dictManager;
 	
 	public void inventoryTypes() {
-		List<InventoryType> invTypes = dictManager.getInventoryTypes();
+		List<InventoryType> invTypes = dictManager.getInventoryTypes(Constants.Inventory_Type_Top_Level);
+		Struts2Utils.renderJson(invTypes);
+	}
+	
+	public void secondTypes() {
+		List<InventoryType> invTypes = dictManager.getInventoryTypes(Constants.Inventory_Type_Second_Level);
 		Struts2Utils.renderJson(invTypes);
 	}
 	
