@@ -18,7 +18,9 @@ Ext.application({
         'Partner',
         'InventoryType',
         'DirectTest',
-        'Inbound'
+        'Inbound',
+        'Merchant',
+        'Activity'
     ],
            
     autoCreateViewport: true

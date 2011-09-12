@@ -32,12 +32,6 @@ public class InventoryManager {
 	@Autowired
 	private InventoryLogDao inventoryLogDao;
 	
-	@Autowired
-	private PointRuleManager pointRuleManager;
-	
-	@Autowired
-	private PointsManager pointsManager;
-
 	@Transactional(readOnly = true)
 	public List<Inventory> getInventories() {
 		return inventoryDao.getInventories();

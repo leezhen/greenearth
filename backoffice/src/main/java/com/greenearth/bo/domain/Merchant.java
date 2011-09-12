@@ -18,6 +18,7 @@ public class Merchant {
 	private Float couponValue;
 	private String merchantName;
 	private String merchantAddr;
+	private Boolean isEnable;
 	private Date createdAt;
 	private Date createdBy;
 	private Date modifiedAt;
@@ -72,6 +73,12 @@ public class Merchant {
 	}
 	public void setMerchantAddr(String merchantAddr) {
 		this.merchantAddr = merchantAddr;
+	}
+	public Boolean getIsEnable() {
+		return isEnable;
+	}
+	public void setIsEnable(Boolean isEnable) {
+		this.isEnable = isEnable;
 	}
 	public Date getCreatedAt() {
 		return createdAt;

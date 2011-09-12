@@ -18,6 +18,7 @@ public class Activity {
 	private String name;
 	private Integer score;
 	private String desc;
+	private Boolean isEnable;
 	private Date createdAt;
 	private String createdBy;
 	private Date modifiedAt;
@@ -68,6 +69,12 @@ public class Activity {
 	}
 	public void setDesc(String desc) {
 		this.desc = desc;
+	}
+	public Boolean getIsEnable() {
+		return isEnable;
+	}
+	public void setIsEnable(Boolean isEnable) {
+		this.isEnable = isEnable;
 	}
 	public Date getCreatedAt() {
 		return createdAt;

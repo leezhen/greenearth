@@ -26,6 +26,10 @@ insert into menu(id, icon, code, caption, view_ref, parent_id) values(18, './ima
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(19, './images/kiva.png', 'directTest', 'Direct测试', 'directTestTab', 1);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(20, './images/kiva.png', 'inventoryType', '库存类型设定', 'inventoryTypeTab',6);
 insert into menu(id, icon, code, caption, view_ref, parent_id) values(21, './images/kiva.png', 'inbound', '分类入库', 'inboundTab',4);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(22, null, 'activityManager', '活动管理', null,null);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(23, './images/kiva.png', 'activity', '活动列表', 'activityTab',22);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(24, null, 'merchantManager', '商户管理', null,null);
+insert into menu(id, icon, code, caption, view_ref, parent_id) values(25, './images/kiva.png', 'merchant', '商户列表', 'merchantTab',24);
 
 insert into role_menu(role_id, menu_id) values(1, 2);
 insert into role_menu(role_id, menu_id) values(1, 19);
