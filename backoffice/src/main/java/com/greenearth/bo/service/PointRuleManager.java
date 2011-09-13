@@ -40,8 +40,8 @@ public class PointRuleManager {
 		return deductionRuleDao.get(id);
 	}
 	
-	public PointRule findPointRule(InventoryType type) {
-		return pointRuleDao.getPointRuleByType(type.getId());
+	public PointRule findPointRule(Integer typeId) {
+		return pointRuleDao.getPointRuleByType(typeId);
 	}
 	
 	public DeductionRule findDeductionRule(Integer reasonId) {

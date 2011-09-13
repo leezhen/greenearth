@@ -1,40 +1,25 @@
-Ext.define('AM.view.sorting.EarnedGrid', {
+Ext.define('AM.view.inbound.InboundGrid', {
 	extend: 'Ext.grid.Panel',
-	alias: 'widget.earnedgrid',
-	disabled: false,    
+	alias: 'widget.inboundGrid',
     border: true,
-    store: 'Sortings',
+    store: 'Inbound',
     
     requires: ['Ext.ux.util.ComboDataUtil'],
     
-//    inventoryTypes: new Ext.ux.util.ComboDataUtil().getInventoryTypes(),
-    
-//    reasons: Ext.create('AM.store.ComboUtil',{
-//    	urls: 'dict_reasons.do',
-//    	autoLoad: true
-//    }),
-    
     initComponent: function() {
 		Ext.apply(this, {
-//		    store: Ext.data.StoreManager.lookup('sortingStore'),
-//			store: 'Sortings',
 		    viewConfig: {
 		    	forceFit: true
 		    },
 			
 			columns: [
-				{text: '顾客',  dataIndex:'barCode', flex: 1},
 	            {text: '分类', dataIndex: 'inventoryTypeId', flex: 1 ,renderer: function(v){
-					var typeStore = new Ext.ux.util.ComboDataUtil().getInventoryTypes();
+					var typeStore = new Ext.ux.util.ComboDataUtil().getSecondTypes();
 					if(typeStore.getById(v) != null)
 						return typeStore.getById(v).data.name;
 				}},
+				{text: '分拣站', dataIndex: 'stationId', flex: 1},
 	            {text: '重量', dataIndex: 'weight', flex: 1},
-	            {text: '扣分原因', dataIndex: 'reasonId', flex: 1 ,renderer: function(v){
-	            	var reasons = new Ext.ux.util.ComboDataUtil().getDeductReasons();
-	            	if(reasons.getById(v) != null)
-	            		return reasons.getById(v).data.name;
-				}},
 	            {
 	                xtype: 'actioncolumn',
 	                items: [{

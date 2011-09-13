@@ -30,5 +30,7 @@
         <mapping class="com.greenearth.bo.domain.Role"/>
         <mapping class="com.greenearth.bo.domain.User"/>
         <mapping class="com.greenearth.bo.domain.Province"/>
+        <mapping class="com.greenearth.bo.domain.Activity"/>
+        <mapping class="com.greenearth.bo.domain.Merchant"/>
     </session-factory>
 </hibernate-configuration>

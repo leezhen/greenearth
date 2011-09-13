@@ -1,7 +1,7 @@
 // 分拣
-Ext.define('AM.view.sorting.InboundPanel', {
+Ext.define('AM.view.sorting.ActionPanel', {
 	extend: 'Ext.panel.Panel',
-	alias: 'widget.inboundPanel',
+	alias: 'widget.sortActionPanel',
 	
 	requires: ['AM.view.sorting.AddSorting',
 	           'AM.view.sorting.Deduct'],

@@ -18,8 +18,7 @@ public class InventoryLog {
 	private Float weight;
 	private Date createdAt;
 	private RecycleStation station;
-	private Integer reasonId;
-	private String cellPhone;
+	private String barCode;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -99,20 +98,13 @@ public class InventoryLog {
 	}
 	
 	@Transient
-	public Integer getReasonId() {
-		return reasonId;
+	public String getBarCode() {
+		return barCode;
 	}
-	public void setReasonId(Integer reasonId) {
-		this.reasonId = reasonId;
+	public void setBarCode(String barCode) {
+		this.barCode = barCode;
 	}
 	
-	@Transient
-	public String getCellPhone() {
-		return cellPhone;
-	}
-	public void setCellPhone(String cellPhone) {
-		this.cellPhone = cellPhone;
-	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -128,8 +120,6 @@ public class InventoryLog {
 		builder.append(createdAt);
 		builder.append(", station=");
 		builder.append(station);
-		builder.append(", reasonId=");
-		builder.append(reasonId);
 		builder.append("]");
 		return builder.toString();
 	}

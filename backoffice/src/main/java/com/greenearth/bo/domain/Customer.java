@@ -166,4 +166,5 @@ public class Customer {
 	public static String _Name = "name";
 	public static String _ProvinceId = "province.id";
 	public static String _CityId = "city.id";
+	public static String _BarCode = "barcode";
 }

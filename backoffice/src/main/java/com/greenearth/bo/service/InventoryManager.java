@@ -32,12 +32,6 @@ public class InventoryManager {
 	@Autowired
 	private InventoryLogDao inventoryLogDao;
 	
-	@Autowired
-	private PointRuleManager pointRuleManager;
-	
-	@Autowired
-	private PointsManager pointsManager;
-
 	@Transactional(readOnly = true)
 	public List<Inventory> getInventories() {
 		return inventoryDao.getInventories();
@@ -67,32 +61,10 @@ public class InventoryManager {
 	}
 	
 	public void inbound(InventoryLog inbound) {
-		if (inbound.getWeight() != 0) {
+		if (inbound.getWeight() != null && inbound.getWeight() > 0) {
 			inbound.setCreatedAt(new Date());
 			inventoryLogDao.saveInventoryLog(inbound);
-			//积分
 			addInventory(inbound.getType(),inbound.getWeight(),inbound.getStation());
-			PointRule pointRule = pointRuleManager.findPointRule(inbound.getType());
-			if(pointRule == null) {
-				log.error("can't find pointRule for type:" + inbound.getType().getId());
-			} else {
-				Float points = pointRule.getPoints()*inbound.getWeight()/pointRule.getWeight();
-				pointsManager.addPoints(inbound.getCustomer(), points, inbound.getType(),pointRule.getPointsType());
-			} 
-		}
-		//扣分
-		if(inbound.getReasonId() != null) {
-			log.info("need deduction, reasonId:" + inbound.getReasonId());
-			DeductionRule deductRule = pointRuleManager.findDeductionRule(inbound.getReasonId());
-			
-			if (deductRule == null) {
-				log.error("can't find deduction rule for reason:" + inbound.getReasonId());
-				return ;
-			} else {
-				Float points = deductRule.getPoints();
-				pointsManager.minusPoints(inbound.getCustomer(), points, inbound.getReasonId());
-			}
-			
 		}
 	}
 	

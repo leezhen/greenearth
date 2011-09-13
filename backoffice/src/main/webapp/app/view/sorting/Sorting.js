@@ -3,10 +3,8 @@ Ext.define('AM.view.sorting.Sorting', {
 	extend: 'Ext.panel.Panel',
 	alias: 'widget.sorting',
 	
-	requires: ['AM.view.sorting.AddSorting',
-	           'AM.view.sorting.EarnedGrid',
-	           'AM.view.sorting.DeductionGrid',
-	           'AM.view.sorting.InboundPanel'],
+	requires: ['AM.view.sorting.EarnedGrid',
+	           'AM.view.sorting.ActionPanel'],
 
 	closable: true,
 	layout: {
@@ -19,10 +17,10 @@ Ext.define('AM.view.sorting.Sorting', {
 			items: [{
 				xtype: 'textfield',
 				fieldLabel: '客户ID',
-	            name: 'cellPhone',
+	            name: 'barCode',
 	            allowBlank: false,
 			},{
-				xtype: 'inboundPanel',
+				xtype: 'sortActionPanel',
 				anchor: '60%',
 				height: 100
 			}, {

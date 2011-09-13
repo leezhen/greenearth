@@ -46,8 +46,8 @@ public class CustomerDaoImpl extends HibernateDao<Customer, Long> implements Cus
 	}
 
 	@Override
-	public Customer findCustomerByCellPhone(String cellPhone) {
-		SimpleExpression r = Restrictions.eq(Customer._CellPhone, cellPhone);
+	public Customer findCustomerByBarCode(String barCode) {
+		SimpleExpression r = Restrictions.eq(Customer._BarCode, barCode);
 		return this.findUnique(r);
 	}
 

@@ -7,7 +7,7 @@ Ext.define('AM.controller.Home', {
  
     views: [
         'Home', 'customer.Grid', 'sorting.Sorting','stock.stockPanel','station.List', 'LoginWindow', 'customer.DirectTest',
-        'sale.SalePanel','inventoryType.List'
+        'sale.SalePanel','inventoryType.List','inbound.Inbound','activity.ActivityGrid','merchant.MerchantGrid'
     ],
     
     models: [
@@ -91,6 +91,24 @@ Ext.define('AM.controller.Home', {
         	   closable: true,
         	   forceCreate: true,
         	   selector: 'inventoryTypeList'
+           },{
+        	   ref: 'inboundTab',
+        	   xtype: 'inbound',
+        	   closable: true,
+        	   forceCreate: true,
+        	   selector: 'inbound'
+           }, {
+        	   ref: 'activityTab',
+        	   xtype: 'activityGrid',
+        	   closable: true,
+        	   forceCreate: true,
+        	   selector: 'activityGrid'
+           } ,{
+        	   ref: 'merchantTab',
+        	   xtype: 'merchantGrid',
+        	   closable: true,
+        	   forceCreate: true,
+        	   selector: 'merchantGrid'
            }
     ],
  

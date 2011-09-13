@@ -2,15 +2,15 @@ Ext.define('AM.controller.InventoryLog', {
     extend: 'Ext.app.Controller',
     
     stores: [
-        'InventoryLog','Sortings'
+        'InventoryLog'
     ],
  
     views: [
-        'inventory.List','inventory.SortWindow'
+        'inventory.List'
     ],
     
     models: [
-        'InventoryLog','Sortings'
+        'InventoryLog'
     ],
     
     
@@ -23,8 +23,8 @@ Ext.define('AM.controller.InventoryLog', {
     },
 
 	addInventoryLog: function() {
-    	var win = Ext.widget('sortWindow');
-    	win.show();
+//    	var win = Ext.widget('sortWindow');
+//    	win.show();
     },
     
 });

@@ -37,8 +37,8 @@ public class CustomerManager {
 		customerDao.removeCustomer(id);
 	}
 	
-	public Customer findCustomerByCellPhone(String cellPhone) {
-		return customerDao.findCustomerByCellPhone(cellPhone);
+	public Customer findCustomerByBarCode(String barCode) {
+		return customerDao.findCustomerByBarCode(barCode);
 	}
 	
 	public void changeTotalScore(Customer customer , Float points) {
