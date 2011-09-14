@@ -20,4 +20,12 @@ public class ActivityManager {
 	public Page<Activity> getActivities(Page<Activity> p, Map<String,Object> params) {
 		return activityDao.getActivities(p,params);
 	}
+	
+	public Activity get(Integer id) {
+		return activityDao.get(id);
+	}
+	
+	public void save(Activity a) {
+		activityDao.save(a);
+	}
 }

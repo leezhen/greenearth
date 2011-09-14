@@ -13,12 +13,12 @@ import javax.persistence.Transient;
 @Entity
 public class InventoryLog {
 	private Long id;
-	private Customer customer;
+//	private Customer customer;
 	private InventoryType type;
 	private Float weight;
 	private Date createdAt;
 	private RecycleStation station;
-	private String barCode;
+//	private String barCode;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,14 +29,14 @@ public class InventoryLog {
 		this.id = id;
 	}
 	
-	@ManyToOne
-	@JoinColumn(name = "customer_id")
-	public Customer getCustomer() {
-		return customer;
-	}
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+//	@ManyToOne
+//	@JoinColumn(name = "customer_id")
+//	public Customer getCustomer() {
+//		return customer;
+//	}
+//	public void setCustomer(Customer customer) {
+//		this.customer = customer;
+//	}
 	
 	@ManyToOne
 	@JoinColumn(name = "inventory_type_id")
@@ -67,15 +67,15 @@ public class InventoryLog {
 		this.station = station;
 	}
 	
-	@Transient
-	public Long getCustomerId() {
-		return customer.getId();
-	}
-	public void setCustomerId(Long customerId) {
-		Customer c = new Customer();
-		c.setId(customerId);
-		this.setCustomer(c);
-	}
+//	@Transient
+//	public Long getCustomerId() {
+//		return customer.getId();
+//	}
+//	public void setCustomerId(Long customerId) {
+//		Customer c = new Customer();
+//		c.setId(customerId);
+//		this.setCustomer(c);
+//	}
 	
 	@Transient
 	public Integer getStationId() {
@@ -97,21 +97,21 @@ public class InventoryLog {
 		this.setType(t);
 	}
 	
-	@Transient
-	public String getBarCode() {
-		return barCode;
-	}
-	public void setBarCode(String barCode) {
-		this.barCode = barCode;
-	}
+//	@Transient
+//	public String getBarCode() {
+//		return barCode;
+//	}
+//	public void setBarCode(String barCode) {
+//		this.barCode = barCode;
+//	}
 	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("InventoryLog [id=");
 		builder.append(id);
-		builder.append(", customer=");
-		builder.append(customer);
+//		builder.append(", customer=");
+//		builder.append(customer);
 		builder.append(", type=");
 		builder.append(type);
 		builder.append(", weight=");

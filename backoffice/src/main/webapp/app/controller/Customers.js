@@ -75,10 +75,12 @@ Ext.define('AM.controller.Customers', {
 //    	view.bindStore(store);
 //    	view.getDistrictsStore().load({params: {cityId: record.get('city.id')}});
 //    	cityCombo.setValue(record.get('city.id'));
-    	view.down('form').loadRecord(record);
-//    	console.log(record.get('city.id'));
     	var cityCombo = view.down('form combobox[id=city.id]');
     	cityCombo.fireEvent('select', cityCombo);
+    	
+    	view.down('form').loadRecord(record);
+//    	console.log(record.get('city.id'));
+    	
     },
     
     saveCustomer: function(button) {

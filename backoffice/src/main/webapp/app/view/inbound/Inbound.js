@@ -13,11 +13,6 @@ Ext.define('AM.view.inbound.Inbound', {
 	initComponent: function() {
 		Ext.apply(this, {
 			items: [{
-				xtype: 'textfield',
-				fieldLabel: '客户ID',
-	            name: 'barCode',
-	            allowBlank: false,
-			}, {
 				xtype: 'inboundForm',
 				anchor: '30%',
 				height: 120

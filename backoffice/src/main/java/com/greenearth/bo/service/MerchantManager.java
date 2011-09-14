@@ -22,4 +22,12 @@ public class MerchantManager {
 	public Page<Merchant> getMerchants(Page<Merchant> p, Map<String,Object> params) {
 		return merchantDao.getMerchants(p,params);
 	}
+	
+	public Merchant get(Integer id) {
+		return merchantDao.get(id);
+	}
+	
+	public void save(Merchant m) {
+		merchantDao.save(m);
+	}
 }

@@ -38,10 +38,6 @@ Ext.define('AM.view.merchant.MerchantGrid', {
 					text: '新增',
 					action: 'add',
 					iconCls: 'add'
-				}, '-', {
-					text: '扣分',
-					action: 'cut',
-					iconCls: 'print'
 				}]
 			}]
 		});

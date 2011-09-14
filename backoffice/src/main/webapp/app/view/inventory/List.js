@@ -32,7 +32,7 @@ Ext.define('AM.view.inventory.List', {
 				    displayField: 'name',
 				    valueField: 'id'
 				}},
-	            {text: '顾客', dataIndex: 'customer.name', flex: 1},
+//	            {text: '顾客', dataIndex: 'customer.name', flex: 1},
 	            {text: '库存类型', dataIndex: 'type.name', flex: 1, xfilter:{
 					xtype:'combo',
 					store:new Ext.ux.util.ComboDataUtil().getInventoryTypes(),

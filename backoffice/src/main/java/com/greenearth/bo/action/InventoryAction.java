@@ -80,13 +80,13 @@ public class InventoryAction extends BaseAction {
 			
 			if(inventoryList != null) {
 				for (InventoryLog log:inventoryList) {
-					Customer customer  = customerManager.findCustomerByBarCode(log.getBarCode());
-					if(customer == null) {
-						logger.error("can't find customer by barcode:" + log.getBarCode());
-						Struts2Utils.renderJson("{success: false, msg: '条码找不到对应的顾客'}");
-						return;
-					}
-					log.setCustomer(customer);
+//					Customer customer  = customerManager.findCustomerByBarCode(log.getBarCode());
+//					if(customer == null) {
+//						logger.error("can't find customer by barcode:" + log.getBarCode());
+//						Struts2Utils.renderJson("{success: false, msg: '条码找不到对应的顾客'}");
+//						return;
+//					}
+//					log.setCustomer(customer);
 					inventoryManager.inbound(log);
 				}
 			}

@@ -9,7 +9,7 @@ Ext.define('AM.controller.Inbound', {
     
     refs: [
            {ref: 'inboundGrid', selector: 'inbound inboundGrid'},
-           {ref: 'customerId' , selector : 'inbound textfield[name=barCode]'}
+//           {ref: 'customerId' , selector : 'inbound textfield[name=barCode]'}
     ],
     
     
@@ -31,20 +31,20 @@ Ext.define('AM.controller.Inbound', {
     },
     
     inboundAdd: function(com) {
-    	var customerIdTxt = this.getCustomerId();
-    	if(customerIdTxt == null || customerIdTxt.value == null || '' == customerIdTxt.value.trim()) {
-    		Ext.Msg.alert('警告','顾客信息未填写',function(){
-    			customerIdTxt.focus(true,true);
-    		});
-    		return;
-    	}
-    	
+//    	var customerIdTxt = this.getCustomerId();
+//    	if(customerIdTxt == null || customerIdTxt.value == null || '' == customerIdTxt.value.trim()) {
+//    		Ext.Msg.alert('警告','顾客信息未填写',function(){
+//    			customerIdTxt.focus(true,true);
+//    		});
+//    		return;
+//    	}
+//    	
     	var form = com.up('form');
     	if (form.getForm().isValid()) {
     		var values = form.getValues();
     	
 	    	var instance = Ext.ModelManager.create({
-	    		barCode: customerIdTxt.value,
+//	    		barCode: customerIdTxt.value,
 	    		inventoryTypeId: values.inventoryTypeId,
 	    		weight: values.weight,
 	    		stationId:1,

@@ -78,11 +78,11 @@ insert into inventory(id,name,weight,recycle_station_id,inventory_type_id) value
 insert into inventory(id,name,weight,recycle_station_id,inventory_type_id) values(5,'',50,2,1);
 insert into inventory(id,name,weight,recycle_station_id,inventory_type_id) values(6,'',70,1,4);
 
-insert into inventory_log values(1,now(),4,1,1,2);
-insert into inventory_log values(2,now(),2,2,2,1);
-insert into inventory_log values(3,now(),1,3,1,3);
-insert into inventory_log values(4,now(),4,2,2,2);
-insert into inventory_log values(5,now(),5,1,1,1);
+insert into inventory_log values(1,now(),4,1,2);
+insert into inventory_log values(2,now(),2,2,1);
+insert into inventory_log values(3,now(),1,1,3);
+insert into inventory_log values(4,now(),4,2,2);
+insert into inventory_log values(5,now(),5,1,1);
 
 insert into points_type values(1,'垃圾积分','垃圾积分');
 insert into points_type values(2,'活动积分','活动积分');
@@ -105,6 +105,10 @@ insert into partner values(2,'','020-110293430','汪老板','13151241706',2);
 
 insert into sell_record values(1,now(),10,2,20,1,1,1);
 insert into sell_record values(2,now(),5,3,15,2,2,2);
+
+insert into merchant values (1,10.0,now(),now(),true,'商户地址','商户名称',now(),now(),5,1,1);
+
+insert into activity values (1,now(),now(),'description',true,now(),now(),'活动名称',50,1,1);
 
 ALTER TABLE point_rule ADD UNIQUE idx_inventory_point(inventory_type_id,points_type_id);
 ALTER TABLE deduction_rule ADD UNIQUE idx_reason(deduction_reason_id);

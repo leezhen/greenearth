@@ -6,4 +6,6 @@ import com.greenearth.bo.domain.Activity;
 
 public interface ActivityDao {
 	Page<Activity> getActivities(Page<Activity> p, Map<String,Object> params);
+	Activity get(Integer id);
+	void save(Activity a);
 }

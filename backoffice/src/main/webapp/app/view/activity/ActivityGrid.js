@@ -37,14 +37,10 @@ Ext.define('AM.view.activity.ActivityGrid', {
 					text: '新增',
 					action: 'add',
 					iconCls: 'add'
-				}, '-', {
-					text: '扣分',
-					action: 'cut',
-					iconCls: 'print'
 				}]
 			}]
 		});
 		this.callParent(arguments);
 		this.store.load();
-	},
+	}
 });

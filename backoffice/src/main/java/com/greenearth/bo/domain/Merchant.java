@@ -20,9 +20,9 @@ public class Merchant {
 	private String merchantAddr;
 	private Boolean isEnable;
 	private Date createdAt;
-	private Date createdBy;
+	private String createdBy;
 	private Date modifiedAt;
-	private Date modifiedBy;
+	private String modifiedBy;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -86,10 +86,10 @@ public class Merchant {
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
-	public Date getCreatedBy() {
+	public String getCreatedBy() {
 		return createdBy;
 	}
-	public void setCreatedBy(Date createdBy) {
+	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
 	public Date getModifiedAt() {
@@ -98,10 +98,10 @@ public class Merchant {
 	public void setModifiedAt(Date modifiedAt) {
 		this.modifiedAt = modifiedAt;
 	}
-	public Date getModifiedBy() {
+	public String getModifiedBy() {
 		return modifiedBy;
 	}
-	public void setModifiedBy(Date modifiedBy) {
+	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
 	}
 }
