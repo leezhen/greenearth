@@ -2,7 +2,7 @@ Ext.define('AM.view.merchant.Edit', {
     extend: 'Ext.window.Window',
     alias : 'widget.merchantEdit',
     
-    requires: ['Ext.ux.util.ComboDataUtil'],
+    requires: ['Ext.ux.util.ComboDataUtil','Ext.ux.util.ComboUtil'],
  
     layout: 'fit',
     width: 400,
@@ -11,6 +11,10 @@ Ext.define('AM.view.merchant.Edit', {
     config: {
     	title: '商户信息',
     },
+    
+    cityStores: Ext.create('Ext.ux.util.ComboUtil',{
+    	urls: 'customer_cities.do',
+    }),
     
     initComponent: function() {
     	Ext.apply(this, {
@@ -74,7 +78,7 @@ Ext.define('AM.view.merchant.Edit', {
     		name : 'city.id',
             fieldLabel: '市',
             emptyText: '请选择',
-    		store: new Ext.ux.util.ComboDataUtil().getCities(),
+    		store: this.cityStores,
             queryMode: 'local',
             displayField: 'name',
             valueField: 'id',
@@ -93,9 +97,24 @@ Ext.define('AM.view.merchant.Edit', {
     		allowBlank: false,
             queryMode: 'local',
             displayField: 'name',
-            valueField: 'id'
+            valueField: 'id',
+            listeners:{
+            	scope: this,
+                'select': this.showCities
+            }
     	});
     	
     	return this.provinces;
+    },
+    
+    showCities: function(combo) {
+    	this.loadCities(combo.getValue());
+    },
+    
+    loadCities: function(value) {
+    	this.cityStores.removeAll();
+		this.cityStores.load({params: {provinceId: value}});
     }
+    
+    
 });

@@ -66,21 +66,21 @@ Ext.define('AM.controller.Customers', {
     addCustomer: function(grid) {
     	var view = Ext.widget('customeredit');
     	view.setTitle('录入客户信息');
+    	view.show();
     },
     
     editCustomer: function(grid, record) {
     	var view = Ext.widget('customeredit', {title: '编辑客户信息'});
-//    	var view = Ext.create('AM.view.customer.Edit');
-//    	view.setTitle('编辑客户信息');
-//    	view.bindStore(store);
-//    	view.getDistrictsStore().load({params: {cityId: record.get('city.id')}});
-//    	cityCombo.setValue(record.get('city.id'));
-    	var cityCombo = view.down('form combobox[id=city.id]');
-    	cityCombo.fireEvent('select', cityCombo);
-    	
-    	view.down('form').loadRecord(record);
-//    	console.log(record.get('city.id'));
-    	
+    	view.districtsStore.removeAll();
+    	view.districtsStore.load({
+    		params: {cityId: record.data["city.id"]},
+    		callback: function(r,response,success) {
+        		if(success) {
+        			view.down('form').loadRecord(record);
+        			view.show();
+        		}
+        	}
+    	});
     },
     
     saveCustomer: function(button) {

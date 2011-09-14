@@ -35,8 +35,16 @@ Ext.define('AM.controller.Merchant', {
     
     editMerchant: function(grid, record) {
     	var view = Ext.widget('merchantEdit', {title: '编辑商户信息'});
-    	view.down('form').loadRecord(record);
-    	view.show();
+    	view.cityStores.removeAll();
+    	view.cityStores.load({
+    		params: {provinceId: record.data["province.id"]},
+    		callback: function(r,response,success) {
+        		if(success) {
+        			view.down('form').loadRecord(record);
+        			view.show();
+        		}
+        	}
+    	});
     },
     
     saveMerchant: function(button) {

@@ -10,6 +10,7 @@ import javax.persistence.Id;
 public class InventoryType {
 	private Integer id;
 	private Integer level;
+	private Integer parentId;
 	private String name;
 	private String desc;
 	
@@ -27,6 +28,13 @@ public class InventoryType {
 	}
 	public void setLevel(Integer level) {
 		this.level = level;
+	}
+	
+	public Integer getParentId() {
+		return parentId;
+	}
+	public void setParentId(Integer parentId) {
+		this.parentId = parentId;
 	}
 	
 	public String getName() {

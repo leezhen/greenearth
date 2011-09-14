@@ -6,7 +6,6 @@ Ext.define('AM.view.customer.Edit', {
  
 //    title : '编辑客户信息',
     layout: 'fit',
-    autoShow: true,
     width: 400,
     height: 300,
     
